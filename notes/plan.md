@@ -11,8 +11,6 @@
 
 Clone down the repo and install dependencies.
 
-### Snippet:
-
 ```bash
 git clone https://github.com/nology-tech/react-code-along.git
 cd react-code-along
@@ -45,16 +43,20 @@ Remove the Boilerplate below from public/index.html.
 
 Update the title in public/index.html.
 
-Remove the Boilerplate below from src/App.css
-Change the App.js to App.jsx
+Remove the Boilerplate below from src/App.css.
 
-Clear out App.jsx
+Change the App.js to App.jsx and clear out App.jsx
 
 ```jsx
+// App.jsx
 import "./App.css";
 
 const App = () => {
-  return <h1>Hello World</h1>;
+  return (
+    <header>
+      <h1>Hello World</h1>
+    </header>
+  );
 };
 
 export default App;
@@ -62,7 +64,7 @@ export default App;
 
 ---
 
-## CodeAlong: What is the Project Structure with React?
+## CA: What is the Project Structure with React?
 
 ### Topics
 
@@ -87,28 +89,45 @@ Create a variables.scss in the SASS folder.
 ### Snippet:
 
 ```scss
+// variables.scss
 $color-black: #2d3436;
 $color-white: #ffffff;
 $color-primary: #5dadb0;
 $color-secondary: #fdcb6e;
 ```
 
+Change the App.css to App.scss and do some basic styles.
+
+```scss
+// App.scss
+@import "./assets/sass/variables.module.scss";
+
+header {
+  text-align: center;
+  margin: 20px;
+}
+
+h1 {
+  color: $color-black;
+}
+```
+
 ---
 
-## CodeAlong: JSX
+## CA: JSX
 
 ### Topics
+
 - Why is the app a function?
 - Where What is the JSX?
 - Where do we write JS?
 - How can we use our Assets?
 - Conditional Render items?
 
+Demo JS and JSX, whatever you like below is just a example.
 
-Demo JS and JSX.
-
-### Snippet: 
 ```jsx
+// App.jsx
 const App = () => {
   let message = "We can do JS here";
 
@@ -128,6 +147,7 @@ const App = () => {
 export default App;
 ```
 
+Move on to bringing Assets and conditionally showing them.
 
 ```jsx
 import sunrise from "./assets/images/sunrise.png";
@@ -135,13 +155,14 @@ import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
 
 const App = () => {
-  const date = new Date().getTime();
+  const currentHour = new Date().getTime();
   let greetingImg = sunrise;
 
-  if (date > 12) {
+  if (currentHour > 12) {
     greetingImg = sun;
   }
-  if (date > 18) {
+
+  if (currentHour > 18) {
     greetingImg = moon;
   }
 
@@ -157,3 +178,6 @@ export default App;
 ```
 
 ## Challenge
+
+- [Challenge](./challenge/challenge.md)
+- [Solution](./challenge/solution.md)
