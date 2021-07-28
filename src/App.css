@@ -6,13 +6,3 @@ header {
 h1 {
   color: #2D3436;
 }
-
-.menu {
-  display: inline-block;
-  color: red;
-  width: 30px;
-  height: 10px;
-  margin-right: 0.3em;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
