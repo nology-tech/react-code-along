@@ -24,12 +24,18 @@ const App = () => {
   }
 
   return (
-    <header>
-      <img src={greetingImg} />
-      <h1>
-        Good {greetingTime} {user.firstName} {user.lastName}
-      </h1>
-    </header>
+    <>
+      <header>
+        <img src={greetingImg} />
+        <h1>
+          Good {greetingTime} {user.firstName} {user.lastName}
+        </h1>
+      </header>
+
+     
+    </>
+  
+
   );
 };
 
