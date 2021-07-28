@@ -2,6 +2,7 @@ import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
+import Nav from "./components/Nav"
 
 const App = () => {
   const user = {
@@ -25,15 +26,15 @@ const App = () => {
 
   return (
     <>
+      <Nav />
       <header>
         <img src={greetingImg} />
         <h1>
           Good {greetingTime} {user.firstName} {user.lastName}
         </h1>
       </header>
-
-     
     </>
+
   
 
   );
