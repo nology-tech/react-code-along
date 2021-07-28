@@ -2,5 +2,7 @@
 
 Right click on the challenge.md file and click Open Preview.
 
-The aim of this challenge is for you to create a button component and render it in App.jsx
+<img src="./components-challenge.png"/>
+
+The aim of this challenge is for you to create the button component shown in the image above and render it in App.jsx
 
