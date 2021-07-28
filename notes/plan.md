@@ -63,24 +63,40 @@ Export the Nav component and import it into App.jsx
 Render the component in App.jsx and show the component on the webpage
 
 Write the code for the nav in Nav.jsx
+The images for the nav can be found in src/assets/images
 
 ```jsx
 import React from 'react'
+import menu from '../../assets/images/menu-icon.png'
+import settings from '../../assets/images/settings-icon.png'
+import "./Nav.module.scss"
+import "../../App.scss"
+
 
 const Nav = () => {
-
-  return (
-    <nav>
-        <span class="menu"></span>
-        <h1>Ear Worm</h1>
-        <p>Cog looking thingy to go here</p>
-    </nav>
-  )
+    return (
+        <nav>
+            <img src = {menu} />
+            <h1>Ear Worm</h1>
+            <img src = {settings} />   
+        </nav>
+    )
 }
+
+export default Nav
 ```
 
-Style the component using the below styles
+Create Nav.module.scss and style the component using the below styles
 
-```css
-styles to go here
+```scss
+nav {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+        height: 30px;
+    }
+}
 ```
