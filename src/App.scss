@@ -9,6 +9,8 @@ h1 {
   color: $color-black;
 }
 
-.menu {
-  background-image: url("./assets/images/menu-icon.png");
+.buttonSection {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 }
