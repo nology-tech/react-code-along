@@ -28,17 +28,19 @@ const App = () => {
 
   return (
     <>
+      <div className="app">
       <Nav />
       <header>
         <img src={greetingImg} />
         <h1>
-          Good {greetingTime} {user.firstName} {user.lastName}
+          Good {greetingTime} <br /> {user.firstName} {user.lastName}
         </h1>
       </header>
       <section className = "buttonSection">
         <ButtonLetsGo />
         <ButtonExplore />
       </section>
+    </div>
     </>
 
   

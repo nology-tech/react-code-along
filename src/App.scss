@@ -1,16 +1,48 @@
 @import "./assets/sass/variables.module.scss";
 
-header {
-  text-align: center;
-  margin: 20px;
+@import "./assets/sass/variables.module.scss";
+
+.app {
+  header {
+    text-align: center;
+
+    h1 {
+      color: $color-black;
+    }
+
+    & > * {
+      margin: 20px;
+    }
+  }
+  .buttonSection {
+    display: flex;
+    margin: 20px auto;
+    width: fit-content;
+  }
 }
 
-h1 {
-  color: $color-black;
-}
+@media (min-width: 992px) {
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content;
 
-.buttonSection {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
+    header {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        height: 100px;
+      }
+    }
+
+    .buttonSection {
+      display: none;
+    }
+  }
 }
