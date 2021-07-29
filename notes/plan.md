@@ -68,37 +68,59 @@ The images for the nav can be found in src/assets/images
 If not already covered, introduce the concept of module sass
 
 ```jsx
-import React from 'react'
-import menu from '../../assets/images/menu-icon.png'
-import settings from '../../assets/images/settings-icon.png'
-import "./Nav.module.scss"
-import "../../App.scss"
-
+import React from "react";
+import menu from "../../assets/images/menu-icon.png";
+import settings from "../../assets/images/settings-icon.png";
+import styles from "./Nav.module.scss";
 
 const Nav = () => {
-    return (
-        <nav>
-            <img src = {menu} />
-            <h1>Ear Worm</h1>
-            <img src = {settings} />   
-        </nav>
-    )
-}
+  return (
+    <nav className={styles.nav}>
+      <img src={menu} className={styles.menu} />
+      <h2>Ear Worm</h2>
+      <img src={settings} />
+    </nav>
+  );
+};
 
-export default Nav
+export default Nav;
 ```
 
 Create Nav.module.scss and style the component using the below styles
 
 ```scss
-nav {
-    display: flex;
-    width: 100vw;
-    justify-content: space-around;
-    align-items: center;
+@import "../../assets/sass/variables.module.scss";
 
-    img {
-        height: 30px;
-    }
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  color: $color-black;
+
+  img {
+    height: 30px;
+  }
 }
+
+@media (min-width: 992px) {
+  .nav {
+    grid-column: 1 / -1;
+    h2 {
+      margin: 20px auto;
+    }
+
+    .menu {
+      display: none;
+    }
+  }
+}
+
 ```
+
+---
+
+## Move onto Challenges
+
+- [Challenge](./challenge/challenge.md)
+- [Solution](./challenge/solution.md)
