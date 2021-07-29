@@ -1,10 +1,10 @@
 @import "../../assets/sass/variables.module.scss";
 
 .buttonExplore {
-    height: 35px;
-    width: 75px;
-    margin-right: 10px;
-    background-color: $color-primary;
-    border-radius: 15px;
-    border: none;
+  min-width: 80px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: transparent;
+  border-radius: 15px;
+  border: 2px solid $color-primary;
 }
