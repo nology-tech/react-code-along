@@ -65,6 +65,8 @@ Render the component in App.jsx and show the component on the webpage
 Write the code for the nav in Nav.jsx
 The images for the nav can be found in src/assets/images
 
+If not already covered, introduce the concept of module sass
+
 ```jsx
 import React from 'react'
 import menu from '../../assets/images/menu-icon.png'
