@@ -1,8 +1,29 @@
-header {
+.app header {
   text-align: center;
+}
+.app header h1 {
+  color: #2D3436;
+}
+.app header > * {
   margin: 20px;
 }
 
-h1 {
-  color: #2D3436;
+@media (min-width: 992px) {
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
+  }
+  .app header {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app header img {
+    height: 100px;
+  }
 }

@@ -1,11 +1,37 @@
 @import "./assets/sass/variables.module.scss";
 
-header {
-  text-align: center;
-  margin: 20px;
+.app {
+  header {
+    text-align: center;
+
+    h1 {
+      color: $color-black;
+    }
+
+    & > * {
+      margin: 20px;
+    }
+  }
 }
 
-h1 {
-  color: $color-black;
-}
+@media (min-width: 992px) {
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
 
+    header {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        height: 100px;
+      }
+    }
+  }
+}
