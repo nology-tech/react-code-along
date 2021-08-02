@@ -1,0 +1,26 @@
+@import "../../assets/sass/variables.module.scss";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  color: $color-black;
+
+  img {
+    height: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav {
+    grid-column: 1 / -1;
+    h2 {
+      margin: 20px auto;
+    }
+
+    .menu {
+      display: none;
+    }
+  }
+}

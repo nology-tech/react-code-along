@@ -1,0 +1,10 @@
+@import "../../assets/sass/variables.module.scss";
+
+.buttonLetsGo {
+  min-width: 80px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: $color-secondary;
+  border-radius: 15px;
+  border: none;
+}

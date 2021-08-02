@@ -2,6 +2,9 @@ import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
+import Nav from "./components/Nav"
+import ButtonLetsGo from "./components/ButtonLetsGo";
+import ButtonExplore from "./components/ButtonExplore";
 
 const App = () => {
   const user = {
@@ -25,15 +28,21 @@ const App = () => {
 
   return (
     <>
+      <div className="app">
+      <Nav />
       <header>
         <img src={greetingImg} />
         <h1>
-          Good {greetingTime} {user.firstName} {user.lastName}
+          Good {greetingTime} <br /> {user.firstName} {user.lastName}
         </h1>
       </header>
-
-     
+      <section className = "buttonSection">
+        <ButtonLetsGo />
+        <ButtonExplore />
+      </section>
+    </div>
     </>
+
   
 
   );

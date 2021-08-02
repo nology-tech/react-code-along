@@ -98,23 +98,65 @@ console.log(artist.strArtist);
 
 ## Object Destructuring
 
-Lets refactor our components with object destructuring
+Write the code for the nav in Nav.jsx
+The images for the nav can be found in src/assets/images
+
+If not already covered, introduce the concept of module sass
 
 ```jsx
-// Button.jsx
+import React from "react";
+import menu from "../../assets/images/menu-icon.png";
+import settings from "../../assets/images/settings-icon.png";
+import styles from "./Nav.module.scss";
 
-// left hand side variables you are unpacking
-// right hand side is the object / source of values
+const Nav = () => {
+  return (
+    <nav className={styles.nav}>
+      <img src={menu} className={styles.menu} />
+      <h2>Ear Worm</h2>
+      <img src={settings} />
+    </nav>
+  );
+};
 
-const { buttonText, isPrimary } = props;
+export default Nav;
 ```
 
+Create Nav.module.scss and style the component using the below styles
 
-```jsx
-// Button.jsx
+```scss
+@import "../../assets/sass/variables.module.scss";
 
-// left hand side variables you are unpacking
-// right hand side is the object / source of values
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  color: $color-black;
 
-const { buttonText, isPrimary } = props;
+  img {
+    height: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav {
+    grid-column: 1 / -1;
+    h2 {
+      margin: 20px auto;
+    }
+
+    .menu {
+      display: none;
+    }
+  }
+}
+
 ```
+
+---
+
+## Move onto Challenges
+
+- [Challenge](./challenge/challenge.md)
+- [Solution](./challenge/solution.md)
