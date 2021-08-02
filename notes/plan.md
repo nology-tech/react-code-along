@@ -34,6 +34,7 @@ cd Nav && touch Nav.jsx
 Import React into Nav.jsx and create the functional component
 
 ```jsx
+// Nav.jsx
 import React from react
 
 const Nav = () => {
@@ -46,6 +47,7 @@ const Nav = () => {
 Demo writing JSX in Nav.jsx
  
 ```jsx
+// Nav.jsx
 import React from 'react'
 
 const Nav = () => {
@@ -58,25 +60,68 @@ const Nav = () => {
 
 Explain that we need to export components and import them to the file where we would like to render them
 
-Export the Nav component and import it into App.jsx
+Export the Nav component and import it into App.jsx.
 
-Render the component in App.jsx and show the component on the webpage
+Render the component in App.jsx and show the component on the webpage.
+
+```jsx
+// App.jsx
+import "./App.scss";
+import sunrise from "./assets/images/sunrise.png";
+import sun from "./assets/images/sun.png";
+import moon from "./assets/images/moon.png";
+import Nav from "./components/Nav";
+
+const App = () => {
+  const user = {
+    firstName: "John",
+    lastName: "Doe",
+  };
+
+  const currentHour = new Date().getHours();
+  let greetingImg = sunrise;
+  let greetingTime = "Morning!";
+
+  if (currentHour >= 12) {
+    greetingImg = sun;
+    greetingTime = "Afternoon!";
+  }
+
+  if (currentHour >= 18) {
+    greetingImg = moon;
+    greetingTime = "Evening!";
+  }
+
+  return (
+    <>
+      <div className="app">
+        <Nav />
+        <header>
+          <img src={greetingImg} />
+          <h1>
+            Good {greetingTime} <br /> {user.firstName} {user.lastName}
+          </h1>
+        </header>
+      </div>
+    </>
+  );
+};
+```
 
 Write the code for the nav in Nav.jsx
 The images for the nav can be found in src/assets/images
 
-If not already covered, introduce the concept of module sass
-
 ```jsx
+// Nav.jsx
 import React from "react";
 import menu from "../../assets/images/menu-icon.png";
 import settings from "../../assets/images/settings-icon.png";
-import styles from "./Nav.module.scss";
+import "./Nav.scss";
 
 const Nav = () => {
   return (
-    <nav className={styles.nav}>
-      <img src={menu} className={styles.menu} />
+    <nav className="nav">
+      <img src={menu} className="menu" />
       <h2>Ear Worm</h2>
       <img src={settings} />
     </nav>
@@ -86,10 +131,10 @@ const Nav = () => {
 export default Nav;
 ```
 
-Create Nav.module.scss and style the component using the below styles
+Create Nav.scss and style the component using the below styles
 
 ```scss
-@import "../../assets/sass/variables.module.scss";
+@import "../../assets/sass/variables.scss";
 
 .nav {
   display: flex;

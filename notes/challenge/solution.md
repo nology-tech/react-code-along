@@ -10,7 +10,7 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 ![](./images/button-folders.png)
 
-2. Within each of your button folders create a jsx file, an index file and a sass file for styling.
+2. Within each of your button folders create a jsx file and a sass file for styling.
 
 3. Import react and create the function for each of your components - remember to export your component.
 
@@ -26,30 +26,22 @@ const ButtonExplore = () => {
 export default ButtonExplore
 ```
 
-4. Import and export your components in your index.js files.
-
-```js
-import ButtonExplore from "./ButtonExplore";
-
-export default ButtonExplore;
-```
-
-5. Write the code for each of your buttons and add sass styling. - remember to import your styles in your component file. As i've used class names I have used the "styles.classname" syntax as shown below.
+4. Write the code for each of your buttons and add sass styling. 
 
 ```jsx
 import React from "react";
-// imports 'styles' from your sass file in order to use classes
-import styles from "./ButtonExplore.module.scss";
+
+import "./ButtonExplore.scss";
 
 const ButtonExplore = () => {
-  return <button className={styles.buttonExplore}>Explore</button>;
+  return <button className="buttonExplore">Explore</button>;
 };
 
 export default ButtonExplore;
 ```
 
 ```scss
-@import "../../assets/sass/variables.module.scss";
+@import "../../assets/sass/variables.scss";
 
 .buttonExplore {
   min-width: 80px;
@@ -63,17 +55,17 @@ export default ButtonExplore;
 
 ```jsx
 import React from "react";
-import styles from "./ButtonLetsGo.module.scss";
+import "./ButtonLetsGo.scss";
 
 const ButtonLetsGo = () => {
-  return <button className={styles.buttonLetsGo}>Lets Go</button>;
+  return <button className="buttonLetsGo">Lets Go</button>;
 };
 
 export default ButtonLetsGo;
 ```
 
 ```scss
-@import "../../assets/sass/variables.module.scss";
+@import "../../assets/sass/variables.scss";
 
 .buttonLetsGo {
   min-width: 80px;
@@ -156,12 +148,11 @@ export default App;
 </section>
 ```
 
-4. Style the section in App.scss, Note - We don't have to use the styles.nameOfClass syntax here as App.scss is not a module, i.e it's not App.module.scss. The difference is how the sass is scoped and you can read more here https://medium.com/clover-platform-blog/modular-scss-and-why-you-need-it-6bb2d8c40fd8
+4. Style the section in App.scss.
 
 ```scss
-@import "./assets/sass/variables.module.scss";
 
-@import "./assets/sass/variables.module.scss";
+@import "./assets/sass/variables.scss";
 
 .app {
   header {

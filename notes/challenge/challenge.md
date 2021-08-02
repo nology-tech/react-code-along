@@ -8,7 +8,7 @@ The aim of this challenge is to create two button components as shown in the ima
 
 ---
 
-1. Create two buttons components called ButtonExplore and ButtonLetsGo. You will need to create a folder, index, jsx and scss file for each of the buttons.
+1. Create two buttons components called ButtonExplore and ButtonLetsGo. You will need to create a folder, jsx and scss file for each of the buttons.
 
 2. When you have created the files you will need to write the JSX and style the components.
 
