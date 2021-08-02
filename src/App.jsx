@@ -5,6 +5,7 @@ import moon from "./assets/images/moon.png";
 import Nav from "./components/Nav";
 import Button from "./components/Button";
 import artist from "./data/artist";
+import DiscoverArtist from "./components/DiscoverArtist";
 
 const App = () => {
   const user = {
@@ -28,21 +29,21 @@ const App = () => {
 
   return (
     <>
-      <Nav />
-      <header>
-        <img src={greetingImg} />
-        <h1>
-          Good {greetingTime} {user.firstName} {user.lastName}
-        </h1>
-      </header>
-      <section className = "buttonSection">
-        <Button buttonText={"Lets Go"}></Button>
-        <Button buttonText={"Explore"} isSecondary={true}></Button>
-      </section>
+      <div className="app">
+        <Nav />
+        <header>
+          <img src={greetingImg} />
+          <h1>
+            Good {greetingTime} <br /> {user.firstName} {user.lastName}
+          </h1>
+        </header>
+        <section className="buttonSection">
+          <Button buttonText={"Lets Go"} isSecondary={true} />
+          <Button buttonText={"Explore"} />
+        </section>
+        <DiscoverArtist imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+      </div>
     </>
-
-  
-
   );
 };
 
