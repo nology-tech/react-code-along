@@ -1,16 +1,19 @@
 import React from "react";
-import styles from "./Button.module.scss";
+import "./Button.scss";
 
 const Button = props => {
   const buttonText = props.buttonText;
 
-  let buttonStyle = styles.button;
+  let buttonStyle = "button";
 
   if (props.isSecondary) {
-    buttonStyle += " " + styles.secondary;
+    buttonStyle += " secondary";
   } else {
-    buttonStyle += " " + styles.primary;
+    buttonStyle += " primary";
   }
+
+  // This could be simplified using a inline turnery statement.
+  // let buttonStyle = props.isSecondary ? "button secondary" : "button primary";
 
   return <button className={buttonStyle}>{buttonText}</button>;
 };

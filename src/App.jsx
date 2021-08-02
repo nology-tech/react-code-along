@@ -2,10 +2,10 @@ import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
-import Nav from "./components/Nav";
-import Button from "./components/Button";
+import Nav from "./components/Nav/Nav";
+import Button from "./components/Button/Button";
 import artist from "./data/artist";
-import DiscoverArtist from "./components/DiscoverArtist";
+import DiscoverArtist from "./components/DiscoverArtist/DiscoverArtist";
 
 const App = () => {
   const user = {
