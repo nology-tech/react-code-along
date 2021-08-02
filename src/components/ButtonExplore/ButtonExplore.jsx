@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./ButtonExplore.module.scss";
+import "./ButtonExplore.scss";
 
 const ButtonExplore = () => {
-  return <button className={styles.buttonExplore}>Explore</button>;
+  return <button className="buttonExplore">Explore</button>;
 };
 
 export default ButtonExplore;
