@@ -1,6 +1,6 @@
 @import "../../assets/sass/variables.module.scss";
 
-.buttonLetsGo {
+.buttonPrimary {
     height: 35px;
     width: 75px;
     margin-right: 10px;
@@ -8,3 +8,13 @@
     border-radius: 15px;
     border: none;
 }
+
+.buttonSecondary {
+    height: 35px;
+    width: 75px;
+    margin-right: 10px;
+    background-color: $color-primary;
+    border-radius: 15px;
+    border: none;
+}
+

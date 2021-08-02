@@ -2,9 +2,9 @@ import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
-import Nav from "./components/Nav"
-import ButtonLetsGo from "./components/ButtonLetsGo";
-import ButtonExplore from "./components/ButtonExplore";
+import Nav from "./components/Nav";
+import Button from "./components/Button";
+import artist from "./data/artist";
 
 const App = () => {
   const user = {
@@ -36,8 +36,8 @@ const App = () => {
         </h1>
       </header>
       <section className = "buttonSection">
-        <ButtonLetsGo />
-        <ButtonExplore />
+        <Button buttonText={"Lets Go"}></Button>
+        <Button buttonText={"Explore"} isSecondary={true}></Button>
       </section>
     </>
 
