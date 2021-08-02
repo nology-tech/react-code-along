@@ -13,9 +13,35 @@
 ### Topics:
 
 - How can we pass props into a Component?
-- How do we use Props in Component?
+- How do we use Props in a Component?
 
-Lets refactor our two buttons into one Button component that takes in props.
+Lets refactor our two buttons into one Button component that takes in props. Delete the two buttons and create a new one.
+
+```jsx
+// Button.jsx
+import React from "react";
+import "./Button.scss";
+
+const Button = props => {
+  let buttonStyle = "button";
+
+  return <button className={buttonStyle}>Button works</button>;
+};
+
+export default Button;
+```
+
+```scss
+// Button.scss
+@import "../../assets/sass/variables.scss";
+
+.button {
+  min-width: 80px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: none;
+}
+```
 
 1. Passing Props into the component
 
@@ -24,11 +50,19 @@ Lets refactor our two buttons into one Button component that takes in props.
 <Button buttonText={"This is being passed in"} />
 ```
 
-2.  Log props to the console and then use props in the component. 
+2.  Log props to the console and then use props in the component.
 
 ```jsx
 // Button.jsx
-// using props.buttonText in the button
+const Button = props => {
+  console.log(props);
+  console.log(props.buttonText);
+  const buttonText = props.buttonText;
+
+  let buttonStyle = "button";
+
+  return <button className={buttonStyle}>{buttonText}</button>;
+};
 ```
 
 3.  Lets pass in a conditional prop
@@ -40,14 +74,35 @@ Lets refactor our two buttons into one Button component that takes in props.
 
 4. Lets use this to do some conditional styling. If isSecondary is true lets add the secondary class to the component.
 
+```scss
+// Button.scss
+.primary {
+  background-color: transparent;
+  border: 2px solid $color-primary;
+}
+
+.secondary {
+  background-color: $color-secondary;
+}
+```
+
 ```jsx
 // Button.jsx
-// using props.isSecondary in the button
+let buttonStyle = "button";
+
+if (props.isSecondary) {
+  buttonStyle += " secondary";
+} else {
+  buttonStyle += " primary";
+}
+
+// This could be simplified using a inline turnery statement.
+// let buttonStyle = props.isSecondary ? "button secondary" : "button primary";
 ```
 
 ---
 
-## How can we make a mock data file?
+## CA: How can we make a mock data file?
 
 In src create a data folder. In the folder create a artist.js file. This will be the mock data for the challenge component.
 
@@ -91,6 +146,8 @@ console.log(artist.strArtist);
 
 ## Move onto Challenges
 
+**Once the Challenge is completed there a refactoring exercise using object destructuring**
+
 - [Challenge](./challenge/challenge.md)
 - [Solution](./challenge/solution.md)
 
@@ -98,65 +155,16 @@ console.log(artist.strArtist);
 
 ## Object Destructuring
 
-Write the code for the nav in Nav.jsx
-The images for the nav can be found in src/assets/images
-
-If not already covered, introduce the concept of module sass
+Lets refactor our components with object destructuring
 
 ```jsx
-import React from "react";
-import menu from "../../assets/images/menu-icon.png";
-import settings from "../../assets/images/settings-icon.png";
-import styles from "./Nav.module.scss";
-
-const Nav = () => {
-  return (
-    <nav className={styles.nav}>
-      <img src={menu} className={styles.menu} />
-      <h2>Ear Worm</h2>
-      <img src={settings} />
-    </nav>
-  );
-};
-
-export default Nav;
+// Button.jsx
+// left hand side variables you are unpacking
+// right hand side is the object / source of values
+const { buttonText, isPrimary } = props;
 ```
 
-Create Nav.module.scss and style the component using the below styles
-
-```scss
-@import "../../assets/sass/variables.module.scss";
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 50px;
-  color: $color-black;
-
-  img {
-    height: 30px;
-  }
-}
-
-@media (min-width: 992px) {
-  .nav {
-    grid-column: 1 / -1;
-    h2 {
-      margin: 20px auto;
-    }
-
-    .menu {
-      display: none;
-    }
-  }
-}
-
+```jsx
+// DiscoverArtistCard
+const { imgSrc, title } = props;
 ```
-
----
-
-## Move onto Challenges
-
-- [Challenge](./challenge/challenge.md)
-- [Solution](./challenge/solution.md)

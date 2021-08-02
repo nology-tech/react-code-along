@@ -1,18 +1,28 @@
-# Challenge: Components
+# Challenge: Props
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 
-The aim of this challenge is to create two button components as shown in the image below, style them and then render them in our App.jsx.
+The aim of this challenge is to get you to practice using props.
 
-<img src="./images/components-challenge.png" width="300"/>
+You will need to create this component shown in the image below, style and render it in our App.jsx. You will need to pass in two props from src/data/artist.
 
-1. Create two buttons components called ButtonExplore and ButtonLetsGo. You will need to create a folder, index, jsx and scss file for each of the buttons.
+<img src="./images/discover-artist-card.PNG" width="300"/>
 
-2. When you have created the files you will need to write the JSX and style the components.
+---
 
-- ButtonLetsGo should have a background color the same as the `$color-secondary;` variable from our variables.scss file.
-- ButtonExplore should have a border the same color as our `$color-primary;` variable from our variables.scss file.
+**Focus on using props first then style it.**
 
-3. You need to Import your buttons and render them in App.jsx. Can you get them side by side? Flexbox? Grid?
+1. Create the component and call it DiscoverArtistCard. You will need to create a folder, jsx and scss file for it. You will have to import it and render it in App.jsx.
 
-4. EXTENSION Can you hide them for devices over 992px?
+2. The component needs two props from the artist object from the data folder. Can you pass strArtist and strArtistThumb into the component?
+
+3. You will need to now use the props in the component.
+
+- strArtist -> The artist's name
+- strArtistThumb -> The artist's Img url
+
+4. You need to import your Button into this component and give it "Find out more" text to display and make it have the secondary styles.
+
+5. Its Time to style it :D
+
+6. **EXTENSION** Go to this [code-pen](https://codepen.io/charlie-robin/pen/RwVyNvO) Can you apply the dark overlay to your component?
