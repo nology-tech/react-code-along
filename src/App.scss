@@ -16,6 +16,10 @@
     display: flex;
     margin: 20px auto;
     width: fit-content;
+
+    & > * {
+      margin: 0 10px;
+    }
   }
 }
 
