@@ -88,12 +88,14 @@ const App = () => {
   }
 
   return (
+    <div className="app">
     <header>
       <img src={greetingImg} />
       <h1>
         Good {greetingTime} <br /> {user.firstName} {user.lastName}
       </h1>
     </header>
+    <div/>
   );
 };
 

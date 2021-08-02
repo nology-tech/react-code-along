@@ -94,6 +94,8 @@ Change the App.css to App.scss, delete the boiler plate and add in the code belo
 
 ```scss
 // App.scss
+@import "./assets/sass/variables.scss";
+
 .app {
   header {
     text-align: center;
@@ -169,12 +171,13 @@ export default App;
 Move on to importing the Assets and conditionally showing them. You can use `Date().getHours()` to get the current hour. Depending on the hour you can set it to a different image. To test the logic you can just set it to any number between 0 and 23.
 
 ```jsx
+import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
 
 const App = () => {
-  const currentHour = new Date().getHours();;
+  const currentHour = new Date().getHours();
   let greetingImg = sunrise;
 
   if (currentHour > 12) {
@@ -186,7 +189,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="app">
       <img src={greetingImg} />
       <h1>Hello</h1>
     </div>
