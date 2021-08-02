@@ -1,20 +1,17 @@
 @import "../../assets/sass/variables.module.scss";
 
-.buttonPrimary {
-    height: 35px;
-    width: 75px;
-    margin-right: 10px;
-    background-color: $color-secondary;
-    border-radius: 15px;
-    border: none;
+.button {
+  min-width: 80px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: none;
 }
 
-.buttonSecondary {
-    height: 35px;
-    width: 75px;
-    margin-right: 10px;
-    background-color: $color-primary;
-    border-radius: 15px;
-    border: none;
+.primary {
+  background-color: transparent;
+  border: 2px solid $color-primary;
 }
 
+.secondary {
+  background-color: $color-secondary;
+}
