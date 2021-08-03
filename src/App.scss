@@ -1,6 +1,8 @@
 @import "./assets/sass/variables.scss";
 
 .app {
+  padding: 0 50px;
+  color: $color-black;
   header {
     text-align: center;
 
@@ -44,6 +46,9 @@
 
     .buttonSection {
       display: none;
+    }
+    .discover {
+      grid-row: 3/4;
     }
   }
 }

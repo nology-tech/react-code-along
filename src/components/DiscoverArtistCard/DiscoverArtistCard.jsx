@@ -1,10 +1,10 @@
 import React from "react";
-import "./DiscoverArtist.scss";
+import "./DiscoverArtistCard.scss";
 import Button from "../Button/Button";
 
 const DiscoverArtist = props => {
   return (
-    <div className="discover">
+    <div className="discoverArtistCard">
       <img src={props.imgSrc} />
       <div className="content">
         <h3>{props.title}</h3>

@@ -5,7 +5,7 @@ import moon from "./assets/images/moon.png";
 import Nav from "./components/Nav/Nav";
 import Button from "./components/Button/Button";
 import artist from "./data/artist";
-import DiscoverArtist from "./components/DiscoverArtist/DiscoverArtist";
+import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
 
 const App = () => {
   const user = {
@@ -41,7 +41,10 @@ const App = () => {
           <Button buttonText={"Lets Go"} isSecondary={true} />
           <Button buttonText={"Explore"} />
         </section>
-        <DiscoverArtist imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+        <section className="discover">
+          <h2>Discover</h2>
+          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+        </section>
       </div>
     </>
   );
