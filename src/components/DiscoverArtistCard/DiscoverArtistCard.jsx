@@ -3,11 +3,12 @@ import "./DiscoverArtistCard.scss";
 import Button from "../Button/Button";
 
 const DiscoverArtist = props => {
+  const { imgSrc, title } = props;
   return (
     <div className="discoverArtistCard">
-      <img src={props.imgSrc} />
+      <img src={imgSrc} />
       <div className="content">
-        <h3>{props.title}</h3>
+        <h3>{title}</h3>
         <Button buttonText={"Find out more"} isSecondary={true} />
       </div>
     </div>

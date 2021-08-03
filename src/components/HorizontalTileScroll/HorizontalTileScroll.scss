@@ -1,0 +1,32 @@
+@import "../../assets/sass/variables.scss";
+
+.horizontal-scroll {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+
+  img {
+    display: block;
+    width: 200px;
+    margin: 10px 20px;
+    margin-left: 0;
+    flex: auto;
+    flex-shrink: 0;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba($color-black, 0.25);
+  }
+}
+
+@media (min-width: 992px) {
+  .horizontal-scroll {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 20px;
+    img {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}

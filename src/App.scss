@@ -1,8 +1,12 @@
 @import "./assets/sass/variables.scss";
 
 .app {
-  padding: 0 50px;
   color: $color-black;
+
+  & > * {
+    padding: 0 50px;
+  }
+
   header {
     text-align: center;
 
@@ -22,6 +26,19 @@
       margin: 0 10px;
     }
   }
+
+  .discography {
+    padding: 0;
+    min-width: 500px;
+    .all-albums {
+      background-color: $color-primary;
+      padding: 10px 50px 20px 50px;
+    }
+
+    & > * {
+      padding: 0px 50px;
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -29,15 +46,14 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    gap: 50px;
+    gap: 25px 100px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
     header {
       text-align: left;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      grid-column: 1/ -1;
 
       img {
         height: 100px;
@@ -47,8 +63,27 @@
     .buttonSection {
       display: none;
     }
+
     .discover {
       grid-row: 3/4;
+    }
+
+    .discography {
+      grid-row: 4/5;
+      grid-column: 1/ -1;
+      border-radius: 15px;
+      display: grid;
+      gap: 25px 100px;
+      grid-template-columns: repeat(2, 1fr);
+
+      .all-albums {
+        border-radius: 15px;
+        height: fit-content;
+      }
+
+      h2 {
+        grid-column: 1 / -1;
+      }
     }
   }
 }

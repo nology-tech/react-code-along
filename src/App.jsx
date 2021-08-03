@@ -4,8 +4,11 @@ import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
 import Nav from "./components/Nav/Nav";
 import Button from "./components/Button/Button";
-import artist from "./data/artist";
 import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
+import HorizontalTileScroll from "./components/HorizontalTileScroll/HorizontalTileScroll";
+
+import albums from "./data/albums";
+import artist from "./data/artist";
 
 const App = () => {
   const user = {
@@ -27,6 +30,10 @@ const App = () => {
     greetingTime = "Evening!";
   }
 
+  const allAlbums = albums.slice(0, 9);
+
+  const highestRating = [...albums].sort((a, b) => b.intScore - a.intScore).slice(0, 9);
+  console.log(highestRating);
   return (
     <>
       <div className="app">
@@ -44,6 +51,16 @@ const App = () => {
         <section className="discover">
           <h2>Discover</h2>
           <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+        </section>
+
+        <section className="discography">
+          <h2>Discography</h2>
+          <div className="all-albums">
+            <HorizontalTileScroll title="Albums" data={allAlbums} />
+          </div>
+          <div>
+            <HorizontalTileScroll title="Highest Rated" data={highestRating} />
+          </div>
         </section>
       </div>
     </>
