@@ -31,11 +31,13 @@ const App = () => {
   }
 
   // Filter
-  const allAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
+  const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
 
   // Sort
-  const highestRating = [...albums].sort((a, b) => b.intScore - a.intScore).slice(0, 9);
-  console.log(highestRating);
+  const highestRating = albums
+    .filter(album => album.intScore)
+    .sort((a, b) => b.intScore - a.intScore)
+    .slice(0, 9);
 
   return (
     <>
@@ -63,10 +65,10 @@ const App = () => {
           <h2>Discography</h2>
 
           <div className="all-albums">
-            <DiscographyCardList title="Albums" data={allAlbums} />
+            <DiscographyCardList title="Albums" data={filteredAlbums} />
           </div>
 
-          <div>
+          <div className="highest-rated">
             <DiscographyCardList title="Highest Rated" data={highestRating} />
           </div>
         </section>

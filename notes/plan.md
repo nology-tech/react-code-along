@@ -225,7 +225,7 @@ Update the App.scss with the new styles.
 ## CA: How do you work with arrays?
 
 Update the App.jsx and DiscographyCardList.jsx to accept these two props title and data.
-
+In the DiscographyCardList map over the array and create `<img>` tags for each of the strAlbumThumb keys from each album object from the array given. Render this to page.
 
 ```jsx
 // App.jsx
@@ -233,18 +233,37 @@ Update the App.jsx and DiscographyCardList.jsx to accept these two props title a
   <DiscographyCardList title="Albums" data={albums} />
 </div>
 ```
+
 ```jsx
 // DiscographyCardList.jsx
 const DiscographyCardList = props => {
   const { title, data } = props;
   console.log(data);
-
+  const cardListJSx = data.map(el => <img src={el.strAlbumThumb} />);
   return (
     <>
       <h3>{title}</h3>
+      <div className="card-list">{cardListJSx}</div>
     </>
   );
 };
+```
+
+Some of the album objects from the data file do not have valid strAlbumThumb keys. We now need to remove them before we render them. We also have a lot of albums to display as well perhaps we limit it to 9 per component. Lets store the filtered and sliced array as a variable and pass that as props to the component.
+
+```jsx
+// App.jsx
+const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
+```
+
+---
+
+## Why each item needs a key?
+
+Show the console and the error that is being displayed. Explain why each item will need its own unique key. Update the DiscographyCardList component to give each `<img>` its own key when you map over it.
+
+```jsx
+const cardListJSX = data.map((el, index) => <img key={title + (index + 1)} src={el.strAlbumThumb} />);
 ```
 
 ---
@@ -255,14 +274,3 @@ const DiscographyCardList = props => {
 - [Solution](./challenge/solution.md)
 
 ---
-
-## Object Destructuring
-
-Lets refactor our components with object destructuring
-
-```jsx
-// Button.jsx
-// left hand side variables you are unpacking
-// right hand side is the object / source of values
-const { buttonText, isPrimary } = props;
-```

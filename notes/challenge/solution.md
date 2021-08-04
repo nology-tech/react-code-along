@@ -4,59 +4,60 @@
 
 It's always better to google, ask a fellow student or ask a coach. This is one way of solving the challenge not the only way to do it.
 
-## Creating & Rendering the Component
-
-1. In the components folder create a DiscoverArtist folder. Inside it create jsx, scss and index.js files.
-
-![](./images/component.png)
-
-2. Import react and create the function for each of your components - remember to export your component.
-
-```jsx
-// DiscoverArtist.jsx
-import React from 'react'
-
-const DiscoverArtist = () => {
-    return (
-
-    )
-}
-
-export default DiscoverArtist
-```
-
-3. Import and export your components in your index.js files.
-
-```js
-// index.js
-import DiscoverArtist from "./DiscoverArtist";
-
-export default DiscoverArtist;
-```
-
-4. Add scss styling.
-
-```jsx
-// DiscoverArtist.jsx
-
-import React from "react";
-// imports 'styles' from your sass file in order to use classes
-import styles from "./DiscoverArtist.module.scss";
-```
-
-5. In App.jsx, import the component you have created and Render it.
+1. Create a div and add it to the discography section. Inside the div use the component and pass in the correct props.
 
 ```jsx
 // App.jsx
+<div className="highest-rated">
+  <DiscographyCardList title="Highest Rated" />
+</div>
+```
+
+2. Sort the array based on the intScore key on each of the objects.
+
+```jsx
+// App.jsx
+const highestRating = albums.sort((a, b) => b.intScore - a.intScore);
+```
+
+3. Slice the array so it only has 9 albums in it and pass it to the component
+
+```jsx
+// App.jsx
+const highestRating = albums.sort((a, b) => b.intScore - a.intScore).slice(0, 9);
+
+// In return statement
+<DiscographyCardList title="Highest Rated" data={highestRating} />;
+```
+
+4. This is happening because the sort() method mutates the original array. Both map() and filter() methods will return you a new array sort does not. We could use the `[...]` spread operator to clone the array or we can filter the array before we sort it.
+
+5. Filter the array before you sort it, based on if it has a intScore value.
+
+```jsx
+// App.jsx
+const highestRating = albums
+  .filter(album => album.intScore)
+  .sort((a, b) => b.intScore - a.intScore)
+  .slice(0, 9);
+```
+
+## Completed App.jsx
+
+```jsx
+// App.jsx
+
 import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
-import Nav from "./components/Nav";
-import Button from "./components/Button";
-import artist from "./data/artist";
+import Nav from "./components/Nav/Nav";
+import Button from "./components/Button/Button";
+import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
+import DiscographyCardList from "./components/DiscographyCardList/DiscographyCardList";
 
-import DiscoverArtist from "./components/DiscoverArtist";
+import albums from "./data/albums";
+import artist from "./data/artist";
 
 const App = () => {
   const user = {
@@ -78,155 +79,52 @@ const App = () => {
     greetingTime = "Evening!";
   }
 
+  // Filter
+  const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
+
+  // Sort
+  const highestRating = albums
+    .filter(album => album.intScore)
+    .sort((a, b) => b.intScore - a.intScore)
+    .slice(0, 9);
+
   return (
     <>
       <div className="app">
         <Nav />
+
         <header>
           <img src={greetingImg} />
           <h1>
             Good {greetingTime} <br /> {user.firstName} {user.lastName}
           </h1>
         </header>
-        <section className="buttonSection">
+
+        <section className="button-section">
           <Button buttonText={"Lets Go"} isSecondary={true} />
           <Button buttonText={"Explore"} />
         </section>
-        <DiscoverArtist />
+
+        <section className="discover">
+          <h2>Discover</h2>
+          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+        </section>
+
+        <section className="discography">
+          <h2>Discography</h2>
+
+          <div className="all-albums">
+            <DiscographyCardList title="Albums" data={filteredAlbums} />
+          </div>
+
+          <div className="highest-rated">
+            <DiscographyCardList title="Highest Rated" data={highestRating} />
+          </div>
+        </section>
       </div>
     </>
   );
 };
 
 export default App;
-```
-
----
-
-## Passing in Props
-
-The component need two props from the artist object. Add the props to component and pass in the values in App.jsx.
-
-```jsx
-// App.jsx
-<DiscoverArtist imgSrc={artist.strArtistThumb} title={artist.strArtist} />
-```
-
----
-
-## Using the props
-
-The component now needs to use the props being passed in. You will need to pass props as a parameter. Now you can access the props object and select the values you need.
-
-```jsx
-// DiscoverArtist.jsx
-
-const DiscoverArtist = props => {
-  return (
-    <div>
-      <img src={props.imgSrc} />
-      <div>
-        <h3>{props.title}</h3>
-      </div>
-    </div>
-  );
-};
-```
-
----
-
-## Importing the Button & Giving it Props
-
-You can import in the Button component and use it. You will need to give it the correct props.
-
-```jsx
-// DiscoverArtist.jsx
-import React from "react";
-import styles from "./DiscoverArtist.module.scss";
-import Button from "../Button";
-
-const DiscoverArtist = props => {
-  return (
-    <div>
-      <img src={props.imgSrc} />
-      <div>
-        <h3>{props.title}</h3>
-        <Button buttonText={"Find out more"} isSecondary={true} />
-      </div>
-    </div>
-  );
-};
-
-export default DiscoverArtist;
-```
-
----
-
-## Finished component
-
-```jsx
-// DiscoverArtist.jsx
-import React from "react";
-import styles from "./DiscoverArtist.module.scss";
-import Button from "../Button";
-
-const DiscoverArtist = props => {
-  return (
-    <div className={styles.discover}>
-      <img src={props.imgSrc} />
-      <div className={styles.content}>
-        <h3>{props.title}</h3>
-        <Button buttonText={"Find out more"} isSecondary={true} />
-      </div>
-    </div>
-  );
-};
-
-export default DiscoverArtist;
-```
-
-```scss
-// DiscoverArtist.modules.scss
-@import "../../assets/sass/variables.module.scss";
-
-.discover {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  margin: 50px;
-  box-shadow: 0px 10px 20px rgba($color-black, 0.25);
-
-  img {
-    width: 100%;
-  }
-
-  .content {
-    position: absolute;
-    z-index: 1;
-    color: $color-white;
-    font-size: 25px;
-    bottom: 20px;
-    left: 20px;
-
-    & > * {
-      margin: 10px 0;
-    }
-  }
-  // OVERLAY
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba($color-black, 0.5);
-  }
-}
-
-@media (min-width: 992px) {
-  .discover {
-    grid-row: 3/4;
-  }
-}
 ```
