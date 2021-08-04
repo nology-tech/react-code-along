@@ -18,7 +18,8 @@
       margin: 20px;
     }
   }
-  .buttonSection {
+
+  .button-section {
     display: flex;
     margin: 20px auto;
     width: fit-content;
@@ -29,7 +30,7 @@
 
   .discography {
     padding: 0;
-    min-width: 500px;
+
     .all-albums {
       background-color: $color-primary;
       padding: 10px 50px 20px 50px;
@@ -60,7 +61,7 @@
       }
     }
 
-    .buttonSection {
+    .button-section {
       display: none;
     }
 

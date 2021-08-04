@@ -1,6 +1,6 @@
 @import "../../assets/sass/variables.scss";
 
-.horizontal-scroll {
+.card-list {
   width: 100%;
   flex: 1;
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 @media (min-width: 992px) {
-  .horizontal-scroll {
+  .card-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
