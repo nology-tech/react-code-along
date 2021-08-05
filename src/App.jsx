@@ -65,11 +65,11 @@ const App = () => {
           <h2>Discography</h2>
 
           <div className="all-albums">
-            <DiscographyCardList title="Albums" data={filteredAlbums} />
+            <DiscographyCardList title="Albums" albumsArr={filteredAlbums} />
           </div>
 
           <div className="highest-rated">
-            <DiscographyCardList title="Highest Rated" data={highestRating} />
+            <DiscographyCardList title="Highest Rated" albumsArr={highestRating} />
           </div>
         </section>
       </div>

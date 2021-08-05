@@ -1,8 +1,9 @@
-# Props
+# Arrays
 
 ## Objectives
 
 - Array iterator recap
+- How can we make a mock a response from a API?
 - How to work with arrays?
 - Why each item needs a key?
 
@@ -16,7 +17,9 @@
 - How do we filter an array?
 - How do we sort an array?
 
-Do a recap of using .map(), .filter() and .sort() array methods with an array of objects. Feel free to improvise this.
+Do a recap of using .map(), .filter() and .sort() array methods with an array of objects. Mention you can use map to create Components or JSX from arrays.
+
+A example is below but feel free to improvise this.
 
 ```jsx
 // App.jsx
@@ -34,10 +37,11 @@ const coachesJSX = coaches.map(coach => (
 ));
 
 // .filter()
-const filteredCoaches = coaches.fitler(coach => coach.score > 30);
+const filteredCoaches = coaches.filter(coach => coach.score > 30);
 
 // .sort()
 // coaches.sort((a, b) => b.score - a.score);
+// ^^ will mutate original array
 const sortedCoaches = [...coaches].sort((a, b) => b.score - a.score);
 ```
 
@@ -45,7 +49,9 @@ const sortedCoaches = [...coaches].sort((a, b) => b.score - a.score);
 
 ## CA: How can we make a mock a response from a API?
 
-In src in the data folder create an albums.js file. This will be the mock data for the challenge component. The data is on this [gist](https://gist.github.com/Charlie-robin/71222ddfbbd70e2de9e25097e2d0d665) is mocking response from the audio db.
+In src in the data folder create an albums.js file. This will be the mock albums data for the components in the discography section. It is mocking a response from the audio db.
+
+The data is on this [gist](https://gist.github.com/Charlie-robin/71222ddfbbd70e2de9e25097e2d0d665)
 
 In App.jsx import the array of objects and log it to the console.
 
@@ -102,6 +108,7 @@ export default DiscographyCardList;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-bottom: 20px;
+
     img {
       margin: 0;
       width: 100%;
@@ -110,7 +117,7 @@ export default DiscographyCardList;
 }
 ```
 
-Import the component into App.jsx. Add the section, h2, div and DiscographyCardList inside the app div.
+Import the component into App.jsx. Add a section, h2, div and DiscographyCardList inside the app div.
 
 ```jsx
 // App.jsx
@@ -124,7 +131,7 @@ Import the component into App.jsx. Add the section, h2, div and DiscographyCardL
 </section>
 ```
 
-Update the App.scss with the new styles.
+Update the App.scss with the new styles below.
 
 ```scss
 // App.scss
@@ -224,22 +231,22 @@ Update the App.scss with the new styles.
 
 ## CA: How do you work with arrays?
 
-Update the App.jsx and DiscographyCardList.jsx to accept these two props title and data.
+Update the App.jsx and DiscographyCardList.jsx to accept and give these two props, title and albumsArr.
 In the DiscographyCardList map over the array and create `<img>` tags for each of the strAlbumThumb keys from each album object from the array given. Render this to page.
 
 ```jsx
 // App.jsx
 <div className="all-albums">
-  <DiscographyCardList title="Albums" data={albums} />
+  <DiscographyCardList title="Albums" albumsArr={albums} />
 </div>
 ```
 
 ```jsx
 // DiscographyCardList.jsx
 const DiscographyCardList = props => {
-  const { title, data } = props;
-  console.log(data);
-  const cardListJSx = data.map(el => <img src={el.strAlbumThumb} />);
+  const { title, albumsArr } = props;
+  console.log(albumsArr);
+  const cardListJSx = albumsArr.map(album => <img src={album.strAlbumThumb} />);
   return (
     <>
       <h3>{title}</h3>
@@ -249,7 +256,7 @@ const DiscographyCardList = props => {
 };
 ```
 
-Some of the album objects from the data file do not have valid strAlbumThumb keys. We now need to remove them before we render them. We also have a lot of albums to display as well perhaps we limit it to 9 per component. Lets store the filtered and sliced array as a variable and pass that as props to the component.
+Some of the album objects from the albumsArr file do not have valid strAlbumThumb keys. We now need to remove them before we render them. We also have a lot of albums to display as well perhaps we limit it to 9 per component. Lets store the filtered and sliced array as a variable and pass that as props to the component.
 
 ```jsx
 // App.jsx
@@ -263,7 +270,7 @@ const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
 Show the console and the error that is being displayed. Explain why each item will need its own unique key. Update the DiscographyCardList component to give each `<img>` its own key when you map over it.
 
 ```jsx
-const cardListJSX = data.map((el, index) => <img key={title + (index + 1)} src={el.strAlbumThumb} />);
+const cardListJSX = albumsArr.map((album, index) => <img key={title + (index + 1)} src={album.strAlbumThumb} />);
 ```
 
 ---

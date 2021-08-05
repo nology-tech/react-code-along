@@ -27,7 +27,7 @@ const highestRating = albums.sort((a, b) => b.intScore - a.intScore);
 const highestRating = albums.sort((a, b) => b.intScore - a.intScore).slice(0, 9);
 
 // In return statement
-<DiscographyCardList title="Highest Rated" data={highestRating} />;
+<DiscographyCardList title="Highest Rated" albumsArr={highestRating} />;
 ```
 
 4. This is happening because the sort() method mutates the original array. Both map() and filter() methods will return you a new array sort does not. We could use the `[...]` spread operator to clone the array or we can filter the array before we sort it.
@@ -56,8 +56,8 @@ import Button from "./components/Button/Button";
 import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
 import DiscographyCardList from "./components/DiscographyCardList/DiscographyCardList";
 
-import albums from "./data/albums";
-import artist from "./data/artist";
+import albums from "./albumsArr/albums";
+import artist from "./albumsArr/artist";
 
 const App = () => {
   const user = {
@@ -114,11 +114,11 @@ const App = () => {
           <h2>Discography</h2>
 
           <div className="all-albums">
-            <DiscographyCardList title="Albums" data={filteredAlbums} />
+            <DiscographyCardList title="Albums" albumsArr={filteredAlbums} />
           </div>
 
           <div className="highest-rated">
-            <DiscographyCardList title="Highest Rated" data={highestRating} />
+            <DiscographyCardList title="Highest Rated" albumsArr={highestRating} />
           </div>
         </section>
       </div>

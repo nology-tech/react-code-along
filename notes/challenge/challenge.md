@@ -14,7 +14,7 @@ You will need to reuse the DiscographyCardList component. and get it to look lik
 
 2. Create a variable for the highest rated albums. The aim now is to sort the array based on the intScore key on each of the album objects. The highest score should be first album displayed.
 
-3. Slice the array so it only has 9 albums in it. In App.jsx pass the sorted and sliced array to the component.
+3. Slice the array so it only has 9 albums in it and pass this array to the component.
 
 4. If both of your DiscographyCardList components are showing the same sorted albums like below. Do you have an idea why this is happening and how can we stop it?
 
