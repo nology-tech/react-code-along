@@ -1,4 +1,4 @@
-# Solution: Components
+# Solution: Arrays
 
 **Resist the urge the to look in these files if you can't come up with a solution yourself.**
 
