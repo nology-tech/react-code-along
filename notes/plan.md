@@ -73,7 +73,7 @@ import React from "react";
 
 import "./DiscographyCardList.scss";
 
-const DiscographyCardList =  => {
+const DiscographyCardList = () => {
   return <p>DiscographyCardList works</p>
 };
 
@@ -246,11 +246,11 @@ In the DiscographyCardList map over the array and create `<img>` tags for each o
 const DiscographyCardList = props => {
   const { title, albumsArr } = props;
   console.log(albumsArr);
-  const cardListJSx = albumsArr.map(album => <img src={album.strAlbumThumb} />);
+  const cardListJSX = albumsArr.map(album => <img src={album.strAlbumThumb} />);
   return (
     <>
       <h3>{title}</h3>
-      <div className="card-list">{cardListJSx}</div>
+      <div className="card-list">{cardListJSX}</div>
     </>
   );
 };
