@@ -1,141 +1,276 @@
-# Props
+# Arrays
 
 ## Objectives
 
-- What are Props and How do we use them?
-- How can we make a mock data file?
-- What is Object Destructuring?
+- Array iterator recap
+- How can we make a mock a response from a API?
+- How to work with arrays?
+- Why each item needs a key?
 
 ---
 
-## CA: What are Props and How do we use them?
+## CA: Array Iterator recap
 
 ### Topics:
 
-- How can we pass props into a Component?
-- How do we use Props in a Component?
+- How do map over an array?
+- How do we filter an array?
+- How do we sort an array?
 
-Lets refactor our two buttons into one Button component that takes in props. Delete the two buttons and create a new one.
+Do a recap of using .map(), .filter() and .sort() array methods with an array of objects. Mention you can use map to create Components or JSX from arrays.
 
-```jsx
-// Button.jsx
-import React from "react";
-import styles from "./Button.module.scss";
-
-const Button = props => {
-  let buttonStyle = styles.button;
-
-  return <button className={buttonStyle}>Button works</button>;
-};
-
-export default Button;
-```
-
-```scss
-// Button.module.scss
-@import "../../assets/sass/variables.module.scss";
-
-.button {
-  min-width: 80px;
-  padding: 10px 20px;
-  border-radius: 15px;
-  border: none;
-}
-```
-
-1. Passing Props into the component
+A example is below but feel free to improvise this.
 
 ```jsx
 // App.jsx
-<Button buttonText={"This is being passed in"} />
-```
+const coaches = [
+  { name: "andy", score: 80 },
+  { name: "matt", score: 40 },
+  { name: "sam", score: 30 },
+];
 
-2.  Log props to the console and then use props in the component.
+// .map()
+const coachesJSX = coaches.map(coach => (
+  <p>
+    `I am ${coach.name} and I scored {coach.score}`
+  </p>
+));
 
-```jsx
-// Button.jsx
-const Button = props => {
-  console.log(props);
-  console.log(props.buttonText);
-  const buttonText = props.buttonText;
+// .filter()
+const filteredCoaches = coaches.filter(coach => coach.score > 30);
 
-  let buttonStyle = styles.button;
-
-  return <button className={buttonStyle}>{buttonText}</button>;
-};
-```
-
-3.  Lets pass in a conditional prop
-
-```jsx
-// App.jsx
-<Button buttonText={"This is being passed in"} isSecondary={true} />
-```
-
-4. Lets use this to do some conditional styling. If isSecondary is true lets add the secondary class to the component.
-
-```scss
-// Button.module.scss
-.primary {
-  background-color: transparent;
-  border: 2px solid $color-primary;
-}
-
-.secondary {
-  background-color: $color-secondary;
-}
-```
-
-```jsx
-// Button.jsx
-  let buttonStyle = styles.button;
-
-  if (props.isSecondary) {
-    buttonStyle += " " + styles.secondary;
-  } else {
-    buttonStyle += " " + styles.primary;
-  }
+// .sort()
+// coaches.sort((a, b) => b.score - a.score);
+// ^^ will mutate original array
+const sortedCoaches = [...coaches].sort((a, b) => b.score - a.score);
 ```
 
 ---
 
-## CA: How can we make a mock data file?
+## CA: How can we make a mock a response from a API?
 
-In src create a data folder. In the folder create a artist.js file. This will be the mock data for the challenge component.
+In src in the data folder create an albums.js file. This will be the mock albums data for the components in the discography section. It is mocking a response from the audio db.
 
-```js
-const artist = {
-  idArtist: "111247",
-  strArtist: "The Beatles",
-  strArtistAlternate: "Beatles",
-  intFormedYear: "1957",
-  intDiedYear: "1970",
-  strDisbanded: "Yes",
-  strStyle: "Rock/Pop",
-  strGenre: "Rock",
-  strMood: "Happy",
-  intMembers: "4",
-  strCountry: "Liverpool, England",
-  strCountryCode: "GB",
-  strArtistThumb: "https://www.theaudiodb.com/images/media/artist/thumb/qpvwuv1347996168.jpg",
-  strArtistLogo: "https://www.theaudiodb.com/images/media/artist/logo/sqtvqw1519816358.png",
-  strArtistClearart: "https://www.theaudiodb.com/images/media/artist/clearart/rrywwv1512575176.png",
-  strArtistWideThumb: "https://www.theaudiodb.com/images/media/artist/widethumb/styrrt1518621883.jpg",
-  strArtistFanart: "https://www.theaudiodb.com/images/media/artist/fanart/xrqqqu1541458809.jpg",
-  strArtistFanart2: "https://www.theaudiodb.com/images/media/artist/fanart/sssrqr1341917298.jpg",
-  strArtistFanart3: "https://www.theaudiodb.com/images/media/artist/fanart/wwvtpp1341917310.jpg",
-  strArtistFanart4: "https://www.theaudiodb.com/images/media/artist/fanart/b6zl6c1613120079.jpg",
-  strArtistBanner: "https://www.theaudiodb.com/images/media/artist/banner/utwpss1346162520.jpg",
-};
-```
+The data is on this [gist](https://gist.github.com/Charlie-robin/71222ddfbbd70e2de9e25097e2d0d665)
 
-In App.jsx import the object and log it and some of its keys to the console.
+In App.jsx import the array of objects and log it to the console.
 
 ```jsx
 // App.jsx
-import artist from "./data/artist.js";
-console.log(artist);
-console.log(artist.strArtist);
+import albums from "./data/albums.js";
+console.log(albums);
+```
+
+---
+
+## CA: Creating the DiscographyCardList component.
+
+Create a DiscographyCardList component with .jsx and .scss files.
+
+```jsx
+// DiscographyCardList.jsx
+import React from "react";
+
+import "./DiscographyCardList.scss";
+
+const DiscographyCardList =  => {
+  return <p>DiscographyCardList works</p>
+};
+
+export default DiscographyCardList;
+```
+
+```scss
+// DiscographyCardList.scss
+@import "../../assets/sass/variables.scss";
+
+.card-list {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+
+  img {
+    display: block;
+    width: 200px;
+    margin: 10px 20px;
+    margin-left: 0;
+    flex: auto;
+    flex-shrink: 0;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba($color-black, 0.25);
+  }
+}
+
+@media (min-width: 992px) {
+  .card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 20px;
+
+    img {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+```
+
+Import the component into App.jsx. Add a section, h2, div and DiscographyCardList inside the app div.
+
+```jsx
+// App.jsx
+// inside the app div
+<section className="discography">
+  <h2>Discography</h2>
+
+  <div className="all-albums">
+    <DiscographyCardList />
+  </div>
+</section>
+```
+
+Update the App.scss with the new styles below.
+
+```scss
+// App.scss
+@import "./assets/sass/variables.scss";
+
+.app {
+  color: $color-black;
+
+  & > * {
+    padding: 0 50px;
+  }
+
+  header {
+    text-align: center;
+
+    h1 {
+      color: $color-black;
+    }
+
+    & > * {
+      margin: 20px;
+    }
+  }
+
+  .button-section {
+    display: flex;
+    margin: 20px auto;
+    width: fit-content;
+    & > * {
+      margin: 0 10px;
+    }
+  }
+
+  .discography {
+    padding: 0;
+
+    .all-albums {
+      background-color: $color-primary;
+      padding: 10px 50px 20px 50px;
+    }
+
+    & > * {
+      padding: 0px 50px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 25px 100px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content;
+
+    header {
+      text-align: left;
+      display: flex;
+      grid-column: 1/ -1;
+
+      img {
+        height: 100px;
+      }
+    }
+
+    .button-section {
+      display: none;
+    }
+
+    .discover {
+      grid-row: 3/4;
+    }
+
+    .discography {
+      grid-row: 4/5;
+      grid-column: 1/ -1;
+      border-radius: 15px;
+      display: grid;
+      gap: 25px 100px;
+      grid-template-columns: repeat(2, 1fr);
+
+      .all-albums {
+        border-radius: 15px;
+        height: fit-content;
+      }
+
+      h2 {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+}
+```
+
+---
+
+## CA: How do you work with arrays?
+
+Update the App.jsx and DiscographyCardList.jsx to accept and give these two props, title and albumsArr.
+In the DiscographyCardList map over the array and create `<img>` tags for each of the strAlbumThumb keys from each album object from the array given. Render this to page.
+
+```jsx
+// App.jsx
+<div className="all-albums">
+  <DiscographyCardList title="Albums" albumsArr={albums} />
+</div>
+```
+
+```jsx
+// DiscographyCardList.jsx
+const DiscographyCardList = props => {
+  const { title, albumsArr } = props;
+  console.log(albumsArr);
+  const cardListJSx = albumsArr.map(album => <img src={album.strAlbumThumb} />);
+  return (
+    <>
+      <h3>{title}</h3>
+      <div className="card-list">{cardListJSx}</div>
+    </>
+  );
+};
+```
+
+Some of the album objects from the albumsArr file do not have valid strAlbumThumb keys. We now need to remove them before we render them. We also have a lot of albums to display as well perhaps we limit it to 9 per component. Lets store the filtered and sliced array as a variable and pass that as props to the component.
+
+```jsx
+// App.jsx
+const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
+```
+
+---
+
+## Why each item needs a key?
+
+Show the console and the error that is being displayed. Explain why each item will need its own unique key. Update the DiscographyCardList component to give each `<img>` its own key when you map over it.
+
+```jsx
+const cardListJSX = albumsArr.map((album, index) => <img key={title + (index + 1)} src={album.strAlbumThumb} />);
 ```
 
 ---
@@ -146,15 +281,3 @@ console.log(artist.strArtist);
 - [Solution](./challenge/solution.md)
 
 ---
-
-## Object Destructuring
-
-Lets refactor our components with object destructuring
-
-```jsx
-// Button.jsx
-// left hand side variables you are unpacking
-// right hand side is the object / source of values
-const { buttonText, isPrimary } = props;
-```
-
