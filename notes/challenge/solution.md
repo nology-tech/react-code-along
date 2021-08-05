@@ -88,7 +88,7 @@ const App = () => {
             Good {greetingTime} <br /> {user.firstName} {user.lastName}
           </h1>
         </header>
-        <section className="buttonSection">
+        <section className="button-section">
           <Button buttonText={"Lets Go"} isSecondary={true} />
           <Button buttonText={"Explore"} />
         </section>
