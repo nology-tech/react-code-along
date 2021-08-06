@@ -12,7 +12,7 @@ const DiscoverArtistCard = props => {
     setShowText(!showText);
   };
 
-  let contentJSX = (
+  const buttonJSX = (
     <div className="content content--button">
       <h3>{title}</h3>
       <div onClick={handleClick}>
@@ -21,22 +21,20 @@ const DiscoverArtistCard = props => {
     </div>
   );
 
-  if (showText) {
-    contentJSX = (
-      <div className="content content--text">
-        <img src={whiteCross} className="content__cross" onClick={handleClick} />
-        <h3>{title}</h3>
-        {text.split(".").map(sentence => (
-          <p>{sentence + "."}</p>
-        ))}
-      </div>
-    );
-  }
+  const textJSX = (
+    <div className="content content--text">
+      <img src={whiteCross} className="content__cross" onClick={handleClick} />
+      <h3>{title}</h3>
+      {text.split(".").map(sentence => (
+        <p>{sentence + "."}</p>
+      ))}
+    </div>
+  );
 
   return (
     <div className="discoverArtistCard">
       <img src={imgSrc} />
-      {contentJSX}
+      {showText ? textJSX : buttonJSX}
     </div>
   );
 };
