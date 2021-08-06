@@ -10,22 +10,26 @@ const Carousel = props => {
   const [counter, setCounter] = useState(0);
 
   const handleIncrement = () => {
-    if (counter < imagesArr.length - 1) {
+    if (counter === imagesArr.length - 1) {
+      setCounter(0);
+    } else {
       setCounter(counter + 1);
     }
   };
 
   const handleDecrement = () => {
-    if (counter > 0) {
+    if (counter === 0) {
+      setCounter(imagesArr.length - 1);
+    } else {
       setCounter(counter - 1);
     }
   };
 
   return (
     <div className="carousel">
-      <img src={leftArrow} alt="" onClick={handleDecrement} />
+      <img src={leftArrow} alt="" onClick={handleDecrement} className="carousel__arrow carousel__arrow--left" />
       <img src={imagesArr[counter]} alt="" className="carousel__image" />
-      <img src={rightArrow} alt="" onClick={handleIncrement} />
+      <img src={rightArrow} alt="" onClick={handleIncrement} className="carousel__arrow carousel__arrow--right" />
     </div>
   );
 };
