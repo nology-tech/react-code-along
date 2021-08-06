@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./DiscoverArtistCard.scss";
+
 import Button from "../Button/Button";
+import whiteCross from "../../assets/images/white-cross.png";
 
 const DiscoverArtistCard = props => {
   const { imgSrc, title, text } = props;
@@ -10,8 +12,8 @@ const DiscoverArtistCard = props => {
     setShowText(!showText);
   };
 
-  let discoverCardContentJSX = (
-    <div className="content">
+  let contentJSX = (
+    <div className="content content--button">
       <h3>{title}</h3>
       <div onClick={handleClick}>
         <Button buttonText={"Find out more"} isSecondary={true} />
@@ -20,8 +22,9 @@ const DiscoverArtistCard = props => {
   );
 
   if (showText) {
-    discoverCardContentJSX = (
-      <div className="content--text" onClick={handleClick}>
+    contentJSX = (
+      <div className="content content--text">
+        <img src={whiteCross} className="content__cross" onClick={handleClick} />
         <h3>{title}</h3>
         {text.split(".").map(sentence => (
           <p>{sentence + "."}</p>
@@ -33,7 +36,7 @@ const DiscoverArtistCard = props => {
   return (
     <div className="discoverArtistCard">
       <img src={imgSrc} />
-      {discoverCardContentJSX}
+      {contentJSX}
     </div>
   );
 };
