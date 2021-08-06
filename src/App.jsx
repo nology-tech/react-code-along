@@ -65,7 +65,7 @@ const App = () => {
 
         <section className="discover">
           <h2>Discover</h2>
-          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
         </section>
 
         <section className="discography">

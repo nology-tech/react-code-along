@@ -22,6 +22,22 @@
     & > * {
       margin: 10px 0;
     }
+
+    &--text {
+      height: 100%;
+      padding: 0px 20px;
+      color: $color-white;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      overflow-y: auto;
+      background: rgba($color-black, 0.8);
+      white-space: pre-line;
+
+      h3 {
+        font-size: 25px;
+      }
+    }
   }
   // OVERLAY
   &:after {
@@ -34,4 +50,3 @@
     background: rgba($color-black, 0.5);
   }
 }
-

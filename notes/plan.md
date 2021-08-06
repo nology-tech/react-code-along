@@ -1,137 +1,131 @@
-# Arrays
+# State
 
 ## Objectives
 
-- Array iterator recap
-- How can we make a mock a response from a API?
-- How to work with arrays?
-- Why each item needs a key?
+- How can we use State to conditionally show some JSX?
+- How can we use State to Increment and Decrement a Counter?
+- How can we apply this to a Component?
 
 ---
 
-## CA: Array Iterator recap
+## Creating the Carousel the Component
 
-### Topics:
+Create a Component called Carousel. This is going to accept a prop called imagesArr.
 
-- How do map over an array?
-- How do we filter an array?
-- How do we sort an array?
+Copy the JSX and SCSS files below.
 
-Do a recap of using .map(), .filter() and .sort() array methods with an array of objects. Mention you can use map to create Components or JSX from arrays.
-
-A example is below but feel free to improvise this.
+<details>
+<summary>Carousel.jsx</summary>
 
 ```jsx
-// App.jsx
-const coaches = [
-  { name: "andy", score: 80 },
-  { name: "matt", score: 40 },
-  { name: "sam", score: 30 },
-];
-
-// .map()
-const coachesJSX = coaches.map(coach => (
-  <p>
-    `I am ${coach.name} and I scored {coach.score}`
-  </p>
-));
-
-// .filter()
-const filteredCoaches = coaches.filter(coach => coach.score > 30);
-
-// .sort()
-// coaches.sort((a, b) => b.score - a.score);
-// ^^ will mutate original array
-const sortedCoaches = [...coaches].sort((a, b) => b.score - a.score);
-```
-
----
-
-## CA: How can we make a mock a response from a API?
-
-In src in the data folder create an albums.js file. This will be the mock albums data for the components in the discography section. It is mocking a response from the audio db.
-
-The data is on this [gist](https://gist.github.com/Charlie-robin/71222ddfbbd70e2de9e25097e2d0d665)
-
-In App.jsx import the array of objects and log it to the console.
-
-```jsx
-// App.jsx
-import albums from "./data/albums.js";
-console.log(albums);
-```
-
----
-
-## CA: Creating the DiscographyCardList component.
-
-Create a DiscographyCardList component with .jsx and .scss files.
-
-```jsx
-// DiscographyCardList.jsx
+// Carousel.jsx
 import React from "react";
 
-import "./DiscographyCardList.scss";
+import "./Carousel.scss";
 
-const DiscographyCardList =  => {
-  return <p>DiscographyCardList works</p>
+const Carousel = props => {
+  const { imagesArr } = props;
+
+  return (
+    <div className="carousel">
+      <p>Carousel works</p>
+    </div>
+  );
 };
 
-export default DiscographyCardList;
+export default Carousel;
 ```
 
+</details>
+
+<details>
+<summary>Carousel.scss</summary>
+
 ```scss
-// DiscographyCardList.scss
+// Carousel.scss
 @import "../../assets/sass/variables.scss";
 
-.card-list {
-  width: 100%;
-  flex: 1;
+.carousel {
   display: flex;
-  overflow-x: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  background-color: $color-secondary;
 
-  img {
-    display: block;
-    width: 200px;
-    margin: 10px 20px;
-    margin-left: 0;
-    flex: auto;
-    flex-shrink: 0;
-    border-radius: 15px;
+  &__image {
     box-shadow: 0px 10px 20px rgba($color-black, 0.25);
+    display: block;
+    width: 80%;
+    border-radius: 15px;
+    margin: 0 10px;
+  }
+
+  &__arrow {
+    display: block;
+    height: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 @media (min-width: 992px) {
-  .card-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-bottom: 20px;
+  .carousel {
+    position: relative;
+    flex-grow: 1;
+    padding: 0;
+    display: block;
+    background-color: unset;
 
-    img {
-      margin: 0;
+    &__image {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin: 0;
+    }
+
+    &__arrow {
+      z-index: 2;
+      position: absolute;
+      bottom: 20px;
+      background-color: rgba($color-white, 0.4);
+      box-shadow: 0px 10px 20px rgba($color-black, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+
+      &:hover {
+        background-color: rgba($color-white, 0.8);
+      }
+
+      &--left {
+        left: 20px;
+      }
+
+      &--right {
+        right: 20px;
+      }
     }
   }
 }
 ```
 
-Import the component into App.jsx. Add a section, h2, div and DiscographyCardList inside the app div.
+</details>
+
+In App.jsx import in the Carousel and add it to the the return statement.
 
 ```jsx
 // App.jsx
-// inside the app div
-<section className="discography">
-  <h2>Discography</h2>
-
-  <div className="all-albums">
-    <DiscographyCardList />
-  </div>
-</section>
+  <section className="gallery">
+    <h2>Gallery</h2>
+    <Carousel imagesArr={} />
+  </section>
 ```
 
-Update the App.scss with the new styles below.
+You will need to update the App.scss with the new styles below.
+
+<details>
+<summary>App.scss</summary>
 
 ```scss
 // App.scss
@@ -160,7 +154,7 @@ Update the App.scss with the new styles below.
     display: flex;
     margin: 20px auto;
     width: fit-content;
-    & > * {
+    & > \* {
       margin: 0 10px;
     }
   }
@@ -175,6 +169,14 @@ Update the App.scss with the new styles below.
 
     & > * {
       padding: 0px 50px;
+    }
+  }
+
+  .gallery {
+    padding: 0;
+
+    h2 {
+      padding: 0 50px;
     }
   }
 }
@@ -223,55 +225,197 @@ Update the App.scss with the new styles below.
         grid-column: 1 / -1;
       }
     }
+
+    .gallery {
+      grid-row: 3 / 4;
+      display: flex;
+      flex-direction: column;
+      padding-right: 50px;
+
+      h2 {
+        padding: 0;
+      }
+    }
   }
 }
 ```
 
----
+</details>
 
-## CA: How do you work with arrays?
-
-Update the App.jsx and DiscographyCardList.jsx to accept and give these two props, title and albumsArr.
-In the DiscographyCardList map over the array and create `<img>` tags for each of the strAlbumThumb keys from each album object from the array given. Render this to page.
+In the data folder on the artist.js object it has these keys strArtistFanart, strArtistFanart2, strArtistFanart3 and strArtistFanart4. In App.jsx use these keys to create an array of images for our component to use. Pass this array to the Carousel as the `imageArr` prop.
 
 ```jsx
-// App.jsx
-<div className="all-albums">
-  <DiscographyCardList title="Albums" albumsArr={albums} />
-</div>
+// App.js
+const galleryImages = [
+  artist.strArtistFanart,
+  artist.strArtistFanart2,
+  artist.strArtistFanart3,
+  artist.strArtistFanart4,
+];
 ```
 
+---
+
+## How can we use State to conditionally show some JSX?
+
+To complete the challenge they need to know how to conditionally show a item.
+
+Import useState and set it up to conditionally show one image based on a boolean state. Add a function to change the state and add to run on the click of a button.
+
 ```jsx
-// DiscographyCardList.jsx
-const DiscographyCardList = props => {
-  const { title, albumsArr } = props;
-  console.log(albumsArr);
-  const cardListJSx = albumsArr.map(album => <img src={album.strAlbumThumb} />);
+// Carousel.jsx
+  const [showImage, setShowImage] = useState(true);
+
+  const handleClick = () => {
+    setShowImage(!showImage);
+  };
+
   return (
-    <>
-      <h3>{title}</h3>
-      <div className="card-list">{cardListJSx}</div>
-    </>
+    <div className="carousel">
+      <button onClick={handleClick}>Toggle Image</button>
+      {showImage && <img src={imagesArr[0]} alt="" className="carousel__image" />}
+    </div>
   );
 };
 ```
 
-Some of the album objects from the albumsArr file do not have valid strAlbumThumb keys. We now need to remove them before we render them. We also have a lot of albums to display as well perhaps we limit it to 9 per component. Lets store the filtered and sliced array as a variable and pass that as props to the component.
+---
+
+## How can we use State to Increment and Decrement a Counter?
+
+Build a simple counter to show how you can have multiple functions that update the state. We can later turn it into the functionality of our Carousel.
+
+Display the state, have two buttons and one function to increment it and another to decrement it.
 
 ```jsx
-// App.jsx
-const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
+// Carousel.jsx
+const Carousel = props => {
+  const { imagesArr } = props;
+  const [counter, setCounter] = useState(0);
+
+  const handleIncrement = () => {
+    setCounter(counter + 1);
+  };
+
+  const handleDecrement = () => {
+    setCounter(counter - 1);
+  };
+
+  return (
+    <div className="carousel">
+      <p>{counter}</p>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+    </div>
+  );
+};
 ```
 
 ---
 
-## Why each item needs a key?
+## How can we apply this to a Component?
 
-Show the console and the error that is being displayed. Explain why each item will need its own unique key. Update the DiscographyCardList component to give each `<img>` its own key when you map over it.
+Take this functionality and finish the Carousel component. You will need to import the two arrows from src/assets/images folder.
 
 ```jsx
-const cardListJSX = albumsArr.map((album, index) => <img key={title + (index + 1)} src={album.strAlbumThumb} />);
+import leftArrow from "../../assets/images/left-arrow.png";
+import rightArrow from "../../assets/images/right-arrow.png";
 ```
+
+Update the jsx to match below. You will have two arrows to update the counter.
+
+The carousel\_\_image will use the urls from imagesArr for the src. The counter is the index for the imagesArr. When you update the counter the image url will change.
+
+```jsx
+// Carousel.jsx
+return (
+  <div className="carousel">
+    <img src={leftArrow} alt="" onClick={handleDecrement} className="carousel__arrow carousel__arrow--left" />
+    <img src={imagesArr[counter]} alt="" className="carousel__image" />
+    <img src={rightArrow} alt="" onClick={handleIncrement} className="carousel__arrow carousel__arrow--right" />
+  </div>
+);
+```
+
+This should be enough to get the Carousel cycling through the images. You will be able to go out of bounds though.
+
+Update the logic of the two functions to check counter before it sets the state. If it is going to go out of bounds set it to the start or the end to create a loop.
+
+```jsx
+// Carousel.jsx
+const handleIncrement = () => {
+  if (counter === imagesArr.length - 1) {
+    setCounter(0);
+  } else {
+    setCounter(counter + 1);
+  }
+};
+
+const handleDecrement = () => {
+  if (counter === 0) {
+    setCounter(imagesArr.length - 1);
+  } else {
+    setCounter(counter - 1);
+  }
+};
+```
+
+The jsx for the finished component is below.
+
+  <details>
+  <summary>Carousel.jsx</summary>
+
+```jsx
+import React, { useState } from "react";
+
+import "./Carousel.scss";
+
+import leftArrow from "../../assets/images/left-arrow.png";
+import rightArrow from "../../assets/images/right-arrow.png";
+
+const Carousel = props => {
+  const { imagesArr } = props;
+  const [counter, setCounter] = useState(0);
+
+  const handleIncrement = () => {
+    if (counter === imagesArr.length - 1) {
+      setCounter(0);
+    } else {
+      setCounter(counter + 1);
+    }
+  };
+
+  const handleDecrement = () => {
+    if (counter === 0) {
+      setCounter(imagesArr.length - 1);
+    } else {
+      setCounter(counter - 1);
+    }
+  };
+
+  return (
+    <div className="carousel">
+      <img
+        src={leftArrow}
+        alt="left arrow"
+        onClick={handleDecrement}
+        className="carousel__arrow carousel__arrow--left"
+      />
+      <img src={imagesArr[counter]} alt="" className="carousel__image" />
+      <img
+        src={rightArrow}
+        alt="right arrow"
+        onClick={handleIncrement}
+        className="carousel__arrow carousel__arrow--right"
+      />
+    </div>
+  );
+};
+
+export default Carousel;
+```
+
+ </details>
 
 ---
 
