@@ -2,6 +2,8 @@
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 
+## Brief
+
 The aim of this challenge is to get you to practice using state to show/hide some JSX.
 
 You will need to update the DiscoverArtistCard so that when the button is clicked it causes the state to change. This will cause it to show the title, cross and text about the artist rather then the title and the button. When the cross is clicked it should set it back to its original state.
@@ -11,6 +13,8 @@ In the image below you can see the current component and the what it needs to lo
 <img src="./images/state.PNG" width="600"/>
 
 ---
+
+## Todo
 
 1. Update the DiscoverArtistCard component so it accepts a text prop. Pass the `artist.strBiographyEN` as the value of this prop in App.jsx.
 
