@@ -22,7 +22,7 @@ const user = {
 
 ```jsx
 // Part of the return statement from the App function
-<h1>
+<h1 className="greeting__heading">
   Good day! {user.firstName} {user.lastName}
 </h1>
 ```
@@ -49,9 +49,9 @@ if (currentHour >= 18) {
 }
 
 return (
-  <header>
-    <img src={greetingImg} />
-    <h1>
+  <header className="greeting">
+    <img src={greetingImg} alt={greetingTime} className="greeting__img" />
+    <h1 className="greeting__heading">
       Good {greetingTime} {user.firstName} {user.lastName}
     </h1>
   </header>
@@ -89,9 +89,9 @@ const App = () => {
 
   return (
     <div className="app">
-    <header>
-      <img src={greetingImg} />
-      <h1>
+    <header className="greeting">
+      <img src={greetingImg} alt={greetingTime} className="greeting__img"/>
+      <h1 className="greeting__heading">
         Good {greetingTime} <br /> {user.firstName} {user.lastName}
       </h1>
     </header>

@@ -2,9 +2,13 @@
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 
+## Brief
+
 The aims of this challenge are for you to practice inserting JS into JSX and to conditionally render content on the page.
 
-## Adding JS into JSX
+---
+
+### Adding JS into JSX
 
 1. In App.jsx create a user object. This represents a user of our app. It should have two keys firstName and lastName. You can set them to any string you like.
 
@@ -14,7 +18,7 @@ The finished result should look like this:
 
 <img src="./images/adding-js-jsx.PNG" alt="greeting example" width="200" height="200"/>
 
-## Conditionally Render content
+### Conditionally Render content
 
 1. In App.jsx based on the time variable alter the message to correctly greet the user.
 

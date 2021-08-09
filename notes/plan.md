@@ -48,8 +48,8 @@ import "./App.css";
 const App = () => {
   return (
     <div className="app">
-      <header>
-        <h1>Hello World</h1>
+      <header className="greeting">
+        <h1 className="greeting__heading">Hello World</h1>
       </header>
     </div>
   );
@@ -92,15 +92,18 @@ $color-secondary: #fdcb6e;
 
 Change the App.css to App.scss, delete the boiler plate and add in the code below.
 
+<details>
+<summary>Completed App.scss</summary>
+
 ```scss
 // App.scss
 @import "./assets/sass/variables.scss";
 
 .app {
-  header {
+  .greeting {
     text-align: center;
 
-    h1 {
+    &__heading {
       color: $color-black;
     }
 
@@ -117,21 +120,23 @@ Change the App.css to App.scss, delete the boiler plate and add in the code belo
     display: grid;
     gap: 50px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: min-content;
+    grid-template-rows: repeat(2, min-content);
 
-    header {
+    .greeting {
       text-align: left;
       display: flex;
       align-items: center;
       justify-content: center;
 
-      img {
+      &__img {
         height: 100px;
       }
     }
   }
 }
 ```
+
+</details>
 
 ---
 
@@ -158,9 +163,13 @@ const App = () => {
 
   return (
     <>
-      <h1>Hello World</h1>
-      <p>{message}</p>
-      <p>{500 * 50}</p>
+      <div className="app">
+        <header className="greeting">
+          <h1 className="greeting__heading">Hello World</h1>
+          <p>{message}</p>
+          <p>{500 * 50}</p>
+        </header>
+      </div>
     </>
   );
 };
@@ -190,8 +199,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <img src={greetingImg} />
-      <h1>Hello</h1>
+      <header className="greeting">
+        <img src={greetingImg} alt="Current time icon" className="greeting__img" />
+        <h1 className="greeting__heading">Hello World</h1>
+      </header>
     </div>
   );
 };
