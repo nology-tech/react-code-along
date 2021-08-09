@@ -1,17 +1,17 @@
 @import "../../assets/sass/variables.scss";
 
-.discoverArtistCard {
+.discover-artist-card {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
 
   box-shadow: 0px 10px 20px rgba($color-black, 0.25);
 
-  img {
+  &__img {
     width: 100%;
   }
 
-  .content {
+  &__content {
     position: absolute;
     z-index: 1;
     color: $color-white;
@@ -20,7 +20,7 @@
       margin: 10px 0;
     }
 
-    h3 {
+    &__heading {
       margin: 20px 0;
       font-size: 25px;
     }

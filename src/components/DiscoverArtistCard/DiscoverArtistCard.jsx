@@ -13,8 +13,8 @@ const DiscoverArtistCard = props => {
   };
 
   const buttonJSX = (
-    <div className="content content--button">
-      <h3>{title}</h3>
+    <div className="discover-artist-card__content discover-artist-card__content--button">
+      <h3 className="discover-artist-card__heading">{title}</h3>
       <div onClick={handleClick}>
         <Button buttonText={"Find out more"} isSecondary={true} />
       </div>
@@ -22,9 +22,9 @@ const DiscoverArtistCard = props => {
   );
 
   const textJSX = (
-    <div className="content content--text">
+    <div className="discover-artist-card__content discover-artist-card__content--text">
       <img src={whiteCross} className="content__cross" onClick={handleClick} alt="Close text" />
-      <h3>{title}</h3>
+      <h3 className="discover-artist-card__heading">{title}</h3>
       {text.split(".").map(sentence => (
         <p>{sentence + "."}</p>
       ))}
@@ -32,8 +32,8 @@ const DiscoverArtistCard = props => {
   );
 
   return (
-    <div className="discoverArtistCard">
-      <img src={imgSrc} />
+    <div className="discover-artist-card">
+      <img src={imgSrc} className="discover-artist-card__img" alt={props.title} />
       {showText ? textJSX : buttonJSX}
     </div>
   );

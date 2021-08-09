@@ -6,7 +6,7 @@
   display: flex;
   overflow-x: auto;
 
-  img {
+  &__img {
     display: block;
     width: 200px;
     margin: 10px 20px;
@@ -24,7 +24,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-bottom: 20px;
-    img {
+
+    &__img {
       margin: 0;
       width: 100%;
     }
