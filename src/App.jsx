@@ -30,13 +30,13 @@ const App = () => {
     <>
       <div className="app">
         <Nav />
-        <header>
-          <img src={greetingImg} />
-          <h1>
+        <header className="greeting">
+          <img src={greetingImg} className="greeting__img" alt={greetingTime} />
+          <h1 className="greeting__heading">
             Good {greetingTime} <br /> {user.firstName} {user.lastName}
           </h1>
         </header>
-        <section className="buttonSection">
+        <section className="button-section">
           <ButtonLetsGo />
           <ButtonExplore />
         </section>

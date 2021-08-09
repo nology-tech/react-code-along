@@ -6,9 +6,9 @@ import "./Nav.scss";
 const Nav = () => {
   return (
     <nav className="nav">
-      <img src={menu} className="menu" />
-      <h2>Ear Worm</h2>
-      <img src={settings} />
+      <img src={menu} className="nav__item nav__item--menu" />
+      <h2 className="nav__heading">Ear Worm</h2>
+      <img src={settings} className="nav__item" />
     </nav>
   );
 };

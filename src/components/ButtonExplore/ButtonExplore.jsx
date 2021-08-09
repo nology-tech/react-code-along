@@ -2,7 +2,7 @@ import React from "react";
 import "./ButtonExplore.scss";
 
 const ButtonExplore = () => {
-  return <button className="buttonExplore">Explore</button>;
+  return <button className="button-explore">Explore</button>;
 };
 
 export default ButtonExplore;

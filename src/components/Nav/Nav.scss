@@ -7,7 +7,7 @@
   padding: 0 50px;
   color: $color-black;
 
-  img {
+  &__item {
     height: 30px;
   }
 }
@@ -15,12 +15,14 @@
 @media (min-width: 992px) {
   .nav {
     grid-column: 1 / -1;
-    h2 {
+    &__heading {
       margin: 20px auto;
     }
 
-    .menu {
-      display: none;
+    &__item {
+      &--menu {
+        display: none;
+      }
     }
   }
 }
