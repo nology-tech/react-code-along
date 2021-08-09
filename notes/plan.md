@@ -104,33 +104,9 @@ if (props.isSecondary) {
 
 ## CA: How can we make a mock data file?
 
-In src create a data folder. In the folder create a artist.js file. This will be the mock data for the challenge component.
+In src create a data folder. In the folder create a artist.js file. This will be the mock data for the challenge component. It is mocking a response from the audio db.
 
-```js
-const artist = {
-  idArtist: "111247",
-  strArtist: "The Beatles",
-  strArtistAlternate: "Beatles",
-  intFormedYear: "1957",
-  intDiedYear: "1970",
-  strDisbanded: "Yes",
-  strStyle: "Rock/Pop",
-  strGenre: "Rock",
-  strMood: "Happy",
-  intMembers: "4",
-  strCountry: "Liverpool, England",
-  strCountryCode: "GB",
-  strArtistThumb: "https://www.theaudiodb.com/images/media/artist/thumb/qpvwuv1347996168.jpg",
-  strArtistLogo: "https://www.theaudiodb.com/images/media/artist/logo/sqtvqw1519816358.png",
-  strArtistClearart: "https://www.theaudiodb.com/images/media/artist/clearart/rrywwv1512575176.png",
-  strArtistWideThumb: "https://www.theaudiodb.com/images/media/artist/widethumb/styrrt1518621883.jpg",
-  strArtistFanart: "https://www.theaudiodb.com/images/media/artist/fanart/xrqqqu1541458809.jpg",
-  strArtistFanart2: "https://www.theaudiodb.com/images/media/artist/fanart/sssrqr1341917298.jpg",
-  strArtistFanart3: "https://www.theaudiodb.com/images/media/artist/fanart/wwvtpp1341917310.jpg",
-  strArtistFanart4: "https://www.theaudiodb.com/images/media/artist/fanart/b6zl6c1613120079.jpg",
-  strArtistBanner: "https://www.theaudiodb.com/images/media/artist/banner/utwpss1346162520.jpg",
-};
-```
+The data is on this [gist](https://gist.github.com/Charlie-robin/68461faec41456c5c05bd529ae167ba1). Add it to the artist.js file.
 
 In App.jsx import the object and log it and some of its keys to the console.
 

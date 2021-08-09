@@ -2,6 +2,8 @@
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 
+## Brief
+
 The aim of this challenge is to get you to practice using props.
 
 You will need to create this component shown in the image below, style and render it in our App.jsx. You will need to pass in two props from src/data/artist.
@@ -9,6 +11,8 @@ You will need to create this component shown in the image below, style and rende
 <img src="./images/discover-artist-card.PNG" width="300"/>
 
 ---
+
+## Todo
 
 **Focus on using props first then style it.**
 

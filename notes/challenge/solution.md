@@ -131,7 +131,7 @@ You can import in the Button component and use it. You will need to give it the 
 ```jsx
 // DiscoverArtistCard.jsx
 import React from "react";
-import  "./DiscoverArtistCard.scss";
+import "./DiscoverArtistCard.scss";
 import Button from "../Button";
 
 const DiscoverArtistCard = props => {
@@ -156,14 +156,14 @@ export default DiscoverArtistCard;
 ```jsx
 // DiscoverArtistCard.jsx
 import React from "react";
-import  "./DiscoverArtistCard.scss";
+import "./DiscoverArtistCard.scss";
 import Button from "../Button/Button";
 
-const DiscoverArtistCard = props => {
+const DiscoverArtist = props => {
   return (
-    <div className="discover">
-      <img src={props.imgSrc} />
-      <div className="content">
+    <div className="discover-artist-card">
+      <img src={props.imgSrc} className="discover-artist-card__img" alt={props.title} />
+      <div className="discover-artist-card__content">
         <h3>{props.title}</h3>
         <Button buttonText={"Find out more"} isSecondary={true} />
       </div>
@@ -171,25 +171,25 @@ const DiscoverArtistCard = props => {
   );
 };
 
-export default DiscoverArtistCard;
+export default DiscoverArtist;
 ```
 
 ```scss
 // DiscoverArtistCards.scss
 @import "../../assets/sass/variables.scss";
 
-.discover {
+.discover-artist-card {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  margin: 50px;
+
   box-shadow: 0px 10px 20px rgba($color-black, 0.25);
 
-  img {
+  &__img {
     width: 100%;
   }
 
-  .content {
+  &__content {
     position: absolute;
     z-index: 1;
     color: $color-white;
@@ -212,10 +212,5 @@ export default DiscoverArtistCard;
     background: rgba($color-black, 0.5);
   }
 }
-
-@media (min-width: 992px) {
-  .discover {
-    grid-row: 3/4;
-  }
-}
 ```
+
