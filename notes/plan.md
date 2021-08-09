@@ -100,9 +100,9 @@ const App = () => {
     <>
       <div className="app">
         <Nav />
-        <header>
-          <img src={greetingImg} />
-          <h1>
+        <header className="greeting">
+          <img src={greetingImg} className="greeting__img" alt={greetingTime} />
+          <h1 className="greeting__heading">
             Good {greetingTime} <br /> {user.firstName} {user.lastName}
           </h1>
         </header>
@@ -129,9 +129,9 @@ import "./Nav.scss";
 const Nav = () => {
   return (
     <nav className="nav">
-      <img src={menu} className="menu" />
-      <h2>Ear Worm</h2>
-      <img src={settings} />
+      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
+      <h2 className="nav__heading">Ear Worm</h2>
+      <img src={settings} className="nav__item" alt="settings icon" />
     </nav>
   );
 };
@@ -145,6 +145,7 @@ Create Nav.scss and style the component using the below styles
 <summary>Completed SCSS styles</summary>
 
 ```scss
+// Nav.scss
 @import "../../assets/sass/variables.scss";
 
 .nav {
@@ -154,7 +155,7 @@ Create Nav.scss and style the component using the below styles
   padding: 0 50px;
   color: $color-black;
 
-  img {
+  &__item {
     height: 30px;
   }
 }
@@ -162,12 +163,14 @@ Create Nav.scss and style the component using the below styles
 @media (min-width: 992px) {
   .nav {
     grid-column: 1 / -1;
-    h2 {
+    &__heading {
       margin: 20px auto;
     }
 
-    .menu {
-      display: none;
+    &__item {
+      &--menu {
+        display: none;
+      }
     }
   }
 }

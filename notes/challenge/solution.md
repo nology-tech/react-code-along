@@ -8,7 +8,7 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 1. In the components folder create two folders, one for each button. Click the below link to see how they should look.
 
-![](./images/button-folders.png)
+![components folder](./images/button-folders.png)
 
 2. Within each of your button folders create a jsx file and a sass file for styling.
 
@@ -26,7 +26,7 @@ const ButtonExplore = () => {
 export default ButtonExplore
 ```
 
-4. Write the code for each of your buttons and add sass styling. 
+4. Write the code for each of your buttons and add sass styling.
 
 ```jsx
 import React from "react";
@@ -34,7 +34,7 @@ import React from "react";
 import "./ButtonExplore.scss";
 
 const ButtonExplore = () => {
-  return <button className="buttonExplore">Explore</button>;
+  return <button className="button-explore">Explore</button>;
 };
 
 export default ButtonExplore;
@@ -43,7 +43,7 @@ export default ButtonExplore;
 ```scss
 @import "../../assets/sass/variables.scss";
 
-.buttonExplore {
+.button-explore {
   min-width: 80px;
   padding: 10px 20px;
   margin: 0 10px;
@@ -58,7 +58,7 @@ import React from "react";
 import "./ButtonLetsGo.scss";
 
 const ButtonLetsGo = () => {
-  return <button className="buttonLetsGo">Lets Go</button>;
+  return <button className="button-lets-go">Lets Go</button>;
 };
 
 export default ButtonLetsGo;
@@ -67,7 +67,7 @@ export default ButtonLetsGo;
 ```scss
 @import "../../assets/sass/variables.scss";
 
-.buttonLetsGo {
+.button-lets-go {
   min-width: 80px;
   padding: 10px 20px;
   margin: 0 10px;
@@ -121,9 +121,9 @@ const App = () => {
     <>
       <div className="app">
         <Nav />
-        <header>
-          <img src={greetingImg} />
-          <h1>
+        <header className="greeting">
+          <img src={greetingImg} className="greeting__img" alt={greetingTime} />
+          <h1 className="greeting__heading">
             Good {greetingTime} <br /> {user.firstName} {user.lastName}
           </h1>
         </header>
@@ -142,7 +142,7 @@ export default App;
 3. Add a class to the section container that contains the buttons you've just rendered.
 
 ```jsx
-<section className="buttonSection">
+<section className="button-section">
   <ButtonLetsGo />
   <ButtonExplore />
 </section>
@@ -151,14 +151,13 @@ export default App;
 4. Style the section in App.scss.
 
 ```scss
-
 @import "./assets/sass/variables.scss";
 
 .app {
-  header {
+  .greeting {
     text-align: center;
 
-    h1 {
+    &__heading {
       color: $color-black;
     }
 
@@ -166,7 +165,7 @@ export default App;
       margin: 20px;
     }
   }
-  .buttonSection {
+  .button-section {
     display: flex;
     margin: 20px auto;
     width: fit-content;
@@ -182,18 +181,18 @@ export default App;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
-    header {
+    .greeting {
       text-align: left;
       display: flex;
       align-items: center;
       justify-content: center;
 
-      img {
+      &__img {
         height: 100px;
       }
     }
 
-    .buttonSection {
+    .button-section {
       display: none;
     }
   }

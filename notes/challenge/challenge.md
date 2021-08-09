@@ -2,11 +2,15 @@
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 
+## Brief
+
 The aim of this challenge is to create two button components as shown in the image below, style them and then render them in our App.jsx.
 
 <img src="./images/components-challenge.png" width="300"/>
 
 ---
+
+## Todo
 
 1. Create two buttons components called ButtonExplore and ButtonLetsGo. You will need to create a folder, jsx and scss file for each of the buttons.
 
