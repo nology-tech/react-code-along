@@ -161,7 +161,7 @@ Lets refactor our components with object destructuring
 // Button.jsx
 // left hand side variables you are unpacking
 // right hand side is the object / source of values
-const { buttonText, isPrimary } = props;
+const { buttonText, isSecondary } = props;
 ```
 
 ```jsx
