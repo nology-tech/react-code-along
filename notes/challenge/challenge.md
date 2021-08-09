@@ -1,28 +1,36 @@
-# Challenge: Arrays
+# Challenge: State
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 
-The aim of this challenge is to get you to practice using arrays and components.
+## Brief
 
-You will need to reuse the DiscographyCardList component. and get it to look like the image below.
+The aim of this challenge is to get you to practice using state to show/hide some JSX.
 
-<img src="./images/highest-rated.PNG" width="300"/>
+You will need to update the DiscoverArtistCard so that when the button is clicked it causes the state to change. This will cause it to show the title, cross and text about the artist rather then the title and the button. When the cross is clicked it should set it back to its original state.
+
+In the image below you can see the current component and the what it needs to look like after the button has been clicked.
+
+<img src="./images/state.PNG" width="600"/>
 
 ---
 
-1. Reuse the DiscographyCardList component in App.jsx, you will need to give it "Highest Rated" as the title.
+## Todo
 
-2. Create a variable for the highest rated albums. The aim now is to sort the array based on the intScore key on each of the album objects. The highest score should be first album displayed.
+1. Update the DiscoverArtistCard component so it accepts a text prop. Pass the `artist.strBiographyEN` as the value of this prop in App.jsx.
 
-3. Slice the array so it only has 9 albums in it and pass this array to the component.
+2. Add conditional State to the DiscoverArtistCard.
 
-4. If both of your DiscographyCardList components are showing the same sorted albums like below. Do you have an idea why this is happening and how can we stop it?
+3. Write a function to toggle the conditional state.
+   e.g. if its true it sets it to false and vice versa.
 
-<img src="./images/duplicate.PNG" width="600"/>
+4. Add the onClick to the `<div>` that the `<Button/>` component is inside. **You will not be able to add it directly to the Button component, we will cover this soon.**
 
-**_HINT_**
+5. The cross is image is in src/assets/images/white-cross.png. Import it to the component.
 
-- [MDN Sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
-- [MDN Spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+6. It is up to you to put the rest of the pieces together. Can you get the text, title and cross to show when the state changes? Can you hook up the cross to set the state back?
 
-5. Can you Filter out any album objects that do not have an intScore key before you sort the array?
+- _Hint: Look in the SCSS file to see some scss classes you could use for the changes in state_
+
+7. **EXTENSION** Can you tidy up the text? Can you make each sentence of the text its own p tag?
+
+---

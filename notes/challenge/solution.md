@@ -1,130 +1,150 @@
-# Solution: Arrays
+# Solution: Components
 
 **Resist the urge the to look in these files if you can't come up with a solution yourself.**
 
 It's always better to google, ask a fellow student or ask a coach. This is one way of solving the challenge not the only way to do it.
 
-1. Create a div and add it to the discography section. Inside the div use the component and pass in the correct props.
+## Adding State to the Component
+
+1. Add the prop to the component and pass in the `artist.strBiographyEN` value.
 
 ```jsx
 // App.jsx
-<div className="highest-rated">
-  <DiscographyCardList title="Highest Rated" />
+<DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
+```
+
+2. Add `{ useState }` to the import at the top of component. Initialize the state inside the component.
+
+```jsx
+// DiscoverArtistCard.jsx
+
+import React, { useState } from "react";
+
+// Inside the DiscoverArtistCard function.
+const [showText, setShowText] = useState(false);
+```
+
+3. Write a function to set the state to whatever it is not. The example below uses the [Logical not operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT).
+
+```jsx
+// DiscoverArtistCard.jsx
+
+// Inside the DiscoverArtistCard function.
+const handleClick = () => {
+  setShowText(!showText);
+};
+```
+
+4. Add the onClick to the div set it to the function you had just written.
+
+```jsx
+// DiscoverArtistCard.jsx
+
+<div onClick={handleClick}>
+  <Button buttonText={"Find out more"} isSecondary={true} />
 </div>
 ```
 
-2. Sort the array based on the intScore key on each of the objects.
+5. Add the image to the DiscoverArtistCard component.
 
 ```jsx
-// App.jsx
-const highestRating = albums.sort((a, b) => b.intScore - a.intScore);
+// DiscoverArtistCard.jsx
+
+import whiteCross from "../../assets/images/white-cross.png";
 ```
 
-3. Slice the array so it only has 9 albums in it and pass it to the component
+6. I set two variables one is the initial JSX. This is the button and title which have been saved to a variable called buttonJSX. The JSX for the state change is the title text and cross, which have been saved to a variable called textJSX. In the return statement I check the state if it is meant to show the text it will show textJSX otherwise it will show buttonJSX. The JSX uses the given classNames from the SCSS file, both use the content class but buttonJSX adds the content--button class and textJSX adds the content--text class.
 
 ```jsx
-// App.jsx
-const highestRating = albums.sort((a, b) => b.intScore - a.intScore).slice(0, 9);
+// DiscoverArtistCard.jsx
 
-// In return statement
-<DiscographyCardList title="Highest Rated" albumsArr={highestRating} />;
+const buttonJSX = (
+  <div className="discover-artist-card__content discover-artist-card__content--button">
+    <h3 className="discover-artist-card__heading">{title}</h3>
+    <div onClick={handleClick}>
+      <Button buttonText={"Find out more"} isSecondary={true} />
+    </div>
+  </div>
+);
+
+const textJSX = (
+  <div className="discover-artist-card__content discover-artist-card__content--text">
+    <img src={whiteCross} className="discover-artist-card__cross" onClick={handleClick} alt="Close text" />
+    <h3 className="discover-artist-card__heading">{title}</h3>
+    {text.split(".").map(sentence => (
+      <p>{sentence + "."}</p>
+    ))}
+  </div>
+);
+
+return (
+  <div className="discover-artist-card">
+    <img src={imgSrc} className="discover-artist-card__img" alt={props.title} />
+    {showText ? textJSX : buttonJSX}
+  </div>
+);
 ```
 
-4. This is happening because the sort() method mutates the original array. Both map() and filter() methods will return you a new array sort does not. We could use the `[...]` spread operator to clone the array or we can filter the array before we sort it.
-
-5. Filter the array before you sort it, based on if it has a intScore value.
+7. EXTENSION. Split the text using the "." to create an array of the sentences. Map over creating p tags for each of the sentences.
 
 ```jsx
-// App.jsx
-const highestRating = albums
-  .filter(album => album.intScore)
-  .sort((a, b) => b.intScore - a.intScore)
-  .slice(0, 9);
+const textJSX = (
+  <div className="content content--text">
+    <img src={whiteCross} className="discover-artist-card__cross" onClick={handleClick} alt="Close text" />
+    <h3>{title}</h3>
+    {text.split(".").map(sentence => (
+      <p>{sentence + "."}</p>
+    ))}
+  </div>
+);
 ```
 
-## Completed App.jsx
+---
+
+## Completed Component
 
 ```jsx
-// App.jsx
+// DiscoverArtistCard.jsx
+import React, { useState } from "react";
+import "./DiscoverArtistCard.scss";
 
-import "./App.scss";
-import sunrise from "./assets/images/sunrise.png";
-import sun from "./assets/images/sun.png";
-import moon from "./assets/images/moon.png";
-import Nav from "./components/Nav/Nav";
-import Button from "./components/Button/Button";
-import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
-import DiscographyCardList from "./components/DiscographyCardList/DiscographyCardList";
+import Button from "../Button/Button";
+import whiteCross from "../../assets/images/white-cross.png";
 
-import albums from "./albumsArr/albums";
-import artist from "./albumsArr/artist";
+const DiscoverArtistCard = props => {
+  const { imgSrc, title, text } = props;
+  const [showText, setShowText] = useState(false);
 
-const App = () => {
-  const user = {
-    firstName: "John",
-    lastName: "Doe",
+  const handleClick = () => {
+    setShowText(!showText);
   };
 
-  const currentHour = new Date().getHours();
-  let greetingImg = sunrise;
-  let greetingTime = "Morning!";
+  const buttonJSX = (
+    <div className="discover-artist-card__content discover-artist-card__content--button">
+      <h3 className="discover-artist-card__heading">{title}</h3>
+      <div onClick={handleClick}>
+        <Button buttonText={"Find out more"} isSecondary={true} />
+      </div>
+    </div>
+  );
 
-  if (currentHour >= 12) {
-    greetingImg = sun;
-    greetingTime = "Afternoon!";
-  }
-
-  if (currentHour >= 18) {
-    greetingImg = moon;
-    greetingTime = "Evening!";
-  }
-
-  // Filter
-  const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
-
-  // Sort
-  const highestRating = albums
-    .filter(album => album.intScore)
-    .sort((a, b) => b.intScore - a.intScore)
-    .slice(0, 9);
+  const textJSX = (
+    <div className="discover-artist-card__content discover-artist-card__content--text">
+      <img src={whiteCross} className="discover-artist-card__cross" onClick={handleClick} alt="Close text" />
+      <h3 className="discover-artist-card__heading">{title}</h3>
+      {text.split(".").map(sentence => (
+        <p>{sentence + "."}</p>
+      ))}
+    </div>
+  );
 
   return (
-    <>
-      <div className="app">
-        <Nav />
-
-        <header>
-          <img src={greetingImg} />
-          <h1>
-            Good {greetingTime} <br /> {user.firstName} {user.lastName}
-          </h1>
-        </header>
-
-        <section className="button-section">
-          <Button buttonText={"Lets Go"} isSecondary={true} />
-          <Button buttonText={"Explore"} />
-        </section>
-
-        <section className="discover">
-          <h2>Discover</h2>
-          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
-        </section>
-
-        <section className="discography">
-          <h2>Discography</h2>
-
-          <div className="all-albums">
-            <DiscographyCardList title="Albums" albumsArr={filteredAlbums} />
-          </div>
-
-          <div className="highest-rated">
-            <DiscographyCardList title="Highest Rated" albumsArr={highestRating} />
-          </div>
-        </section>
-      </div>
-    </>
+    <div className="discover-artist-card">
+      <img src={imgSrc} className="discover-artist-card__img" alt={props.title} />
+      {showText ? textJSX : buttonJSX}
+    </div>
   );
 };
 
-export default App;
+export default DiscoverArtistCard;
 ```
