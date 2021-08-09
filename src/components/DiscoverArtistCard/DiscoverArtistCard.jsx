@@ -23,7 +23,7 @@ const DiscoverArtistCard = props => {
 
   const textJSX = (
     <div className="discover-artist-card__content discover-artist-card__content--text">
-      <img src={whiteCross} className="content__cross" onClick={handleClick} alt="Close text" />
+      <img src={whiteCross} className="discover-artist-card__cross" onClick={handleClick} alt="Close text" />
       <h3 className="discover-artist-card__heading">{title}</h3>
       {text.split(".").map(sentence => (
         <p>{sentence + "."}</p>
