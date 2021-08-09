@@ -2,6 +2,8 @@
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 
+## Brief
+
 The aim of this challenge is to get you to practice using arrays and components.
 
 You will need to reuse the DiscographyCardList component. and get it to look like the image below.
@@ -9,6 +11,8 @@ You will need to reuse the DiscographyCardList component. and get it to look lik
 <img src="./images/highest-rated.PNG" width="300"/>
 
 ---
+
+## Todo
 
 1. Reuse the DiscographyCardList component in App.jsx, you will need to give it "Highest Rated" as the title.
 

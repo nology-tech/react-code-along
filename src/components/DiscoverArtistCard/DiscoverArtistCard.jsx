@@ -2,7 +2,7 @@ import React from "react";
 import "./DiscoverArtistCard.scss";
 import Button from "../Button/Button";
 
-const DiscoverArtist = props => {
+const DiscoverArtistCard = props => {
   return (
     <div className="discover-artist-card">
       <img src={props.imgSrc} className="discover-artist-card__img" alt={props.title} />
@@ -14,4 +14,4 @@ const DiscoverArtist = props => {
   );
 };
 
-export default DiscoverArtist;
+export default DiscoverArtistCard;

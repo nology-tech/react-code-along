@@ -74,11 +74,14 @@ import React from "react";
 import "./DiscographyCardList.scss";
 
 const DiscographyCardList = () => {
-  return <p>DiscographyCardList works</p>
+  return <p>DiscographyCardList works</p>;
 };
 
 export default DiscographyCardList;
 ```
+
+<details>
+<summary>Completed DiscographyCardList.scss</summary>
 
 ```scss
 // DiscographyCardList.scss
@@ -90,7 +93,7 @@ export default DiscographyCardList;
   display: flex;
   overflow-x: auto;
 
-  img {
+  &__img {
     display: block;
     width: 200px;
     margin: 10px 20px;
@@ -109,13 +112,17 @@ export default DiscographyCardList;
     gap: 25px;
     margin-bottom: 20px;
 
-    img {
+    &__img {
       margin: 0;
       width: 100%;
     }
   }
 }
 ```
+
+</details>
+
+<br/>
 
 Import the component into App.jsx. Add a section, h2, div and DiscographyCardList inside the app div.
 
@@ -133,6 +140,9 @@ Import the component into App.jsx. Add a section, h2, div and DiscographyCardLis
 
 Update the App.scss with the new styles below.
 
+<details>
+<summary>Completed App.scss</summary>
+
 ```scss
 // App.scss
 @import "./assets/sass/variables.scss";
@@ -144,10 +154,10 @@ Update the App.scss with the new styles below.
     padding: 0 50px;
   }
 
-  header {
+  .greeting {
     text-align: center;
 
-    h1 {
+    &__heading {
       color: $color-black;
     }
 
@@ -160,6 +170,7 @@ Update the App.scss with the new styles below.
     display: flex;
     margin: 20px auto;
     width: fit-content;
+
     & > * {
       margin: 0 10px;
     }
@@ -188,12 +199,12 @@ Update the App.scss with the new styles below.
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
-    header {
+    .greeting {
       text-align: left;
       display: flex;
       grid-column: 1/ -1;
 
-      img {
+      &__img {
         height: 100px;
       }
     }
@@ -219,13 +230,15 @@ Update the App.scss with the new styles below.
         height: fit-content;
       }
 
-      h2 {
+      &__heading {
         grid-column: 1 / -1;
       }
     }
   }
 }
 ```
+
+</details>
 
 ---
 
@@ -246,7 +259,7 @@ In the DiscographyCardList map over the array and create `<img>` tags for each o
 const DiscographyCardList = props => {
   const { title, albumsArr } = props;
   console.log(albumsArr);
-  const cardListJSX = albumsArr.map(album => <img src={album.strAlbumThumb} />);
+  const cardListJSX = albumsArr.map(album => <img className="card-list__img" src={album.strAlbumThumb} />);
   return (
     <>
       <h3>{title}</h3>
@@ -270,7 +283,10 @@ const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
 Show the console and the error that is being displayed. Explain why each item will need its own unique key. Update the DiscographyCardList component to give each `<img>` its own key when you map over it.
 
 ```jsx
-const cardListJSX = albumsArr.map((album, index) => <img key={title + (index + 1)} src={album.strAlbumThumb} />);
+// DiscographyCardList.jsx
+const cardListJSX = albumsArr.map((album, index) => (
+  <img key={title + (index + 1)} className="card-list__img" src={album.strAlbumThumb} />
+));
 ```
 
 ---
