@@ -7,10 +7,10 @@
     padding: 0 50px;
   }
 
-  header {
+  .greeting {
     text-align: center;
 
-    h1 {
+    &__heading {
       color: $color-black;
     }
 
@@ -23,6 +23,7 @@
     display: flex;
     margin: 20px auto;
     width: fit-content;
+
     & > * {
       margin: 0 10px;
     }
@@ -51,12 +52,12 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
-    header {
+    .greeting {
       text-align: left;
       display: flex;
       grid-column: 1/ -1;
 
-      img {
+      &__img {
         height: 100px;
       }
     }
@@ -82,7 +83,7 @@
         height: fit-content;
       }
 
-      h2 {
+      &__heading {
         grid-column: 1 / -1;
       }
     }

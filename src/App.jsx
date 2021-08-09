@@ -44,9 +44,9 @@ const App = () => {
       <div className="app">
         <Nav />
 
-        <header>
-          <img src={greetingImg} />
-          <h1>
+        <header className="greeting">
+          <img src={greetingImg} className="greeting__img" alt={greetingTime} />
+          <h1 className="greeting__heading">
             Good {greetingTime} <br /> {user.firstName} {user.lastName}
           </h1>
         </header>
@@ -58,11 +58,11 @@ const App = () => {
 
         <section className="discover">
           <h2>Discover</h2>
-          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
         </section>
 
         <section className="discography">
-          <h2>Discography</h2>
+          <h2 className="discography__heading">Discography</h2>
 
           <div className="all-albums">
             <DiscographyCardList title="Albums" albumsArr={filteredAlbums} />
