@@ -3,10 +3,11 @@
 .app {
   padding: 0 50px;
   color: $color-black;
-  header {
+
+  .greeting {
     text-align: center;
 
-    h1 {
+    &__heading {
       color: $color-black;
     }
 
@@ -14,10 +15,12 @@
       margin: 20px;
     }
   }
+
   .button-section {
     display: flex;
     margin: 20px auto;
     width: fit-content;
+
     & > * {
       margin: 0 10px;
     }
@@ -33,13 +36,13 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
-    header {
+    .greeting {
       text-align: left;
       display: flex;
       align-items: center;
       justify-content: center;
 
-      img {
+      &__img {
         height: 100px;
       }
     }
@@ -47,6 +50,7 @@
     .button-section {
       display: none;
     }
+
     .discover {
       grid-row: 3/4;
     }
