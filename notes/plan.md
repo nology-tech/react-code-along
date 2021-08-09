@@ -8,13 +8,14 @@
 
 ## CA: How to set up a Component - Create a Nav Component
 
-Create a components folder 
+Create a components folder
 
 src/components
 
 ```bash
 cd src && mkdir components
 ```
+
 The naming convention for Components is that the component starts with a capital letter e.g. Nav
 
 Create a Nav folder within the components folder
@@ -24,6 +25,7 @@ src/components/Nav
 ```bash
 cd components && mkdir Nav
 ```
+
 We now need to create the file that our JSX will be written in
 
 src/components/Nav/Nav.jsx
@@ -31,6 +33,7 @@ src/components/Nav/Nav.jsx
 ```bash
 cd Nav && touch Nav.jsx
 ```
+
 Import React into Nav.jsx and create the functional component
 
 ```jsx
@@ -44,18 +47,16 @@ const Nav = () => {
   )
 }
 ```
+
 Demo writing JSX in Nav.jsx
- 
+
 ```jsx
 // Nav.jsx
-import React from 'react'
+import React from "react";
 
 const Nav = () => {
-
-  return (
-    <p>This is a Nav Component</p>
-  )
-}
+  return <p>This is a Nav Component</p>;
+};
 ```
 
 Explain that we need to export components and import them to the file where we would like to render them
@@ -63,6 +64,9 @@ Explain that we need to export components and import them to the file where we w
 Export the Nav component and import it into App.jsx.
 
 Render the component in App.jsx and show the component on the webpage.
+
+<details> 
+<summary>Completed App.jsx</summary>
 
 ```jsx
 // App.jsx
@@ -108,6 +112,10 @@ const App = () => {
 };
 ```
 
+</details>
+
+<br/>
+
 Write the code for the nav in Nav.jsx
 The images for the nav can be found in src/assets/images
 
@@ -132,6 +140,9 @@ export default Nav;
 ```
 
 Create Nav.scss and style the component using the below styles
+
+<details>
+<summary>Completed SCSS styles</summary>
 
 ```scss
 @import "../../assets/sass/variables.scss";
@@ -160,8 +171,9 @@ Create Nav.scss and style the component using the below styles
     }
   }
 }
-
 ```
+
+</details>
 
 ---
 
