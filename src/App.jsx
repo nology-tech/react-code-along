@@ -25,9 +25,9 @@ const App = () => {
 
   return (
     <div className="app">
-      <header>
-        <img src={greetingImg} alt={greetingTime} />
-        <h1>
+      <header className="greeting">
+        <img src={greetingImg} alt={greetingTime} className="greeting__img" />
+        <h1 className="greeting__heading">
           Good {greetingTime} <br /> {user.firstName} {user.lastName}
         </h1>
       </header>
