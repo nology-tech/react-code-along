@@ -4,6 +4,8 @@
 
 It's always better to google, ask a fellow student or ask a coach. This is one way of solving the challenge not the only way to do it.
 
+## Adding State to the Component
+
 1. Add the prop to the component and pass in the `artist.strBiographyEN` value.
 
 ```jsx
@@ -56,6 +58,65 @@ import whiteCross from "../../assets/images/white-cross.png";
 ```jsx
 // DiscoverArtistCard.jsx
 
+const buttonJSX = (
+  <div className="content content--button">
+    <h3>{title}</h3>
+    <div onClick={handleClick}>
+      <Button buttonText={"Find out more"} isSecondary={true} />
+    </div>
+  </div>
+);
+
+const textJSX = (
+  <div className="content content--text">
+    <img src={whiteCross} className="content__cross" onClick={handleClick} alt="Close text" />
+    <h3>{title}</h3>
+    <p>{text}</p>
+  </div>
+);
+
+return (
+  <div className="discoverArtistCard">
+    <img src={imgSrc} />
+    {showText ? textJSX : buttonJSX}
+  </div>
+);
+```
+
+7. EXTENSION. Split the text using the "." to create an array of the sentences. Map over creating p tags for each of the sentences.
+
+```jsx
+const textJSX = (
+  <div className="content content--text">
+    <img src={whiteCross} className="content__cross" onClick={handleClick} alt="Close text" />
+    <h3>{title}</h3>
+    {text.split(".").map(sentence => (
+      <p>{sentence + "."}</p>
+    ))}
+  </div>
+);
+```
+
+---
+
+## Completed Component
+
+```jsx
+// DiscoverArtistCard.jsx
+import React, { useState } from "react";
+import "./DiscoverArtistCard.scss";
+
+import Button from "../Button/Button";
+import whiteCross from "../../assets/images/white-cross.png";
+
+const DiscoverArtistCard = props => {
+  const { imgSrc, title, text } = props;
+  const [showText, setShowText] = useState(false);
+
+  const handleClick = () => {
+    setShowText(!showText);
+  };
+
   const buttonJSX = (
     <div className="content content--button">
       <h3>{title}</h3>
@@ -69,7 +130,9 @@ import whiteCross from "../../assets/images/white-cross.png";
     <div className="content content--text">
       <img src={whiteCross} className="content__cross" onClick={handleClick} alt="Close text" />
       <h3>{title}</h3>
-      <p>{text}</p>
+      {text.split(".").map(sentence => (
+        <p>{sentence + "."}</p>
+      ))}
     </div>
   );
 
@@ -79,4 +142,7 @@ import whiteCross from "../../assets/images/white-cross.png";
       {showText ? textJSX : buttonJSX}
     </div>
   );
+};
+
+export default DiscoverArtistCard;
 ```
