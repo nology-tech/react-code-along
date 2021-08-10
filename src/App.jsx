@@ -8,6 +8,7 @@ import Button from "./components/Button/Button";
 import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
 import DiscographyCardList from "./components/DiscographyCardList/DiscographyCardList";
 import Carousel from "./components/Carousel/Carousel";
+import ExploreAlbums from "./containers/ExploreAlbums/ExploreAlbums";
 
 import albums from "./data/albums";
 import artist from "./data/artist";
@@ -83,6 +84,11 @@ const App = () => {
         <section className="gallery">
           <h2 className="gallery__heading">Gallery</h2>
           <Carousel imagesArr={galleryImages} />
+        </section>
+
+        <section className="explore">
+          <h2 className="explore__heading">Explore</h2>
+          <ExploreAlbums albumsArr={albums} />
         </section>
       </div>
     </>

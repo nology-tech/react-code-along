@@ -21,6 +21,10 @@
     position: absolute;
     top: 50px;
     left: 50px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__title {
     color: $color-white;
