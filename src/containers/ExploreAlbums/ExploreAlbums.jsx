@@ -10,8 +10,8 @@ const ExploreAlbums = props => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInput = event => {
-    const enteredText = event.target.value.toLowerCase().trim();
-    setSearchTerm(enteredText);
+    const cleanInput = event.target.value.toLowerCase().trim();
+    setSearchTerm(cleanInput);
   };
 
   const filteredAlbums = albumsArr.filter(album => {
