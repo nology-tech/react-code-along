@@ -10,6 +10,8 @@
 
 ## Creating the SettingsMenu Component
 
+This is going to be the child component that responds to state change. It also needs a way of changing state as well so we will be passing it a function to do so.
+
 Create a SettingsMenu component. This is going to accept a prop called userName.
 
 Copy the JSX and SCSS files below.
@@ -207,13 +209,97 @@ export default SettingsMenu;
 
 ---
 
+## Creating the Search Box Component
+
+This component is going to capture user input and pass it back to its parent component.
+
+It accepts three props.
+
+- label -> This the content for the label and the name for the input.
+- searchTerm -> This is going to be the user inputted state.
+- handleInput -> This will be function passed to the component to update the state.
+
+Create the SearchBox component.
+
+Copy the JSX and SCSS files below.
+
+<details>
+<summary>SearchBox.jsx</summary>
+
+```jsx
+import React from "react";
+
+import "./SearchBox.scss";
+
+const SearchBox = props => {
+  const { label, searchTerm, handleInput } = props;
+
+  const capitalizedLabel = label[0].toUpperCase() + label.slice(1);
+
+  return (
+    <form className="search-box">
+      <label htmlFor={label} className="search-box__label">
+        {capitalizedLabel}
+      </label>
+      <input type="text" name={label} value={searchTerm} onInput={handleInput} className="search-box__input" />
+    </form>
+  );
+};
+
+export default SearchBox;
+```
+
+</details>
+
+<details>
+<summary>SearchBox.scss</summary>
+
+```scss
+@import "../../assets/sass/variables.scss";
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 20px;
+  }
+
+  &__input {
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 18px;
+    border: 5px $color-grey solid;
+    border-radius: 15px;
+    color: $color-black;
+
+    &:focus {
+      border: 5px $color-primary solid;
+      outline: none;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .search-box {
+    &__input {
+      width: calc((100% / 3) - 50px);
+    }
+  }
+}
+```
+
+</details>
+
+<br/>
+
+---
+
+---
+
 ## Move onto Challenges
 
 - [Challenge](./challenge/challenge.md)
 - [Solution](./challenge/solution.md)
 
 ---
-
-```
-
-```
