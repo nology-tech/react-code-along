@@ -4,21 +4,30 @@ import settings from "../../assets/images/settings-icon.png";
 import "./Nav.scss";
 
 import SettingsMenu from "../SettingsMenu/SettingsMenu";
+import NavMenu from "../NavMenu/NavMenu";
 
 const Nav = props => {
   const { userName } = props;
-  const [showMenu, setShowMenu] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showNav, setShowNav] = useState(false);
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
+
+  const toggleSettings = () => {
+    setShowSettings(!showSettings);
+  };
+
+  const toggleNav = () => {
+    setShowNav(!showNav);
   };
 
   return (
     <nav className="nav">
-      {showMenu && <SettingsMenu userName={userName} toggleMenu={toggleMenu}/>}
-      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
+      {showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings}/>}
+      {showNav && <NavMenu  toggleNav={toggleNav}/>}
+
+      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" onClick={toggleNav}/>
       <h2 className="nav__heading">Ear Worm</h2>
-      <img src={settings} className="nav__item" alt="settings icon" onClick={toggleMenu} />
+      <img src={settings} className="nav__item" alt="settings icon" onClick={toggleSettings} />
     </nav>
   );
 };

@@ -17,7 +17,7 @@ const ExploreAlbums = props => {
   const filteredAlbums = albumsArr.filter(album => {
     const albumTitleLower = album.strAlbum.toLowerCase();
 
-    return albumTitleLower.includes(searchTerm);
+    return albumTitleLower.includes(searchTerm) && album.strAlbumThumb;
   });
 
   return (
