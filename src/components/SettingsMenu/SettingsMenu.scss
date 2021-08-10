@@ -1,0 +1,51 @@
+@import "../../assets/sass/variables.scss";
+
+.settings-menu {
+  background-color: $color-black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__cross {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
+  &__title {
+    color: $color-white;
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .settings-menu {
+    background-color: rgba($color-black, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+      position: relative;
+      background-color: $color-black;
+      width: 30%;
+      height: 80%;
+      border-radius: 15px;
+    }
+
+    &__cross {
+      top: 20px;
+      left: 20px;
+    }
+  }
+}

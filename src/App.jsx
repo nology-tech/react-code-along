@@ -49,7 +49,7 @@ const App = () => {
   return (
     <>
       <div className="app">
-        <Nav />
+        <Nav userName={`${user.firstName} ${user.lastName}`} />
 
         <header className="greeting">
           <img src={greetingImg} className="greeting__img" alt={greetingTime} />
