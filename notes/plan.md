@@ -1,110 +1,103 @@
-# State
+# Functions as Props
 
 ## Objectives
 
-- How can we use State to conditionally show some JSX?
-- How can we use State to Increment and Decrement a Counter?
-- How can we apply this to a Component?
+- How can we update the state a Parent component from a Child component?
+- How can we use functions as props to trigger components to be shown or hidden?
+- How can we use functions as props to capture a users input to filter some data?
 
 ---
 
-## Creating the Carousel the Component
+## Creating the SettingsMenu Component
 
-Create a Component called Carousel. This is going to accept a prop called imagesArr.
+Create a SettingsMenu component. This is going to accept a prop called userName.
 
 Copy the JSX and SCSS files below.
 
 <details>
-<summary>Carousel.jsx</summary>
+<summary>SettingsMenu.jsx</summary>
 
 ```jsx
-// Carousel.jsx
 import React from "react";
 
-import "./Carousel.scss";
+import "./SettingsMenu.scss";
+import whiteCross from "../../assets/images/white-cross.png";
+import profilePicture from "../../assets/images/profile-picture.png";
 
-const Carousel = props => {
-  const { imagesArr } = props;
-
+const SettingsMenu = props => {
+  const { userName } = props;
   return (
-    <div className="carousel">
-      <p>Carousel works</p>
+    <div className="settings-menu">
+      <div className="settings-menu__content">
+        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" />
+        <img src={profilePicture} className="settings-menu__profile" />
+        <h2 className="settings-menu__title">{userName}</h2>
+      </div>
     </div>
   );
 };
 
-export default Carousel;
+export default SettingsMenu;
 ```
 
 </details>
 
 <details>
-<summary>Carousel.scss</summary>
+<summary>SettingsMenu.scss</summary>
 
 ```scss
-// Carousel.scss
 @import "../../assets/sass/variables.scss";
 
-.carousel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 50px;
-  background-color: $color-secondary;
+.settings-menu {
+  background-color: $color-black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
 
-  &__image {
-    box-shadow: 0px 10px 20px rgba($color-black, 0.25);
-    display: block;
-    width: 80%;
-    border-radius: 15px;
-    margin: 0 10px;
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  &__arrow {
-    display: block;
-    height: 30px;
+  &__cross {
+    position: absolute;
+    top: 20px;
+    left: 50px;
 
     &:hover {
       cursor: pointer;
     }
   }
+  &__title {
+    color: $color-white;
+    font-size: 30px;
+  }
 }
 
 @media (min-width: 992px) {
-  .carousel {
-    position: relative;
-    flex-grow: 1;
-    padding: 0;
-    display: block;
-    background-color: unset;
+  .settings-menu {
+    background-color: rgba($color-black, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    &__image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      margin: 0;
+    &__content {
+      position: relative;
+      background-color: $color-black;
+      width: 30%;
+      height: 80%;
+      border-radius: 15px;
     }
 
-    &__arrow {
-      z-index: 2;
-      position: absolute;
-      bottom: 20px;
-      background-color: rgba($color-white, 0.4);
-      box-shadow: 0px 10px 20px rgba($color-black, 0.6);
-      padding: 20px;
-      border-radius: 15px;
-
-      &:hover {
-        background-color: rgba($color-white, 0.8);
-      }
-
-      &--left {
-        left: 20px;
-      }
-
-      &--right {
-        right: 20px;
-      }
+    &__cross {
+      top: 20px;
+      left: 20px;
     }
   }
 }
@@ -112,310 +105,105 @@ export default Carousel;
 
 </details>
 
-In App.jsx import in the Carousel and add it to the the return statement.
+In App.jsx pass the userName prop to Nav.jsx. This will be created from the user object.
 
 ```jsx
 // App.jsx
-  <section className="gallery">
-    <h2>Gallery</h2>
-    <Carousel imagesArr={} />
-  </section>
+
+<Nav userName={`${user.firstName} ${user.lastName}`}
 ```
 
-You will need to update the App.scss with the new styles below.
+The SettingsMenu is going to be a child component of Nav.jsx. Import it into the Nav component and pass it the userName prop.
+
+```jsx
+// Nav.jsx
+
+import SettingsMenu from "../SettingsMenu/SettingsMenu";
+
+const Nav = props => {
+  const { userName } = props;
+
+  return (
+    <nav className="nav">
+      <SettingsMenu userName={userName} />
+      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
+      <h2 className="nav__heading">Ear Worm</h2>
+      <img src={settings} className="nav__item" alt="settings icon" />
+    </nav>
+  );
+};
+```
+
+Now the component should be constantly visible. We want to alter that so it responds to state.
+
+Add state to the Nav component and write a function to toggle state change. Have SettingsMenu only be visible if the state is true.
+
+Have the settings icon use the function to toggle state change on click.
+
+```jsx
+// Nav.jsx
+const Nav = props => {
+  const { userName } = props;
+  const [showSettings, setShowSettings] = useState(false);
+
+  const toggleSettings = () => {
+    setShowSettings(!showSettings);
+  };
+
+  return (
+    <nav className="nav">
+      {showSettings && <SettingsMenu userName={userName}>}
+      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
+      <h2 className="nav__heading">Ear Worm</h2>
+      <img src={settings} className="nav__item" alt="settings icon" onClick={toggleSettings} />
+    </nav>
+  );
+};
+```
+
+The last part of the puzzle is passing the toggleSettings function to the SettingsMenu component with props. This is so hide the menu when the cross is clicked.
+
+In Nav.jsx add toggleSetting prop to the component and pass in the toggleSettings function.
+
+```jsx
+// Nav.jsx
+
+ {showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings}>}
+```
+
+In the SettingsMenu.jsx component get it to accept the toggleSettings prop. Add a onClick to the white cross and have it use the toggle settings function to change the state.
+
+The finished component is below.
 
 <details>
-<summary>App.scss</summary>
+<summary>SettingsMenu.jsx</summary>
 
-```scss
-// App.scss
-@import "./assets/sass/variables.scss";
+```jsx
+import React from "react";
 
-.app {
-  color: $color-black;
+import "./SettingsMenu.scss";
+import whiteCross from "../../assets/images/white-cross.png";
+import profilePicture from "../../assets/images/profile-picture.png";
 
-  & > * {
-    padding: 0 50px;
-  }
+const SettingsMenu = props => {
+  const { userName, toggleSettings } = props;
+  return (
+    <div className="settings-menu">
+      <div className="settings-menu__content">
+        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" onClick={toggleSettings} />
+        <img src={profilePicture} className="settings-menu__profile" />
+        <h2 className="settings-menu__title">{userName}</h2>
+      </div>
+    </div>
+  );
+};
 
-  header {
-    text-align: center;
-
-    h1 {
-      color: $color-black;
-    }
-
-    & > * {
-      margin: 20px;
-    }
-  }
-
-  .button-section {
-    display: flex;
-    margin: 20px auto;
-    width: fit-content;
-    & > \* {
-      margin: 0 10px;
-    }
-  }
-
-  .discography {
-    padding: 0;
-
-    .all-albums {
-      background-color: $color-primary;
-      padding: 10px 50px 20px 50px;
-    }
-
-    & > * {
-      padding: 0px 50px;
-    }
-  }
-
-  .gallery {
-    padding: 0;
-
-    h2 {
-      padding: 0 50px;
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  .app {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    gap: 25px 100px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: min-content;
-
-    header {
-      text-align: left;
-      display: flex;
-      grid-column: 1/ -1;
-
-      img {
-        height: 100px;
-      }
-    }
-
-    .button-section {
-      display: none;
-    }
-
-    .discover {
-      grid-row: 3/4;
-    }
-
-    .discography {
-      grid-row: 4/5;
-      grid-column: 1/ -1;
-      border-radius: 15px;
-      display: grid;
-      gap: 25px 100px;
-      grid-template-columns: repeat(2, 1fr);
-
-      .all-albums {
-        border-radius: 15px;
-        height: fit-content;
-      }
-
-      h2 {
-        grid-column: 1 / -1;
-      }
-    }
-
-    .gallery {
-      grid-row: 3 / 4;
-      display: flex;
-      flex-direction: column;
-      padding-right: 50px;
-
-      h2 {
-        padding: 0;
-      }
-    }
-  }
-}
+export default SettingsMenu;
 ```
 
 </details>
 
-In the data folder on the artist.js object it has these keys strArtistFanart, strArtistFanart2, strArtistFanart3 and strArtistFanart4. In App.jsx use these keys to create an array of images for our component to use. Pass this array to the Carousel as the `imageArr` prop.
-
-```jsx
-// App.js
-const galleryImages = [
-  artist.strArtistFanart,
-  artist.strArtistFanart2,
-  artist.strArtistFanart3,
-  artist.strArtistFanart4,
-];
-```
-
----
-
-## How can we use State to conditionally show some JSX?
-
-To complete the challenge they need to know how to conditionally show a item.
-
-Import useState and set it up to conditionally show one image based on a boolean state. Add a function to change the state and add to run on the click of a button.
-
-```jsx
-// Carousel.jsx
-  const [showImage, setShowImage] = useState(true);
-
-  const handleClick = () => {
-    setShowImage(!showImage);
-  };
-
-  return (
-    <div className="carousel">
-      <button onClick={handleClick}>Toggle Image</button>
-      {showImage && <img src={imagesArr[0]} alt="" className="carousel__image" />}
-    </div>
-  );
-};
-```
-
----
-
-## How can we use State to Increment and Decrement a Counter?
-
-Build a simple counter to show how you can have multiple functions that update the state. We can later turn it into the functionality of our Carousel.
-
-Display the state, have two buttons and one function to increment it and another to decrement it.
-
-```jsx
-// Carousel.jsx
-const Carousel = props => {
-  const { imagesArr } = props;
-  const [counter, setCounter] = useState(0);
-
-  const handleIncrement = () => {
-    setCounter(counter + 1);
-  };
-
-  const handleDecrement = () => {
-    setCounter(counter - 1);
-  };
-
-  return (
-    <div className="carousel">
-      <p>{counter}</p>
-      <button onClick={handleIncrement}>Increment</button>
-      <button onClick={handleDecrement}>Decrement</button>
-    </div>
-  );
-};
-```
-
----
-
-## How can we apply this to a Component?
-
-Take this functionality and finish the Carousel component. You will need to import the two arrows from src/assets/images folder.
-
-```jsx
-import leftArrow from "../../assets/images/left-arrow.png";
-import rightArrow from "../../assets/images/right-arrow.png";
-```
-
-Update the jsx to match below. You will have two arrows to update the counter.
-
-The carousel\_\_image will use the urls from imagesArr for the src. The counter is the index for the imagesArr. When you update the counter the image url will change.
-
-```jsx
-// Carousel.jsx
-return (
-  <div className="carousel">
-    <img src={leftArrow} alt="" onClick={handleDecrement} className="carousel__arrow carousel__arrow--left" />
-    <img src={imagesArr[counter]} alt="" className="carousel__image" />
-    <img src={rightArrow} alt="" onClick={handleIncrement} className="carousel__arrow carousel__arrow--right" />
-  </div>
-);
-```
-
-This should be enough to get the Carousel cycling through the images. You will be able to go out of bounds though.
-
-Update the logic of the two functions to check counter before it sets the state. If it is going to go out of bounds set it to the start or the end to create a loop.
-
-```jsx
-// Carousel.jsx
-const handleIncrement = () => {
-  if (counter === imagesArr.length - 1) {
-    setCounter(0);
-  } else {
-    setCounter(counter + 1);
-  }
-};
-
-const handleDecrement = () => {
-  if (counter === 0) {
-    setCounter(imagesArr.length - 1);
-  } else {
-    setCounter(counter - 1);
-  }
-};
-```
-
-The jsx for the finished component is below.
-
-  <details>
-  <summary>Carousel.jsx</summary>
-
-```jsx
-import React, { useState } from "react";
-
-import "./Carousel.scss";
-
-import leftArrow from "../../assets/images/left-arrow.png";
-import rightArrow from "../../assets/images/right-arrow.png";
-
-const Carousel = props => {
-  const { imagesArr } = props;
-  const [counter, setCounter] = useState(0);
-
-  const handleIncrement = () => {
-    if (counter === imagesArr.length - 1) {
-      setCounter(0);
-    } else {
-      setCounter(counter + 1);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (counter === 0) {
-      setCounter(imagesArr.length - 1);
-    } else {
-      setCounter(counter - 1);
-    }
-  };
-
-  return (
-    <div className="carousel">
-      <img
-        src={leftArrow}
-        alt="left arrow"
-        onClick={handleDecrement}
-        className="carousel__arrow carousel__arrow--left"
-      />
-      <img src={imagesArr[counter]} alt="" className="carousel__image" />
-      <img
-        src={rightArrow}
-        alt="right arrow"
-        onClick={handleIncrement}
-        className="carousel__arrow carousel__arrow--right"
-      />
-    </div>
-  );
-};
-
-export default Carousel;
-```
-
- </details>
+<br/>
 
 ---
 
@@ -425,3 +213,7 @@ export default Carousel;
 - [Solution](./challenge/solution.md)
 
 ---
+
+```
+
+```
