@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import "./ExploreAlbums.scss";
-
 import SearchBox from "../../components/SearchBox/SearchBox";
 import DiscographyCardList from "../../components/DiscographyCardList/DiscographyCardList";
 

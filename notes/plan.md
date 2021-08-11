@@ -2,13 +2,14 @@
 
 ## Objectives
 
-- How can we update the state a Parent component from a Child component?
 - How can we use functions as props to trigger components to be shown or hidden?
 - How can we use functions as props to capture a users input to filter some data?
 
 ---
 
-## Creating the SettingsMenu Component
+## How can we use functions as props to trigger components to be shown or hidden?
+
+Creating the SettingsMenu Component.
 
 This is going to be the child component that responds to state change. It also needs a way of changing state as well so we will be passing it a function to do so.
 
@@ -209,15 +210,13 @@ export default SettingsMenu;
 
 ---
 
-## Creating the Search Box Component
+## How can we use functions as props to capture a users input to filter some data?
+
+Creating the Search Box Component.
 
 This component is going to capture user input and pass it back to its parent component.
 
-It accepts three props.
-
-- label -> This the content for the label and the name for the input.
-- searchTerm -> This is going to be the user inputted state.
-- handleInput -> This will be function passed to the component to update the state.
+It accepts three props label, searchTerm and handleInput.
 
 Create the SearchBox component.
 
@@ -293,7 +292,124 @@ export default SearchBox;
 
 <br/>
 
----
+With the child component created move onto creating the parent container.
+
+Creating the Explore Albums Container.
+
+In src create a containers folder. In the folder create a ExploreAlbums folder and a ExploreAlbums.jsx file.
+
+The container accepts a albumsArr prop. It needs to import SearchBox and DiscographyCardList components.
+
+It will capture user input using the SearchBox, filter the albumsArr with the input and display it with the DiscographyCardList component.
+
+<details>
+<summary>ExploreAlbums.jsx</summary>
+
+```jsx
+import React from "react";
+
+import SearchBox from "../../components/SearchBox/SearchBox";
+import DiscographyCardList from "../../components/DiscographyCardList/DiscographyCardList";
+
+const ExploreAlbums = props => {
+  const { albumsArr } = props;
+
+  return (
+    <>
+      <SearchBox label={"albums"} />
+      <DiscographyCardList title={"Results"} />
+    </>
+  );
+};
+
+export default ExploreAlbums;
+```
+
+</details>
+
+<br/>
+
+Set up state in the container to store the user input.
+
+Create a function to handle the input. You will need to use the [event](https://reactjs.org/docs/events.html). Drill into it to get the value.
+
+This function will need to clean the input to get the best results from the filter.
+
+```jsx
+// ExploreAlbums.jsx
+
+const [searchTerm, setSearchTerm] = useState("");
+
+const handleInput = event => {
+  const cleanInput = event.target.value.toLowerCase().trim();
+  setSearchTerm(cleanInput);
+};
+```
+
+Pass the searchTerm state and handleInput function to the SearchBox component.
+
+```jsx
+// ExploreAlbums.jsx
+
+<SearchBox label={"albums"} searchTerm={searchTerm} handleInput={handleInput} />
+```
+
+The next step is to use the search term to filter the albumsArr. On each album object you can use the strAlbum key to see if the searchTerm is included.
+
+You will need to set the strAlbum to lowercase to get the best match.
+
+You can check the strAlbumThumb key as well to make sure it has a img url.
+
+```jsx
+// ExploreAlbums.jsx
+
+const filteredAlbums = albumsArr.filter(album => {
+  const albumTitleLower = album.strAlbum.toLowerCase();
+
+  return albumTitleLower.includes(searchTerm) && album.strAlbumThumb;
+});
+```
+
+Pass the filteredAlbums to the DiscographyCardList component.
+
+<details>
+<summary>Completed ExploreAlbums</summary>
+
+```jsx
+import React, { useState } from "react";
+
+import SearchBox from "../../components/SearchBox/SearchBox";
+import DiscographyCardList from "../../components/DiscographyCardList/DiscographyCardList";
+
+const ExploreAlbums = props => {
+  const { albumsArr } = props;
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInput = event => {
+    const cleanInput = event.target.value.toLowerCase().trim();
+    setSearchTerm(cleanInput);
+  };
+
+  const filteredAlbums = albumsArr.filter(album => {
+    const albumTitleLower = album.strAlbum.toLowerCase();
+
+    return albumTitleLower.includes(searchTerm) && album.strAlbumThumb;
+  });
+
+  return (
+    <>
+      <SearchBox label={"albums"} searchTerm={searchTerm} handleInput={handleInput} />
+      <DiscographyCardList title={"Results"} albumsArr={filteredAlbums} />
+    </>
+  );
+};
+
+export default ExploreAlbums;
+```
+
+</details>
+
+<br/>
 
 ---
 
