@@ -149,3 +149,74 @@ export default NavMenu;
 
 ---
 
+## Extension: Updating the SettingsMenu
+
+1. Add a form with two inputs and labels. One for the firstName and the other for the lastName. Add a handleUserChange prop and have it called onInput of both of the inputs.
+
+handleUserChange will be the function we will pass into the component. This function is going to be what we use to update state.
+
+```jsx
+// SettingsMenu.jsx
+
+const SettingsMenu = props => {
+  const { userName, toggleSettings, handleUserChange } = props;
+  return (
+    <div className="settings-menu">
+      <div className="settings-menu__content">
+        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" onClick={toggleSettings} />
+        <img src={profilePicture} className="settings-menu__profile" />
+        <h2 className="settings-menu__title">{userName}</h2>
+        <form className="settings-menu__form">
+          <label htmlFor="firstName">First name</label>
+          <input type="text" name="firstName" className="settings-menu__input" onInput={handleUserChange} />
+          <label htmlFor="lastName">Last name</label>
+          <input type="text" name="lastName" className="settings-menu__input" onInput={handleUserChange} />
+        </form>
+      </div>
+    </div>
+  );
+};
+```
+
+2. Import the useState hooke and initialize it app. Use the user object as the initial state.
+
+```jsx
+// App.jsx
+
+const [user, setUser] = useState({
+  firstName: "John",
+  lastName: "Doe",
+});
+```
+
+3. Write a function to handle user change. You can use the event to get the target's name. This is the input that is calling the function. That is going to be the key on the object we want to update. Get the value from the event.
+
+In order to make sure we do not mutate the original state use the spread operator to make a copy of the object. This will copy all the keys, we can then update the key with the new value.
+
+```jsx
+// App.jsx
+
+const handleUserChange = event => {
+  const inputKey = event.target.name;
+  const inputValue = event.target.value;
+  setUser({ ...user, [inputKey]: inputValue });
+};
+```
+
+4. Pass the function to the Nav. From the nav you will need to pass it to the SettingsMenu.
+
+```jsx
+//App.jsx
+
+<Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
+```
+
+```jsx
+//Nav.jsx
+
+{
+  showSettings && (
+    <SettingsMenu userName={userName} toggleSettings={toggleSettings} handleUserChange={handleUserChange} />
+  );
+}
+```
