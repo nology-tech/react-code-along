@@ -7,10 +7,9 @@ import SettingsMenu from "../SettingsMenu/SettingsMenu";
 import NavMenu from "../NavMenu/NavMenu";
 
 const Nav = props => {
-  const { userName } = props;
+  const { userName, handleUserChange } = props;
   const [showSettings, setShowSettings] = useState(false);
   const [showNav, setShowNav] = useState(false);
-
 
   const toggleSettings = () => {
     setShowSettings(!showSettings);
@@ -22,10 +21,10 @@ const Nav = props => {
 
   return (
     <nav className="nav">
-      {showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings}/>}
-      {showNav && <NavMenu  toggleNav={toggleNav}/>}
+      {showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings} handleUserChange={handleUserChange}/>}
+      {showNav && <NavMenu toggleNav={toggleNav} />}
 
-      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" onClick={toggleNav}/>
+      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" onClick={toggleNav} />
       <h2 className="nav__heading">Ear Worm</h2>
       <img src={settings} className="nav__item" alt="settings icon" onClick={toggleSettings} />
     </nav>

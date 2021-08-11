@@ -12,11 +12,18 @@ import ExploreAlbums from "./containers/ExploreAlbums/ExploreAlbums";
 
 import albums from "./data/albums";
 import artist from "./data/artist";
+import { useState } from "react";
 
 const App = () => {
-  const user = {
+  const [user, setUser] = useState({
     firstName: "John",
     lastName: "Doe",
+  });
+
+  const handleUserChange = event => {
+    const inputKey = event.target.name;
+    const inputValue = event.target.value;
+    setUser({ ...user, [inputKey]: inputValue });
   };
 
   const currentHour = new Date().getHours();
@@ -50,7 +57,7 @@ const App = () => {
   return (
     <>
       <div className="app">
-        <Nav userName={`${user.firstName} ${user.lastName}`} />
+        <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange}/>
 
         <header className="greeting">
           <img src={greetingImg} className="greeting__img" alt={greetingTime} />
