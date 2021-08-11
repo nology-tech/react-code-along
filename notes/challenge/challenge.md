@@ -25,13 +25,13 @@ In the image below you can see the current component and the what it needs to lo
 - The black cross image is in src/assets/images/black-cross.png.
 - The menu items are Discover, Discography, Gallery and Explore.
 
-3. Add conditional State to the Nav and display the NavMenu based on this.
+2. Add conditional State to the Nav and display the NavMenu based on this.
 
-4. Write a function to toggle the conditional state in Nav and hook it up to the nav menu icon.
+3. Write a function to toggle the conditional state in Nav and hook it up to the nav menu icon.
 
-5. It is up to you to put the rest of the pieces together. How can you pass the function to update state to the NavMenu? How do you get a function to run onCLick?
+4. It is up to you to put the rest of the pieces together. How can you pass the function to update state to the NavMenu? How do you get a function to run onCLick?
 
-6. Style the NavMenu.
+5. Style the NavMenu.
 
 ---
 
