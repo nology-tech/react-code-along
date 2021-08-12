@@ -329,7 +329,143 @@ export default ExploreAlbums;
 
 <br/>
 
-Set up state in the container to store the user input.
+Import the component into App.jsx and add the JSX below to the the return statement bellow the gallery section.
+
+Add the albumsArr prop and pass in the albums.
+
+```jsx
+// App.jsx
+
+<section className="explore">
+  <h2 className="explore__heading">Explore</h2>
+  <ExploreAlbums albumsArr={albums} />
+</section>
+```
+
+Update the App.scss.
+
+<details>
+<summary>App.scss</summary>
+
+```scss
+@import "./assets/sass/variables.scss";
+
+.app {
+  color: $color-black;
+
+  & > * {
+    padding: 0 50px;
+  }
+
+  .greeting {
+    text-align: center;
+
+    &__heading {
+      color: $color-black;
+    }
+
+    & > * {
+      margin: 20px;
+    }
+  }
+
+  .button-section {
+    display: flex;
+    margin: 20px auto;
+    width: fit-content;
+
+    & > * {
+      margin: 0 10px;
+    }
+  }
+
+  .discography {
+    padding: 0;
+
+    .all-albums {
+      background-color: $color-primary;
+      padding: 10px 50px 20px 50px;
+    }
+
+    & > * {
+      padding: 0px 50px;
+    }
+  }
+
+  .gallery {
+    padding: 0;
+
+    &__heading {
+      padding: 0 50px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 25px 100px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content;
+
+    .greeting {
+      text-align: left;
+      display: flex;
+      grid-column: 1/ -1;
+
+      &__img {
+        height: 100px;
+      }
+    }
+
+    .button-section {
+      display: none;
+    }
+
+    .discover {
+      grid-row: 3/4;
+    }
+
+    .discography {
+      grid-row: 4/5;
+      grid-column: 1/ -1;
+      border-radius: 15px;
+      display: grid;
+      gap: 25px 100px;
+      grid-template-columns: repeat(2, 1fr);
+
+      .all-albums {
+        border-radius: 15px;
+        height: fit-content;
+      }
+
+      &__heading {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .gallery {
+      grid-row: 3 / 4;
+      display: flex;
+      flex-direction: column;
+
+      &__heading {
+        padding: 0;
+      }
+    }
+
+    .explore {
+      grid-column: 1 / -1;
+    }
+  }
+}
+```
+
+</details>
+
+Set up state in the ExploreAlbums container to store the user input.
 
 Create a function to handle the input. You will need to use the [event](https://reactjs.org/docs/events.html). Drill into it to get the value.
 
