@@ -146,7 +146,7 @@ Create Nav.scss and style the component using the below styles
 
 ```scss
 // Nav.scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .nav {
   display: flex;

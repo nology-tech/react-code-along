@@ -41,7 +41,7 @@ export default ButtonExplore;
 ```
 
 ```scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .button-explore {
   min-width: 80px;
@@ -65,7 +65,7 @@ export default ButtonLetsGo;
 ```
 
 ```scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .button-lets-go {
   min-width: 80px;
@@ -151,7 +151,7 @@ export default App;
 4. Style the section in App.scss.
 
 ```scss
-@import "./assets/sass/variables.scss";
+@use "./assets/sass/_variables.scss" as *;
 
 .app {
   .greeting {

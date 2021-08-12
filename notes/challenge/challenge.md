@@ -16,8 +16,8 @@ The aim of this challenge is to create two button components as shown in the ima
 
 2. When you have created the files you will need to write the JSX and style the components.
 
-- ButtonLetsGo should have a background color the same as the `$color-secondary;` variable from our variables.scss file.
-- ButtonExplore should have a border the same color as our `$color-primary;` variable from our variables.scss file.
+- ButtonLetsGo should have a background color the same as the `$color-secondary;` variable from our \_variables.scss file.
+- ButtonExplore should have a border the same color as our `$color-primary;` variable from our \_variables.scss file.
 
 3. You need to Import your buttons and render them in App.jsx. Can you get them side by side? Flexbox? Grid?
 

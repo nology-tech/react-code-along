@@ -1,4 +1,4 @@
-@import "./assets/sass/variables.scss";
+@use "./assets/sass/_variables.scss" as *;
 
 .app {
   .greeting {
@@ -23,7 +23,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, min-content);
 
-    .greeting{
+    .greeting {
       text-align: left;
       display: flex;
       align-items: center;
