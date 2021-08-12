@@ -30,13 +30,18 @@ Delete the following:
 - logo.svg
 - yarn.lock
 
-Remove the Boilerplate html tags below from public/index.html. You can also update the title.
+Remove the Boilerplate html tags below from public/index.html.
 
 ```html
 <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-<meta name="description" content="Web site created using create-react-app" />
 <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+```
+
+You can also update the title and description meta tag.
+
+```html
+<title>Ear Worm</title> <meta name="description" content="Web site created to learn react concepts" />
 ```
 
 Change the App.js to App.jsx and add in the code below.
@@ -80,10 +85,10 @@ In the assets make two new folders sass, images.
 
 In the images folder add in the 3 images.
 
-Create a variables.scss in the SASS folder. Add in some basic variables
+Create a \_variables.scss in the SASS folder. Add in some basic variables
 
 ```scss
-// variables.scss
+// _variables.scss
 $color-black: #2d3436;
 $color-white: #ffffff;
 $color-primary: #5dadb0;
@@ -97,7 +102,7 @@ Change the App.css to App.scss, delete the boiler plate and add in the code belo
 
 ```scss
 // App.scss
-@import "./assets/sass/variables.scss";
+@use "./assets/sass/_variables.scss" as *;
 
 .app {
   .greeting {
