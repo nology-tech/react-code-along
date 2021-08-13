@@ -143,6 +143,6 @@ const { buttonText, isSecondary } = props;
 ```
 
 ```jsx
-// DiscoverArtistCard
+// ArtistTile
 const { imgSrc, title } = props;
 ```

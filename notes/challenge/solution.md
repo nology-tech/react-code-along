@@ -6,31 +6,31 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 ## Creating & Rendering the Component
 
-1. In the components folder create a DiscoverArtistCard folder. Inside it create jsx and scss files.
+1. In the components folder create a ArtistTile folder. Inside it create jsx and scss files.
 
 2. Import react and create the function for each of your components - remember to export your component.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 import React from 'react'
 
-const DiscoverArtistCard = () => {
+const ArtistTile = () => {
     return (
 
     )
 }
 
-export default DiscoverArtistCard
+export default ArtistTile
 ```
 
 3. Add scss styling.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 
 import React from "react";
 
-import "./DiscoverArtistCard.scss";
+import "./ArtistTile.scss";
 ```
 
 4. In App.jsx, import the component you have created and Render it.
@@ -45,7 +45,7 @@ import Nav from "./components/Nav";
 import Button from "./components/Button";
 import artist from "./data/artist";
 
-import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
+import ArtistTile from "./components/ArtistTile/ArtistTile";
 
 const App = () => {
   const user = {
@@ -81,7 +81,7 @@ const App = () => {
           <Button buttonText={"Lets Go"} isSecondary={true} />
           <Button buttonText={"Explore"} />
         </section>
-        <DiscoverArtistCard />
+        <ArtistTile />
       </div>
     </>
   );
@@ -98,7 +98,7 @@ The component need two props from the artist object. Add the props to component 
 
 ```jsx
 // App.jsx
-<DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+<ArtistTile imgSrc={artist.strArtistThumb} title={artist.strArtist} />
 ```
 
 ---
@@ -108,9 +108,9 @@ The component need two props from the artist object. Add the props to component 
 The component now needs to use the props being passed in. You will need to pass props as a parameter. Now you can access the props object and select the values you need.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 
-const DiscoverArtistCard = props => {
+const ArtistTile = props => {
   return (
     <div>
       <img src={props.imgSrc} />
@@ -129,12 +129,12 @@ const DiscoverArtistCard = props => {
 You can import in the Button component and use it. You will need to give it the correct props.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 import React from "react";
-import "./DiscoverArtistCard.scss";
+import "./ArtistTile.scss";
 import Button from "../Button";
 
-const DiscoverArtistCard = props => {
+const ArtistTile = props => {
   return (
     <div>
       <img src={props.imgSrc} />
@@ -146,7 +146,7 @@ const DiscoverArtistCard = props => {
   );
 };
 
-export default DiscoverArtistCard;
+export default ArtistTile;
 ```
 
 ---
@@ -154,16 +154,16 @@ export default DiscoverArtistCard;
 ## Finished component
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 import React from "react";
-import "./DiscoverArtistCard.scss";
+import "./ArtistTile.scss";
 import Button from "../Button/Button";
 
 const DiscoverArtist = props => {
   return (
-    <div className="discover-artist-card">
-      <img src={props.imgSrc} className="discover-artist-card__img" alt={props.title} />
-      <div className="discover-artist-card__content">
+    <div className="artist-tile">
+      <img src={props.imgSrc} className="artist-tile__img" alt={props.title} />
+      <div className="artist-tile__content">
         <h3>{props.title}</h3>
         <Button buttonText={"Find out more"} isSecondary={true} />
       </div>
@@ -175,10 +175,10 @@ export default DiscoverArtist;
 ```
 
 ```scss
-// DiscoverArtistCards.scss
+// ArtistTiles.scss
 @use "../../assets/sass/_variables.scss" as *;
 
-.discover-artist-card {
+.artist-tile {
   position: relative;
   border-radius: 15px;
   overflow: hidden;

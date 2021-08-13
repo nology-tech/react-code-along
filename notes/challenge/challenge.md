@@ -8,7 +8,7 @@ The aim of this challenge is to get you to practice using props.
 
 You will need to create this component shown in the image below, style and render it in our App.jsx. You will need to pass in two props from src/data/artist.
 
-<img src="./images/discover-artist-card.PNG" width="300"/>
+<img src="./images/artist-tile.PNG" width="300"/>
 
 ---
 
@@ -16,7 +16,7 @@ You will need to create this component shown in the image below, style and rende
 
 **Focus on using props first then style it.**
 
-1. Create the component and call it DiscoverArtistCard. You will need to create a folder, jsx and scss file for it. You will have to import it and render it in App.jsx.
+1. Create the component and call it ArtistTile. You will need to create a folder, jsx and scss file for it. You will have to import it and render it in App.jsx.
 
 2. The component needs two props from the artist object from the data folder. Can you pass strArtist and strArtistThumb into the component?
 
