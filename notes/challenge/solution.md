@@ -10,26 +10,26 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 ```jsx
 // App.jsx
-<DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
+<ArtistTile imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
 ```
 
 2. Add `{ useState }` to the import at the top of component. Initialize the state inside the component.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 
 import React, { useState } from "react";
 
-// Inside the DiscoverArtistCard function.
+// Inside the ArtistTile function.
 const [showText, setShowText] = useState(false);
 ```
 
 3. Write a function to set the state to whatever it is not. The example below uses the [Logical not operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT).
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 
-// Inside the DiscoverArtistCard function.
+// Inside the ArtistTile function.
 const handleClick = () => {
   setShowText(!showText);
 };
@@ -38,17 +38,17 @@ const handleClick = () => {
 4. Add the onClick to the div set it to the function you had just written.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 
 <div onClick={handleClick}>
   <Button buttonText={"Find out more"} isSecondary={true} />
 </div>
 ```
 
-5. Add the image to the DiscoverArtistCard component.
+5. Add the image to the ArtistTile component.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 
 import whiteCross from "../../assets/images/white-cross.png";
 ```
@@ -56,11 +56,11 @@ import whiteCross from "../../assets/images/white-cross.png";
 6. I set two variables one is the initial JSX. This is the button and title which have been saved to a variable called buttonJSX. The JSX for the state change is the title text and cross, which have been saved to a variable called textJSX. In the return statement I check the state if it is meant to show the text it will show textJSX otherwise it will show buttonJSX. The JSX uses the given classNames from the SCSS file, both use the content class but buttonJSX adds the content--button class and textJSX adds the content--text class.
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 
 const buttonJSX = (
-  <div className="discover-artist-card__content discover-artist-card__content--button">
-    <h3 className="discover-artist-card__heading">{title}</h3>
+  <div className="artist-tile__content artist-tile__content--button">
+    <h3 className="artist-tile__heading">{title}</h3>
     <div onClick={handleClick}>
       <Button buttonText={"Find out more"} isSecondary={true} />
     </div>
@@ -68,9 +68,9 @@ const buttonJSX = (
 );
 
 const textJSX = (
-  <div className="discover-artist-card__content discover-artist-card__content--text">
-    <img src={whiteCross} className="discover-artist-card__cross" onClick={handleClick} alt="Close text" />
-    <h3 className="discover-artist-card__heading">{title}</h3>
+  <div className="artist-tile__content artist-tile__content--text">
+    <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
+    <h3 className="artist-tile__heading">{title}</h3>
     {text.split(".").map(sentence => (
       <p>{sentence + "."}</p>
     ))}
@@ -78,8 +78,8 @@ const textJSX = (
 );
 
 return (
-  <div className="discover-artist-card">
-    <img src={imgSrc} className="discover-artist-card__img" alt={props.title} />
+  <div className="artist-tile">
+    <img src={imgSrc} className="artist-tile__img" alt={props.title} />
     {showText ? textJSX : buttonJSX}
   </div>
 );
@@ -90,7 +90,7 @@ return (
 ```jsx
 const textJSX = (
   <div className="content content--text">
-    <img src={whiteCross} className="discover-artist-card__cross" onClick={handleClick} alt="Close text" />
+    <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
     <h3>{title}</h3>
     {text.split(".").map(sentence => (
       <p>{sentence + "."}</p>
@@ -104,14 +104,14 @@ const textJSX = (
 ## Completed Component
 
 ```jsx
-// DiscoverArtistCard.jsx
+// ArtistTile.jsx
 import React, { useState } from "react";
-import "./DiscoverArtistCard.scss";
+import "./ArtistTile.scss";
 
 import Button from "../Button/Button";
 import whiteCross from "../../assets/images/white-cross.png";
 
-const DiscoverArtistCard = props => {
+const ArtistTile = props => {
   const { imgSrc, title, text } = props;
   const [showText, setShowText] = useState(false);
 
@@ -120,8 +120,8 @@ const DiscoverArtistCard = props => {
   };
 
   const buttonJSX = (
-    <div className="discover-artist-card__content discover-artist-card__content--button">
-      <h3 className="discover-artist-card__heading">{title}</h3>
+    <div className="artist-tile__content artist-tile__content--button">
+      <h3 className="artist-tile__heading">{title}</h3>
       <div onClick={handleClick}>
         <Button buttonText={"Find out more"} isSecondary={true} />
       </div>
@@ -129,9 +129,9 @@ const DiscoverArtistCard = props => {
   );
 
   const textJSX = (
-    <div className="discover-artist-card__content discover-artist-card__content--text">
-      <img src={whiteCross} className="discover-artist-card__cross" onClick={handleClick} alt="Close text" />
-      <h3 className="discover-artist-card__heading">{title}</h3>
+    <div className="artist-tile__content artist-tile__content--text">
+      <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
+      <h3 className="artist-tile__heading">{title}</h3>
       {text.split(".").map(sentence => (
         <p>{sentence + "."}</p>
       ))}
@@ -139,12 +139,12 @@ const DiscoverArtistCard = props => {
   );
 
   return (
-    <div className="discover-artist-card">
-      <img src={imgSrc} className="discover-artist-card__img" alt={props.title} />
+    <div className="artist-tile">
+      <img src={imgSrc} className="artist-tile__img" alt={props.title} />
       {showText ? textJSX : buttonJSX}
     </div>
   );
 };
 
-export default DiscoverArtistCard;
+export default ArtistTile;
 ```

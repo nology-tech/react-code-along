@@ -4,8 +4,8 @@ import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
 import Nav from "./components/Nav/Nav";
 import Button from "./components/Button/Button";
-import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
-import DiscographyCardList from "./components/DiscographyCardList/DiscographyCardList";
+import ArtistTile from "./components/ArtistTile/ArtistTile";
+import AlbumTiles from "./components/AlbumTiles/AlbumTiles";
 
 import albums from "./data/albums";
 import artist from "./data/artist";
@@ -58,18 +58,18 @@ const App = () => {
 
         <section className="discover">
           <h2>Discover</h2>
-          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
+          <ArtistTile imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
         </section>
 
         <section className="discography">
           <h2 className="discography__heading">Discography</h2>
 
           <div className="all-albums">
-            <DiscographyCardList title="Albums" albumsArr={filteredAlbums} />
+            <AlbumTiles title="Albums" albumsArr={filteredAlbums} />
           </div>
 
           <div className="highest-rated">
-            <DiscographyCardList title="Highest Rated" albumsArr={highestRating} />
+            <AlbumTiles title="Highest Rated" albumsArr={highestRating} />
           </div>
         </section>
       </div>

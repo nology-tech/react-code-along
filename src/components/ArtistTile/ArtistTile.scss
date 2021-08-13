@@ -1,6 +1,6 @@
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
-.discover-artist-card {
+.artist-tile {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
@@ -34,7 +34,7 @@
       white-space: pre-line;
     }
   }
-  
+
   &__heading {
     margin: 20px 0;
     font-size: 25px;

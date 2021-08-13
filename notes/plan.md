@@ -43,7 +43,7 @@ export default Carousel;
 
 ```scss
 // Carousel.scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .carousel {
   display: flex;
@@ -129,9 +129,9 @@ You will need to update the App.scss with the new styles below.
 
 ```scss
 // App.scss
-@import "./assets/sass/variables.scss";
+@use "./assets/sass/_variables.scss" as *;
 
-@import "./assets/sass/variables.scss";
+@use "./assets/sass/_variables.scss" as *;
 
 .app {
   color: $color-black;
