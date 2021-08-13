@@ -25,8 +25,8 @@ const ArtistTile = props => {
     <div className="artist-tile__content artist-tile__content--text">
       <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
       <h3 className="artist-tile__heading">{title}</h3>
-      {text.split(".").map(sentence => (
-        <p>{sentence + "."}</p>
+      {text.split(".").map((sentence, index) => (
+        <p key={title + index}>{sentence + "."}</p>
       ))}
     </div>
   );
