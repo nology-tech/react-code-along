@@ -113,7 +113,7 @@ export default NavMenu;
 <summary>NavMenu.scss</summary>
 
 ```scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .nav {
   display: flex;

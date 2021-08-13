@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import SearchBox from "../../components/SearchBox/SearchBox";
-import DiscographyCardList from "../../components/DiscographyCardList/DiscographyCardList";
+import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
 
 const ExploreAlbums = props => {
   const { albumsArr } = props;
@@ -21,7 +21,7 @@ const ExploreAlbums = props => {
   return (
     <>
       <SearchBox label={"albums"} searchTerm={searchTerm} handleInput={handleInput} />
-      <DiscographyCardList title={"Results"} albumsArr={filteredAlbums} />
+      <AlbumTiles title={"Results"} albumsArr={filteredAlbums} />
     </>
   );
 };

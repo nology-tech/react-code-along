@@ -1,6 +1,6 @@
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
-.card-list {
+.album-tiles {
   width: 100%;
   flex: 1;
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 @media (min-width: 992px) {
-  .card-list {
+  .album-tiles {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;

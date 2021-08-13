@@ -1,4 +1,4 @@
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .carousel {
   display: flex;

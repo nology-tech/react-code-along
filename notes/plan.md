@@ -49,7 +49,7 @@ export default SettingsMenu;
 <summary>SettingsMenu.scss</summary>
 
 ```scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .settings-menu {
   background-color: $color-black;
@@ -254,7 +254,7 @@ export default SearchBox;
 <summary>SearchBox.scss</summary>
 
 ```scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .search-box {
   display: flex;
@@ -298,9 +298,9 @@ Creating the Explore Albums Container.
 
 In src create a containers folder. In the folder create a ExploreAlbums folder and a ExploreAlbums.jsx file.
 
-The container accepts a albumsArr prop. It needs to import SearchBox and DiscographyCardList components.
+The container accepts a albumsArr prop. It needs to import SearchBox and AlbumTiles components.
 
-It will capture user input using the SearchBox, filter the albumsArr with the input and display it with the DiscographyCardList component.
+It will capture user input using the SearchBox, filter the albumsArr with the input and display it with the AlbumTiles component.
 
 <details>
 <summary>ExploreAlbums.jsx</summary>
@@ -309,7 +309,7 @@ It will capture user input using the SearchBox, filter the albumsArr with the in
 import React from "react";
 
 import SearchBox from "../../components/SearchBox/SearchBox";
-import DiscographyCardList from "../../components/DiscographyCardList/DiscographyCardList";
+import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
 
 const ExploreAlbums = props => {
   const { albumsArr } = props;
@@ -317,7 +317,7 @@ const ExploreAlbums = props => {
   return (
     <>
       <SearchBox label={"albums"} />
-      <DiscographyCardList title={"Results"} />
+      <AlbumTiles title={"Results"} />
     </>
   );
 };
@@ -370,7 +370,7 @@ const filteredAlbums = albumsArr.filter(album => {
 });
 ```
 
-Pass the filteredAlbums to the DiscographyCardList component.
+Pass the filteredAlbums to the AlbumTiles component.
 
 <details>
 <summary>Completed ExploreAlbums</summary>
@@ -379,7 +379,7 @@ Pass the filteredAlbums to the DiscographyCardList component.
 import React, { useState } from "react";
 
 import SearchBox from "../../components/SearchBox/SearchBox";
-import DiscographyCardList from "../../components/DiscographyCardList/DiscographyCardList";
+import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
 
 const ExploreAlbums = props => {
   const { albumsArr } = props;
@@ -399,7 +399,7 @@ const ExploreAlbums = props => {
   return (
     <>
       <SearchBox label={"albums"} searchTerm={searchTerm} handleInput={handleInput} />
-      <DiscographyCardList title={"Results"} albumsArr={filteredAlbums} />
+      <AlbumTiles title={"Results"} albumsArr={filteredAlbums} />
     </>
   );
 };
