@@ -259,7 +259,7 @@ In the AlbumTiles map over the array and create `<img>` tags for each of the str
 const AlbumTiles = props => {
   const { title, albumsArr } = props;
   console.log(albumsArr);
-  const cardListJSX = albumsArr.map(album => <img className="album-tiles__img" src={album.strAlbumThumb} />);
+  const cardListJSX = albumsArr.map(album => <img className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum}/>);
   return (
     <>
       <h3>{title}</h3>
@@ -285,7 +285,7 @@ Show the console and the error that is being displayed. Explain why each item wi
 ```jsx
 // AlbumTiles.jsx
 const cardListJSX = albumsArr.map((album, index) => (
-  <img key={title + (index + 1)} className="album-tiles__img" src={album.strAlbumThumb} />
+  <img key={title + (index + 1)} className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum}/>
 ));
 ```
 
