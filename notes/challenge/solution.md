@@ -176,7 +176,7 @@ export default DiscoverArtist;
 
 ```scss
 // DiscoverArtistCards.scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .discover-artist-card {
   position: relative;
@@ -213,4 +213,3 @@ export default DiscoverArtist;
   }
 }
 ```
-

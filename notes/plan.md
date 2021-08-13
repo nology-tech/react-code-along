@@ -33,7 +33,7 @@ export default Button;
 
 ```scss
 // Button.scss
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .button {
   min-width: 80px;
@@ -131,7 +131,9 @@ console.log(artist.strArtist);
 
 ## Object Destructuring
 
-Lets refactor our components with object destructuring
+Lets refactor our components with object destructuring.
+
+[MDN Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 ```jsx
 // Button.jsx

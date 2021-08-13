@@ -1,4 +1,4 @@
-@import "../../assets/sass/variables.scss";
+@use "../../assets/sass/_variables.scss" as *;
 
 .button-lets-go {
   min-width: 80px;
