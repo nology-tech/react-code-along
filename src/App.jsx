@@ -5,7 +5,7 @@ import moon from "./assets/images/moon.png";
 import Nav from "./components/Nav/Nav";
 import Button from "./components/Button/Button";
 import artist from "./data/artist";
-import DiscoverArtistCard from "./components/DiscoverArtistCard/DiscoverArtistCard";
+import ArtistTile from "./components/ArtistTile/ArtistTile";
 
 const App = () => {
   const user = {
@@ -43,7 +43,7 @@ const App = () => {
         </section>
         <section className="discover">
           <h2>Discover</h2>
-          <DiscoverArtistCard imgSrc={artist.strArtistThumb} title={artist.strArtist} />
+          <ArtistTile imgSrc={artist.strArtistThumb} title={artist.strArtist} />
         </section>
       </div>
     </>

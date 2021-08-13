@@ -63,31 +63,31 @@ console.log(albums);
 
 ---
 
-## CA: Creating the DiscographyCardList component.
+## CA: Creating the AlbumTiles component.
 
-Create a DiscographyCardList component with .jsx and .scss files.
+Create a AlbumTiles component with .jsx and .scss files.
 
 ```jsx
-// DiscographyCardList.jsx
+// AlbumTiles.jsx
 import React from "react";
 
-import "./DiscographyCardList.scss";
+import "./AlbumTiles.scss";
 
-const DiscographyCardList = () => {
-  return <p>DiscographyCardList works</p>;
+const AlbumTiles = () => {
+  return <p>AlbumTiles works</p>;
 };
 
-export default DiscographyCardList;
+export default AlbumTiles;
 ```
 
 <details>
-<summary>Completed DiscographyCardList.scss</summary>
+<summary>Completed AlbumTiles.scss</summary>
 
 ```scss
-// DiscographyCardList.scss
-@import "../../assets/sass/variables.scss";
+// AlbumTiles.scss
+@use "../../assets/sass/_variables.scss" as *;
 
-.card-list {
+.album-tiles {
   width: 100%;
   flex: 1;
   display: flex;
@@ -106,7 +106,7 @@ export default DiscographyCardList;
 }
 
 @media (min-width: 992px) {
-  .card-list {
+  .album-tiles {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
@@ -124,7 +124,7 @@ export default DiscographyCardList;
 
 <br/>
 
-Import the component into App.jsx. Add a section, h2, div and DiscographyCardList inside the app div.
+Import the component into App.jsx. Add a section, h2, div and AlbumTiles inside the app div.
 
 ```jsx
 // App.jsx
@@ -133,7 +133,7 @@ Import the component into App.jsx. Add a section, h2, div and DiscographyCardLis
   <h2>Discography</h2>
 
   <div className="all-albums">
-    <DiscographyCardList />
+    <AlbumTiles />
   </div>
 </section>
 ```
@@ -145,7 +145,7 @@ Update the App.scss with the new styles below.
 
 ```scss
 // App.scss
-@import "./assets/sass/variables.scss";
+@use "./assets/sass/_variables.scss" as *;
 
 .app {
   color: $color-black;
@@ -244,26 +244,26 @@ Update the App.scss with the new styles below.
 
 ## CA: How do you work with arrays?
 
-Update the App.jsx and DiscographyCardList.jsx to accept and give these two props, title and albumsArr.
-In the DiscographyCardList map over the array and create `<img>` tags for each of the strAlbumThumb keys from each album object from the array given. Render this to page.
+Update the App.jsx and AlbumTiles.jsx to accept and give these two props, title and albumsArr.
+In the AlbumTiles map over the array and create `<img>` tags for each of the strAlbumThumb keys from each album object from the array given. Render this to page.
 
 ```jsx
 // App.jsx
 <div className="all-albums">
-  <DiscographyCardList title="Albums" albumsArr={albums} />
+  <AlbumTiles title="Albums" albumsArr={albums} />
 </div>
 ```
 
 ```jsx
-// DiscographyCardList.jsx
-const DiscographyCardList = props => {
+// AlbumTiles.jsx
+const AlbumTiles = props => {
   const { title, albumsArr } = props;
   console.log(albumsArr);
-  const cardListJSX = albumsArr.map(album => <img className="card-list__img" src={album.strAlbumThumb} />);
+  const cardListJSX = albumsArr.map(album => <img className="album-tiles__img" src={album.strAlbumThumb} />);
   return (
     <>
       <h3>{title}</h3>
-      <div className="card-list">{cardListJSX}</div>
+      <div className="album-tiles">{cardListJSX}</div>
     </>
   );
 };
@@ -280,12 +280,12 @@ const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
 
 ## Why each item needs a key?
 
-Show the console and the error that is being displayed. Explain why each item will need its own unique key. Update the DiscographyCardList component to give each `<img>` its own key when you map over it.
+Show the console and the error that is being displayed. Explain why each item will need its own unique key. Update the AlbumTiles component to give each `<img>` its own key when you map over it.
 
 ```jsx
-// DiscographyCardList.jsx
+// AlbumTiles.jsx
 const cardListJSX = albumsArr.map((album, index) => (
-  <img key={title + (index + 1)} className="card-list__img" src={album.strAlbumThumb} />
+  <img key={title + (index + 1)} className="album-tiles__img" src={album.strAlbumThumb} />
 ));
 ```
 
