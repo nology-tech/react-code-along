@@ -10,7 +10,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import ExploreAlbums from "../../containers/ExploreAlbums/ExploreAlbums";
 
 const Home = props => {
-  const { user, albums, artist } = props;
+  const { user, unsortedAlbums, sortedAlbums, artist } = props;
 
   const currentHour = new Date().getHours();
   let greetingImg = sunrise;
@@ -25,13 +25,6 @@ const Home = props => {
     greetingImg = moon;
     greetingTime = "Evening!";
   }
-
-  const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
-
-  const highestRating = albums
-    .filter(album => album.intScore)
-    .sort((a, b) => b.intScore - a.intScore)
-    .slice(0, 9);
 
   const galleryImages = [
     artist.strArtistFanart,
@@ -49,26 +42,23 @@ const Home = props => {
             Good {greetingTime} <br /> {user.firstName} {user.lastName}
           </h1>
         </header>
-
         <section className="button-section">
           <Button buttonText={"Lets Go"} isSecondary={true} />
           <Button buttonText={"Explore"} />
         </section>
-
         <section className="discover">
           <h2>Discover</h2>
           <ArtistTile imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
         </section>
-
         <section className="discography">
           <h2 className="discography__heading">Discography</h2>
 
           <div className="all-albums">
-            <AlbumTiles title="Albums" albumsArr={filteredAlbums} />
+            <AlbumTiles title="Albums" albumsArr={unsortedAlbums.slice(0, 9)} />
           </div>
 
           <div className="highest-rated">
-            <AlbumTiles title="Highest Rated" albumsArr={highestRating} />
+            <AlbumTiles title="Highest Rated" albumsArr={sortedAlbums.slice(0, 9)} />
           </div>
         </section>
 
@@ -76,10 +66,9 @@ const Home = props => {
           <h2 className="gallery__heading">Gallery</h2>
           <Carousel imagesArr={galleryImages} />
         </section>
-
         <section className="explore">
           <h2 className="explore__heading">Explore</h2>
-          <ExploreAlbums albumsArr={albums} />
+          <ExploreAlbums albumsArr={unsortedAlbums} />
         </section>
       </div>
     </>

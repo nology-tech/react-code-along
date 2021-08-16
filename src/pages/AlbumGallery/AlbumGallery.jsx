@@ -1,23 +1,23 @@
 import React from "react";
 
-import "./AllAlbums.scss";
+import "./AlbumGallery.scss";
 
 import Carousel from "../../components/Carousel/Carousel";
 
-const AllAlbums = props => {
-  const { albums } = props;
+const AlbumGallery = props => {
+  const { albums, title } = props;
 
   const imagesArr = albums.filter(album => album.strAlbumThumb).map(album => album.strAlbumThumb);
 
   return (
-    <section className="all-albums">
-      <h1 className="all-albums__heading">All Albums</h1>
+    <section className="album-gallery">
+      <h1 className="album-gallery__heading">{title}</h1>
 
-      <div className="all-albums__carousel">
+      <div className="album-gallery__carousel">
         <Carousel imagesArr={imagesArr} />
       </div>
     </section>
   );
 };
 
-export default AllAlbums;
+export default AlbumGallery;

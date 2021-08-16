@@ -2,11 +2,15 @@ import React from "react";
 
 import "./AlbumTiles.scss";
 
+import { Link } from "react-router-dom";
+
 const AlbumTiles = props => {
   const { title, albumsArr } = props;
 
   const cardListJSX = albumsArr.map((album, index) => (
-    <img className="album-tiles__img" key={title + (index + 1)} src={album.strAlbumThumb} alt={album.strAlbum} />
+    <Link to={`/album/${album.idAlbum}`}>
+      <img className="album-tiles__img" key={title + (index + 1)} src={album.strAlbumThumb} alt={album.strAlbum} />
+    </Link>
   ));
   return (
     <>

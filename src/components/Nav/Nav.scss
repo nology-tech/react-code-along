@@ -15,14 +15,15 @@
 @media (min-width: 992px) {
   .nav {
     grid-column: 1 / -1;
-    &__heading {
-      margin: 20px auto;
-    }
-
-    &__item {
-      &--menu {
-        display: none;
-      }
-    }
   }
 }
+
+// &__heading {
+//   margin: 20px auto;
+// }
+
+// &__item {
+//   &--menu {
+//     display: none;
+//   }
+// }

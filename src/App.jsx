@@ -1,17 +1,15 @@
 import "./App.scss";
-import sunrise from "./assets/images/sunrise.png";
-import sun from "./assets/images/sun.png";
-import moon from "./assets/images/moon.png";
 
 import Nav from "./components/Nav/Nav";
 import Home from "./pages/Home/Home";
-import AllAlbums from "./pages/AllAlbums/AllAlbums";
+import AllAlbums from "./pages/AlbumGallery/AlbumGallery";
+import AlbumInfo from "./pages/AlbumInfo/AlbumInfo";
 
 import albums from "./data/albums";
 import artist from "./data/artist";
 import { useState } from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   const [user, setUser] = useState({
@@ -25,6 +23,10 @@ const App = () => {
     setUser({ ...user, [inputKey]: inputValue });
   };
 
+  const filteredAlbums = albums.filter(album => album.strAlbumThumb);
+
+  const highestRating = albums.filter(album => album.intScore).sort((a, b) => b.intScore - a.intScore);
+
   return (
     <>
       <Router>
@@ -33,11 +35,19 @@ const App = () => {
 
           <Switch>
             <Route path="/all">
-              <AllAlbums albums={albums} />
+              <AllAlbums albums={filteredAlbums} title={"All Albums"} />
+            </Route>
+
+            <Route path="/rating">
+              <AllAlbums albums={highestRating} title={"Highest Rating"} />
+            </Route>
+
+            <Route path="/album/:albumId">
+              <AlbumInfo albumsArr={filteredAlbums} />
             </Route>
 
             <Route path="/">
-              <Home user={user} albums={albums} artist={artist} />
+              <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
             </Route>
           </Switch>
         </div>

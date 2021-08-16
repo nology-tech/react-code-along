@@ -9,10 +9,12 @@
   bottom: 0;
   z-index: 5;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__cross {
     position: absolute;
@@ -26,5 +28,30 @@
 
   &__item {
     font-size: 30px;
+    text-decoration: none;
+    color: $color-black;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-menu {
+    background-color: rgba($color-black, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+      position: relative;
+      background-color: $color-secondary;
+      width: 30%;
+      height: 30vw;
+      border-radius: 15px;
+    }
+
+    &__cross {
+      top: 20px;
+      left: 20px;
+    }
   }
 }
