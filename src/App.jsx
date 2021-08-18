@@ -37,7 +37,7 @@ const App = () => {
             <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
           </Route>
 
-          <Route path="/highest-rating">
+          <Route path="/rated-albums">
             <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
           </Route>
 
