@@ -2,7 +2,7 @@ import "./App.scss";
 
 import Nav from "./components/Nav/Nav";
 import Home from "./containers/Home/Home";
-import AllAlbums from "./containers/AlbumGallery/AlbumGallery";
+import AlbumGallery from "./containers/AlbumGallery/AlbumGallery";
 import AlbumInfo from "./containers/AlbumInfo/AlbumInfo";
 
 import albums from "./data/albums";
@@ -28,31 +28,28 @@ const App = () => {
   const highestRating = albums.filter(album => album.intScore).sort((a, b) => b.intScore - a.intScore);
 
   return (
-    <>
-      <Router>
-        <div className="app">
-          <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
+    <Router>
+      <div className="app">
+        <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
 
-          <Switch>
-            <Route path="/all-albums">
-              <AllAlbums albumsArr={filteredAlbums} title={"All Albums"} />
-            </Route>
+        <Switch>
+          <Route path="/all-albums">
+            <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
+          </Route>
 
-            <Route path="/highest-rating">
-              <AllAlbums albumsArr={highestRating} title={"Rated Albums"} />
-            </Route>
+          <Route path="/highest-rating">
+            <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
+          </Route>
 
-            <Route path="/album-info/:albumId">
-              <AlbumInfo albumsArr={filteredAlbums} />
-            </Route>
-
-            <Route path="/">
-              <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </>
+          <Route path="/album-info/:albumId">
+            <AlbumInfo albumsArr={filteredAlbums} />
+          </Route>
+          <Route path="/">
+            <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

@@ -2,287 +2,168 @@
 
 ## Objectives
 
-- How can we use functions as props to trigger components to be shown or hidden?
-- How can we use functions as props to capture a users input to filter some data?
+- Why have we refactored the project?
+- What is a SPA and how do we add react-router to our project?
+- How can we implement routing in our Application?
+- How can we use queryParams from the url?
 
 ---
 
-## How can we use functions as props to trigger components to be shown or hidden?
+## Why have we refactored the project?
 
-Creating the SettingsMenu Component.
+The project is growing and we are going to introduce multiple pages to it.
 
-This is going to be the child component that responds to state change. It also needs a way of changing state as well so we will be passing it a function to do so.
+The previous content from the App has been moved into the Home container. The App is now going to be responsible for navigating around the application rather then what is being shown. We will leave this to the containers.
 
-Create a SettingsMenu component. This is going to accept a prop called userName.
+The user state, artist and album data is needed in multiple places in the project. This is why it is being kept in the app so it can be passed with props.
 
-Copy the JSX and SCSS files below.
+---
 
-<details>
-<summary>SettingsMenu.jsx</summary>
+## What is a SPA and how do we add react-router to our project?
 
-```jsx
-import React from "react";
+A SPA is a web application or website that dynamically rewrites the current web page instead loading entire new pages.
 
-import "./SettingsMenu.scss";
-import whiteCross from "../../assets/images/white-cross.png";
-import profilePicture from "../../assets/images/profile-picture.png";
+Show them [React Router](https://reactrouter.com/web/guides/quick-start) this is the package we will use to implement routing in our project. There are others.
 
-const SettingsMenu = props => {
-  const { userName } = props;
-  return (
-    <div className="settings-menu">
-      <div className="settings-menu__content">
-        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" />
-        <img src={profilePicture} className="settings-menu__profile" />
-        <h2 className="settings-menu__title">{userName}</h2>
-      </div>
-    </div>
-  );
-};
+Highlight that the React router doc's are easy to follow.
 
-export default SettingsMenu;
+To add it to the project run.
+
+```bash
+npm install react-router-dom
 ```
 
-</details>
+---
 
-<details>
-<summary>SettingsMenu.scss</summary>
+## Part 1: How can we implement routing in our Application?
 
-```scss
-@use "../../assets/sass/_variables.scss" as *;
+Once the package has been installed we can use the components to add routing.
 
-.settings-menu {
-  background-color: $color-black;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 5;
+In App.jsx import the following components.
 
-  &__content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__cross {
-    position: absolute;
-    top: 20px;
-    left: 50px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  &__title {
-    color: $color-white;
-    font-size: 30px;
-  }
-}
-
-@media (min-width: 992px) {
-  .settings-menu {
-    background-color: rgba($color-black, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &__content {
-      position: relative;
-      background-color: $color-black;
-      width: 30%;
-      height: 80%;
-      border-radius: 15px;
-    }
-
-    &__cross {
-      top: 20px;
-      left: 20px;
-    }
-  }
-}
-```
-
-</details>
-
-In App.jsx pass the userName prop to Nav.jsx. This will be created from the user object.
+_We are using `BrowserRouter as Router` to be consistent with the react router docs._
 
 ```jsx
 // App.jsx
 
-<Nav userName={`${user.firstName} ${user.lastName}`}
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 ```
 
-The SettingsMenu is going to be a child component of Nav.jsx. Import it into the Nav component and pass it the userName prop.
+Wrap the entire application inside the Router component. If you want to use routing it has to be inside this component.
+
+Add the Switch component below the Nav. Inside the Switch use the Route component. Inside the Route add the Home component.
+
+Add the path prop to Route and set the value to "/". This is going to be the default path. If it does not find a route it will take us to this page.
 
 ```jsx
-// Nav.jsx
+// App.jsx
 
-import SettingsMenu from "../SettingsMenu/SettingsMenu";
+return (
+  <Router>
+    <div className="app">
+      <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
 
-const Nav = props => {
-  const { userName } = props;
-
-  return (
-    <nav className="nav">
-      <SettingsMenu userName={userName} />
-      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
-      <h2 className="nav__heading">Ear Worm</h2>
-      <img src={settings} className="nav__item" alt="settings icon" />
-    </nav>
-  );
-};
-```
-
-Now the component should be constantly visible. We want to alter that so it responds to state.
-
-Add state to the Nav component and write a function to toggle state change. Have SettingsMenu only be visible if the state is true.
-
-Have the settings icon use the function to toggle state change on click.
-
-```jsx
-// Nav.jsx
-const Nav = props => {
-  const { userName } = props;
-  const [showSettings, setShowSettings] = useState(false);
-
-  const toggleSettings = () => {
-    setShowSettings(!showSettings);
-  };
-
-  return (
-    <nav className="nav">
-      {showSettings && <SettingsMenu userName={userName}>}
-      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
-      <h2 className="nav__heading">Ear Worm</h2>
-      <img src={settings} className="nav__item" alt="settings icon" onClick={toggleSettings} />
-    </nav>
-  );
-};
-```
-
-The last part of the puzzle is passing the toggleSettings function to the SettingsMenu component with props. This is so hide the menu when the cross is clicked.
-
-In Nav.jsx add toggleSetting prop to the component and pass in the toggleSettings function.
-
-```jsx
-// Nav.jsx
-
- {showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings}>}
-```
-
-In the SettingsMenu.jsx component get it to accept the toggleSettings prop. Add a onClick to the white cross and have it use the toggle settings function to change the state.
-
-The finished component is below.
-
-<details>
-<summary>SettingsMenu.jsx</summary>
-
-```jsx
-import React from "react";
-
-import "./SettingsMenu.scss";
-import whiteCross from "../../assets/images/white-cross.png";
-import profilePicture from "../../assets/images/profile-picture.png";
-
-const SettingsMenu = props => {
-  const { userName, toggleSettings } = props;
-  return (
-    <div className="settings-menu">
-      <div className="settings-menu__content">
-        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" onClick={toggleSettings} />
-        <img src={profilePicture} className="settings-menu__profile" />
-        <h2 className="settings-menu__title">{userName}</h2>
-      </div>
+      <Switch>
+        <Route path="/">
+          <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+        </Route>
+      </Switch>
     </div>
-  );
-};
-
-export default SettingsMenu;
+  </Router>
+);
 ```
 
-</details>
+Thats setting up the path now we need to link to it.
 
-<br/>
+In the NavMenu import the Link, replace `<p className="nav-menu__item" >Home</p>` with the Link component.
+
+Add the to prop to the Link and set the value to "/". Add the toggleNav to run onClick to hide the nav once the link has been clicked.
+
+```jsx
+// NavMenu.jsx
+
+import { Link } from "react-router-dom";
+
+// In the return NavMenu.jsx
+<Link className="nav-menu__item" to="/" onClick={toggleNav}>
+  Home
+</Link>;
+```
 
 ---
 
-## How can we use functions as props to capture a users input to filter some data?
+## Creating AlbumGallery container
 
-Creating the Search Box Component.
+This is going to be a reuseable page to link to. It takes a title and albumsArr as props.
 
-This component is going to capture user input and pass it back to its parent component.
+It filters the albumsArr remove any albums without img URLs , it then maps over to create a array of the img URLS. This will be given to the Carousel component.
 
-It accepts three props label, searchTerm and handleInput.
+In src/containers create the AlbumGallery folder and jsx and scss files.
 
-Create the SearchBox component.
-
-Copy the JSX and SCSS files below.
+The completed files are below;
 
 <details>
-<summary>SearchBox.jsx</summary>
+<summary>AlbumGallery.jsx</summary>
 
 ```jsx
+// AlbumGallery.jsx
+
 import React from "react";
 
-import "./SearchBox.scss";
+import "./AlbumGallery.scss";
 
-const SearchBox = props => {
-  const { label, searchTerm, handleInput } = props;
+import Carousel from "../../components/Carousel/Carousel";
 
-  const capitalizedLabel = label[0].toUpperCase() + label.slice(1);
+const AlbumGallery = props => {
+  const { albumsArr, title } = props;
+
+  const imagesArr = albumsArr.filter(album => album.strAlbumThumb).map(album => album.strAlbumThumb);
 
   return (
-    <form className="search-box">
-      <label htmlFor={label} className="search-box__label">
-        {capitalizedLabel}
-      </label>
-      <input type="text" name={label} value={searchTerm} onInput={handleInput} className="search-box__input" />
-    </form>
+    <section className="album-gallery">
+      <h1 className="album-gallery__heading">{title}</h1>
+
+      <div className="album-gallery__carousel">
+        <Carousel imagesArr={imagesArr} />
+      </div>
+    </section>
   );
 };
 
-export default SearchBox;
+export default AlbumGallery;
 ```
 
 </details>
 
 <details>
-<summary>SearchBox.scss</summary>
+<summary>AlbumGallery.scss</summary>
 
 ```scss
-@use "../../assets/sass/_variables.scss" as *;
+// AlbumGallery.scss
 
-.search-box {
-  display: flex;
-  flex-direction: column;
-
-  &__label {
-    font-size: 20px;
-  }
-
-  &__input {
-    margin: 20px 0;
-    padding: 10px;
-    font-size: 18px;
-    border: 5px $color-grey solid;
-    border-radius: 15px;
-    color: $color-black;
-
-    &:focus {
-      border: 5px $color-primary solid;
-      outline: none;
-    }
+.album-gallery {
+  &__heading {
+    padding: 0 50px;
+    font-size: 30px;
+    text-align: center;
   }
 }
 
 @media (min-width: 992px) {
-  .search-box {
-    &__input {
-      width: calc((100% / 3) - 50px);
+  .album-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px 50px;
+    padding: 0 50px;
+
+    &__heading {
+      grid-column: 1 / -1;
+      padding: 0;
+    }
+
+    &__carousel {
+      width: 100%;
+      grid-column: 2/4;
     }
   }
 }
@@ -290,126 +171,57 @@ export default SearchBox;
 
 </details>
 
-<br/>
+---
 
-With the child component created move onto creating the parent container.
+## Part 2: How can we implement routing in our Application?
 
-Creating the Explore Albums Container.
+It is time to hook up our new page.
 
-In src create a containers folder. In the folder create a ExploreAlbums folder and a ExploreAlbums.jsx file.
+In App.jsx import in the AlbumGallery container. Add a new Route to the Switch component. Set the path prop on the Route to "/all-albums".
 
-The container accepts a albumsArr prop. It needs to import SearchBox and AlbumTiles components.
-
-It will capture user input using the SearchBox, filter the albumsArr with the input and display it with the AlbumTiles component.
-
-<details>
-<summary>ExploreAlbums.jsx</summary>
+Inside the Route Add in the AlbumGallery component and give it the albumsArr and title props it needs.
 
 ```jsx
-import React from "react";
+// App.jsx
 
-import SearchBox from "../../components/SearchBox/SearchBox";
-import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
+<Switch>
+  <Route path="/all-albums">
+    <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
+  </Route>
 
-const ExploreAlbums = props => {
-  const { albumsArr } = props;
-
-  return (
-    <>
-      <SearchBox label={"albums"} />
-      <AlbumTiles title={"Results"} />
-    </>
-  );
-};
-
-export default ExploreAlbums;
+  <Route path="/">
+    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+  </Route>
+</Switch>
 ```
 
-</details>
-
-<br/>
-
-Set up state in the container to store the user input.
-
-Create a function to handle the input. You will need to use the [event](https://reactjs.org/docs/events.html). Drill into it to get the value.
-
-This function will need to clean the input to get the best results from the filter.
+In the NavMenu add a new link to take you to that page.
 
 ```jsx
-// ExploreAlbums.jsx
+// NavMenu.jsx
 
-const [searchTerm, setSearchTerm] = useState("");
-
-const handleInput = event => {
-  const cleanInput = event.target.value.toLowerCase().trim();
-  setSearchTerm(cleanInput);
-};
+<Link className="nav-menu__item" to="/all-albums" onClick={toggleNav}>
+  All Albums
+</Link>
 ```
 
-Pass the searchTerm state and handleInput function to the SearchBox component.
+That should all be hooked up.
+
+Demonstrate what happens if the Route with the `path="/"` is the first in the Switch as this will probably catch them out.
 
 ```jsx
-// ExploreAlbums.jsx
+// App.jsx
 
-<SearchBox label={"albums"} searchTerm={searchTerm} handleInput={handleInput} />
+<Switch>
+  <Route path="/">
+    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+  </Route>
+
+  <Route path="/all-albums">
+    <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
+  </Route>
+</Switch>
 ```
-
-The next step is to use the search term to filter the albumsArr. On each album object you can use the strAlbum key to see if the searchTerm is included.
-
-You will need to set the strAlbum to lowercase to get the best match.
-
-You can check the strAlbumThumb key as well to make sure it has a img url.
-
-```jsx
-// ExploreAlbums.jsx
-
-const filteredAlbums = albumsArr.filter(album => {
-  const albumTitleLower = album.strAlbum.toLowerCase();
-
-  return albumTitleLower.includes(searchTerm) && album.strAlbumThumb;
-});
-```
-
-Pass the filteredAlbums to the AlbumTiles component.
-
-<details>
-<summary>Completed ExploreAlbums</summary>
-
-```jsx
-import React, { useState } from "react";
-
-import SearchBox from "../../components/SearchBox/SearchBox";
-import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
-
-const ExploreAlbums = props => {
-  const { albumsArr } = props;
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleInput = event => {
-    const cleanInput = event.target.value.toLowerCase().trim();
-    setSearchTerm(cleanInput);
-  };
-
-  const filteredAlbums = albumsArr.filter(album => {
-    const albumTitleLower = album.strAlbum.toLowerCase();
-
-    return albumTitleLower.includes(searchTerm) && album.strAlbumThumb;
-  });
-
-  return (
-    <>
-      <SearchBox label={"albums"} searchTerm={searchTerm} handleInput={handleInput} />
-      <AlbumTiles title={"Results"} albumsArr={filteredAlbums} />
-    </>
-  );
-};
-
-export default ExploreAlbums;
-```
-
-</details>
-
-<br/>
 
 ---
 

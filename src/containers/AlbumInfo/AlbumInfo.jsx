@@ -10,7 +10,7 @@ const AlbumInfo = props => {
 
   const currentAlbum = albumsArr.find(album => album.idAlbum === albumId);
 
-  const shortenedText = currentAlbum.strDescriptionEN.split(/[.] /).slice(0, 3).join(".");
+  const shortenedText = currentAlbum.strDescriptionEN?.split(/[.] /).slice(0, 3).join(".");
 
   return (
     <article className="album-info">
@@ -23,7 +23,7 @@ const AlbumInfo = props => {
       </div>
       <div className="album-info__content">
         <h2 className="album-info__heading">{currentAlbum.strAlbum}</h2>
-        <p>{shortenedText}.</p>
+        <p>{shortenedText || "..."}</p>
         <h2 className="album-info__heading">Facts</h2>
         <ul className="album-info__facts">
           <li>Mood : {currentAlbum.strMood} </li>
