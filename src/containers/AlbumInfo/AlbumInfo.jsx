@@ -18,7 +18,7 @@ const AlbumInfo = props => {
         <img
           src={currentAlbum.strAlbumThumb}
           alt={currentAlbum.strAlbum}
-          className="album-info__img album-info__img--top"
+          className="album-info__img album-info__img--first"
         />
       </div>
       <div className="album-info__content">
@@ -36,7 +36,7 @@ const AlbumInfo = props => {
         <img
           src={currentAlbum.strAlbumThumb}
           alt={currentAlbum.strAlbum}
-          className="album-info__img album-info__img--bottom"
+          className="album-info__img album-info__img--last"
         />
       </div>
     </article>

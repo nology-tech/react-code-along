@@ -1,4 +1,4 @@
-# Challenge: Functions as Props
+# Challenge: Routing
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 

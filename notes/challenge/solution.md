@@ -1,4 +1,4 @@
-# Solution: Functions as Props
+# Solution: Routing
 
 **Resist the urge the to look in these files if you can't come up with a solution yourself.**
 
