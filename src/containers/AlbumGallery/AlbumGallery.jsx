@@ -5,9 +5,9 @@ import "./AlbumGallery.scss";
 import Carousel from "../../components/Carousel/Carousel";
 
 const AlbumGallery = props => {
-  const { albums, title } = props;
+  const { albumsArr, title } = props;
 
-  const imagesArr = albums.filter(album => album.strAlbumThumb).map(album => album.strAlbumThumb);
+  const imagesArr = albumsArr.filter(album => album.strAlbumThumb).map(album => album.strAlbumThumb);
 
   return (
     <section className="album-gallery">

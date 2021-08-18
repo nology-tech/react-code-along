@@ -1,6 +1,5 @@
 .album-gallery {
-  height: 80vh;
-
+  
   &__heading {
     padding: 0 50px;
     font-size: 30px;
@@ -12,7 +11,7 @@
   .album-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
+    gap: 25px 50px;
     padding: 0 50px;
 
     &__heading {

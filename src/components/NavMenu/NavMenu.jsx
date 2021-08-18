@@ -17,11 +17,11 @@ const NavMenu = props => {
           Home
         </Link>
 
-        <Link className="nav-menu__item" to="/all" onClick={toggleNav}>
+        <Link className="nav-menu__item" to="/all-albums" onClick={toggleNav}>
           All Albums
         </Link>
 
-        <Link className="nav-menu__item" to="/rating" onClick={toggleNav}>
+        <Link className="nav-menu__item" to="/highest-rating" onClick={toggleNav}>
           Rated Albums
         </Link>
       </div>

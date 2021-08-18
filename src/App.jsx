@@ -1,9 +1,9 @@
 import "./App.scss";
 
 import Nav from "./components/Nav/Nav";
-import Home from "./pages/Home/Home";
-import AllAlbums from "./pages/AlbumGallery/AlbumGallery";
-import AlbumInfo from "./pages/AlbumInfo/AlbumInfo";
+import Home from "./containers/Home/Home";
+import AllAlbums from "./containers/AlbumGallery/AlbumGallery";
+import AlbumInfo from "./containers/AlbumInfo/AlbumInfo";
 
 import albums from "./data/albums";
 import artist from "./data/artist";
@@ -34,15 +34,15 @@ const App = () => {
           <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
 
           <Switch>
-            <Route path="/all">
-              <AllAlbums albums={filteredAlbums} title={"All Albums"} />
+            <Route path="/all-albums">
+              <AllAlbums albumsArr={filteredAlbums} title={"All Albums"} />
             </Route>
 
-            <Route path="/rating">
-              <AllAlbums albums={highestRating} title={"Highest Rating"} />
+            <Route path="/highest-rating">
+              <AllAlbums albumsArr={highestRating} title={"Rated Albums"} />
             </Route>
 
-            <Route path="/album/:albumId">
+            <Route path="/album-info/:albumId">
               <AlbumInfo albumsArr={filteredAlbums} />
             </Route>
 

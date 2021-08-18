@@ -8,8 +8,8 @@ const AlbumTiles = props => {
   const { title, albumsArr } = props;
 
   const cardListJSX = albumsArr.map((album, index) => (
-    <Link to={`/album/${album.idAlbum}`}>
-      <img className="album-tiles__img" key={title + (index + 1)} src={album.strAlbumThumb} alt={album.strAlbum} />
+    <Link to={`/album-info/${album.idAlbum}`} key={title + (index + 1)}>
+      <img className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum} />
     </Link>
   ));
   return (

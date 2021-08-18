@@ -7,7 +7,7 @@ import Button from "../../components/Button/Button";
 import ArtistTile from "../../components/ArtistTile/ArtistTile";
 import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
 import Carousel from "../../components/Carousel/Carousel";
-import ExploreAlbums from "../../containers/ExploreAlbums/ExploreAlbums";
+import ExploreAlbums from "../ExploreAlbums/ExploreAlbums";
 
 const Home = props => {
   const { user, unsortedAlbums, sortedAlbums, artist } = props;
