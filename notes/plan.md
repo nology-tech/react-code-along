@@ -228,7 +228,7 @@ Demonstrate what happens if the Route with the `path="/"` is the first in the Sw
 ## Move onto Challenges
 
 **Once the Challenge is completed there is a code exploring query params**
-**The second challenge is for after query params**
+**The second challenge is for after you cover query params**
 
 - [Challenge](./challenge/challenge.md)
 - [Solution](./challenge/solution.md)
