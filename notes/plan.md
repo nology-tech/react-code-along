@@ -177,7 +177,7 @@ export default AlbumGallery;
 
 It is time to hook up our new page.
 
-In App.jsx import in the AlbumGallery container. Add a new Route to the Switch component. Set the path prop on the Route to "/all-albums".
+In App.jsx import in the AlbumGallery container. Add a new Route to the Switch component. Set the path prop on the Route to "/albums".
 
 Inside the Route Add in the AlbumGallery component and give it the albumsArr and title props it needs.
 
@@ -185,7 +185,7 @@ Inside the Route Add in the AlbumGallery component and give it the albumsArr and
 // App.jsx
 
 <Switch>
-  <Route path="/all-albums">
+  <Route path="/albums">
     <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
   </Route>
 
@@ -200,7 +200,7 @@ In the NavMenu add a new link to take you to that page.
 ```jsx
 // NavMenu.jsx
 
-<Link className="nav-menu__item" to="/all-albums" onClick={toggleNav}>
+<Link className="nav-menu__item" to="/albums" onClick={toggleNav}>
   All Albums
 </Link>
 ```
@@ -217,7 +217,7 @@ Demonstrate what happens if the Route with the `path="/"` is the first in the Sw
     <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
   </Route>
 
-  <Route path="/all-albums">
+  <Route path="/albums">
     <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
   </Route>
 </Switch>
@@ -245,7 +245,7 @@ Import the Link component.
 
 In the AlbumTiles.jsx update the cardListJSX variable. Now it should wrap the `<img/>` with the Link component.
 
-The to prop on the Link is going to go to /album-info/idAlbum.
+The to prop on the Link is going to go to /album/idAlbum.
 
 The idAlbum is going to be the id from each of the albums objects.
 
@@ -255,7 +255,7 @@ You will need to move the key prop to the Link component.
 // AlbumTiles.jsx
 
 const cardListJSX = albumsArr.map((album, index) => (
-  <Link to={`/album-info/${album.idAlbum}`} key={title + (index + 1)}>
+  <Link to={`/album/${album.idAlbum}`} key={title + (index + 1)}>
     <img className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum} />
   </Link>
 ));
@@ -421,12 +421,12 @@ const { albumId } = useParams();
 console.log(albumId);
 ```
 
-In App.jsx inside the Switch set up a new route to the AlbumInfo container. Set the path to go to `/album-info/:albumId`. :albumId represents the query param.
+In App.jsx inside the Switch set up a new route to the AlbumInfo container. Set the path to go to `/album/:albumId`. :albumId represents the query param.
 
 ```jsx
 // AlbumInfo.jsx
 
-<Route path="/album-info/:albumId">
+<Route path="/album/:albumId">
   <AlbumInfo albumsArr={filteredAlbums} />
 </Route>
 ```

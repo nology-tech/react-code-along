@@ -4,26 +4,26 @@
 
 It's always better to google, ask a fellow student or ask a coach. This is one way of solving the challenge not the only way to do it.
 
-## Creating a route and Linking to the rated-albums page
+## Creating a route and Linking to the albums/rated page
 
-1. Add the Link Component to the navMenu component and set up the to prop to equal "/rated-albums".
+1. Add the Link Component to the navMenu component and set up the to prop to equal "/albums/rated".
 
 ```jsx
 // NavMenu.jsx
 
-<Link className="nav-menu__item" to="/rated-albums" onClick={toggleNav}>
+<Link className="nav-menu__item" to="/albums/rated" onClick={toggleNav}>
   Rated Albums
 </Link>
 ```
 
-2. Add a new Route to the Switch component inside App.jsx. Set the path prop to "/rated-albums".
+2. Add a new Route to the Switch component inside App.jsx. Set the path prop to "/albums/rated".
 
 3. Inside the Route you have just created add the AlbumGallery container and give it the correct props. The title will be "Rated Albums", th albumsArr will be the highestRating array.
 
 ```jsx
 // App.jsx
 
-<Route path="/rated-albums">
+<Route path="/albums/rated">
   <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
 </Route>
 ```
@@ -83,8 +83,10 @@ const shortenedText = strDescriptionEN.substring(0, lastSentenceIndex);
 
 To avoid this we can use both Optional Chaining and Nullish Coalescing.
 
-- By putting ?. in front of the method it returns undefined rather then causes a error.
-- By putting ?? it will return what is on the right hand side if what is on the left is null or undefined. You could use || to do this but this can run into problems with numbers.
+- By putting ?. in front of the method it returns undefined rather then causes a error if it can not use the method.
+- By putting ?? it will return what is on the right hand side if it is truthy and what is on the left if it is null or undefined. 
+
+You could use || to do this but this can run into problems with numbers.
 
 ```jsx
 // App.jsx
