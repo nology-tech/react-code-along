@@ -1,5 +1,13 @@
 # Set up and JSX
 
+This branch is focused on getting the student use to the structure of a React project and confident using JSX.
+
+### Resources
+
+- [Slides]()
+- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/01-setup-and-jsx/notes/plan.md)
+- [Component Tree](./component-tree.md)
+
 ### Objectives
 
 - How to set up a React Project?
@@ -9,7 +17,7 @@
 
 ---
 
-## CA: How to set up a React Project?
+## How to set up a React Project?
 
 Clone down the repo and install its dependencies.
 
@@ -65,7 +73,7 @@ export default App;
 
 ---
 
-## CA: What is the Project Structure with React?
+## What is the Project Structure with React?
 
 ### Topics
 
@@ -145,7 +153,7 @@ Change the App.css to App.scss, delete the boiler plate and add in the code belo
 
 ---
 
-## CA: JSX
+## JSX
 
 ### Topics
 
