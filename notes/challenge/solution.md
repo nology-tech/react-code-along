@@ -18,14 +18,44 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 2. Add a new Route to the Switch component inside App.jsx. Set the path prop to "/albums/rated".
 
-3. Inside the Route you have just created add the AlbumGallery container and give it the correct props. The title will be "Rated Albums", th albumsArr will be the highestRating array.
+3. Inside the Route you have just created add the AlbumGallery container and give it the correct props. The title will be "Rated Albums", the albumsArr will be the highestRating array. Below are two examples of the Switch component. The bottom one uses the exact prop on the Route component.
 
 ```jsx
 // App.jsx
 
-<Route path="/albums/rated">
-  <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
-</Route>
+// These need to be in the correct order.
+<Switch>
+  <Route path="/albums/rated">
+    <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
+  </Route>
+
+  <Route path="/albums">
+    <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
+  </Route>
+
+  <Route path="/">
+    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+  </Route>
+</Switch>
+```
+
+```jsx
+// App.jsx
+
+// Using the exact prop means it will only go to /albums if it is exactly that. Meaning the order of Route components can be changed.
+<Switch>
+  <Route exact path="/albums">
+    <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
+  </Route>
+
+  <Route path="/albums/rated">
+    <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
+  </Route>
+
+  <Route path="/">
+    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+  </Route>
+</Switch>
 ```
 
 ---
@@ -84,7 +114,7 @@ const shortenedText = strDescriptionEN.substring(0, lastSentenceIndex);
 To avoid this we can use both Optional Chaining and Nullish Coalescing.
 
 - By putting ?. in front of the method it returns undefined rather then causes a error if it can not use the method.
-- By putting ?? it will return what is on the right hand side if it is truthy and what is on the left if it is null or undefined. 
+- By putting ?? it will return what is on the right hand side if it is truthy and what is on the left if it is null or undefined.
 
 You could use || to do this but this can run into problems with numbers.
 
