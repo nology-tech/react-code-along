@@ -17,10 +17,15 @@ const App = () => {
     lastName: "Doe",
   });
 
-  const handleUserChange = event => {
-    const inputKey = event.target.name;
-    const inputValue = event.target.value;
-    setUser({ ...user, [inputKey]: inputValue });
+  const handleSubmit = event => {
+    event.preventDefault();
+    let firstName = event.target[0].value;
+    let lastName = event.target[1].value;
+
+    if (firstName && lastName) {
+      event.target.reset();
+      setUser({ firstName, lastName });
+    }
   };
 
   const filteredAlbums = albums.filter(album => album.strAlbumThumb);
@@ -30,20 +35,21 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-        <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
+        <Nav userName={`${user.firstName} ${user.lastName}`} handleSubmit={handleSubmit} />
 
         <Switch>
-          <Route path="/all-albums">
-            <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
-          </Route>
-
-          <Route path="/rated-albums">
+          <Route path="/albums/rated">
             <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
           </Route>
 
-          <Route path="/album-info/:albumId">
+          <Route path="/albums">
+            <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
+          </Route>
+
+          <Route path="/album/:albumId">
             <AlbumInfo albumsArr={filteredAlbums} />
           </Route>
+
           <Route path="/">
             <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
           </Route>

@@ -20,7 +20,7 @@
   &__cross {
     position: absolute;
     top: 20px;
-    left: 50px;
+    right: 50px;
 
     &:hover {
       cursor: pointer;
@@ -69,8 +69,7 @@
     }
 
     &__cross {
-      top: 20px;
-      left: 20px;
+      right: 20px;
     }
   }
 }

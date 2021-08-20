@@ -7,7 +7,7 @@ import SettingsMenu from "../SettingsMenu/SettingsMenu";
 import NavMenu from "../NavMenu/NavMenu";
 
 const Nav = props => {
-  const { userName, handleUserChange } = props;
+  const { userName, handleSubmit } = props;
   const [showSettings, setShowSettings] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
@@ -21,7 +21,7 @@ const Nav = props => {
 
   return (
     <nav className="nav">
-      {showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings} handleUserChange={handleUserChange}/>}
+      {showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings} handleSubmit={handleSubmit}/>}
       {showNav && <NavMenu toggleNav={toggleNav} />}
 
       <img src={menu} className="nav__item nav__item--menu" alt="menu icon" onClick={toggleNav} />
