@@ -71,7 +71,7 @@ export default SettingsMenu;
   &__cross {
     position: absolute;
     top: 20px;
-    left: 50px;
+    right: 50px;
 
     &:hover {
       cursor: pointer;
@@ -99,8 +99,7 @@ export default SettingsMenu;
     }
 
     &__cross {
-      top: 20px;
-      left: 20px;
+      right: 20px;
     }
   }
 }
@@ -129,7 +128,7 @@ const Nav = props => {
   return (
     <nav className="nav">
       <SettingsMenu userName={userName} />
-      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
+      <img src={menu} className="nav__item " alt="menu icon" />
       <h2 className="nav__heading">Ear Worm</h2>
       <img src={settings} className="nav__item" alt="settings icon" />
     </nav>
@@ -156,7 +155,7 @@ const Nav = props => {
   return (
     <nav className="nav">
       {showSettings && <SettingsMenu userName={userName}>}
-      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
+      <img src={menu} className="nav__item" alt="menu icon" />
       <h2 className="nav__heading">Ear Worm</h2>
       <img src={settings} className="nav__item" alt="settings icon" onClick={toggleSettings} />
     </nav>
@@ -477,7 +476,7 @@ This function will need to clean the input to get the best results from the filt
 const [searchTerm, setSearchTerm] = useState("");
 
 const handleInput = event => {
-  const cleanInput = event.target.value.toLowerCase().trim();
+  const cleanInput = event.target.value.toLowerCase();
   setSearchTerm(cleanInput);
 };
 ```
@@ -522,7 +521,7 @@ const ExploreAlbums = props => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInput = event => {
-    const cleanInput = event.target.value.toLowerCase().trim();
+    const cleanInput = event.target.value.toLowerCase();
     setSearchTerm(cleanInput);
   };
 
