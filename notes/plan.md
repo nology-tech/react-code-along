@@ -1,5 +1,13 @@
 # State
 
+This branch is focused on getting the students to implement the useState() hook, with examples of how you can use it.
+
+### Resources
+
+- [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7BB51F111B-CDB7-48DD-B180-FA69D0F4CDFD%7D&file=React%20State.pptx&action=edit&mobileredirect=true&cid=2138b020-1689-44d4-85ea-f389edb49614)
+- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/05-state/notes/plan.md)
+- [Component Tree](./component-tree.md)
+
 ## Objectives
 
 - How can we use State to conditionally show some JSX?
@@ -129,7 +137,6 @@ You will need to update the App.scss with the new styles below.
 
 ```scss
 // App.scss
-@use "./assets/sass/_variables.scss" as *;
 
 @use "./assets/sass/_variables.scss" as *;
 
@@ -193,6 +200,10 @@ You will need to update the App.scss with the new styles below.
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
+    & > * {
+      padding: 0;
+    }
+
     .greeting {
       text-align: left;
       display: flex;
@@ -225,6 +236,7 @@ You will need to update the App.scss with the new styles below.
       }
 
       &__heading {
+        padding: 0;
         grid-column: 1 / -1;
       }
     }
