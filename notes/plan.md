@@ -127,7 +127,7 @@ console.log(artist.strArtist);
 
 ## Move onto Challenges
 
-**Once the Challenge is completed there a refactoring exercise using object destructuring**
+**Once the Challenge is completed there is a refactoring exercise using object destructuring**
 
 - [Challenge](./challenge/challenge.md)
 - [Solution](./challenge/solution.md)
