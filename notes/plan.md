@@ -1,5 +1,13 @@
 # Arrays
 
+This branch is focused on getting the students use to using data to create dynamic Components.
+
+### Resources
+
+- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/ES56ZohqZQJKufEBYxR2MQgBjM6arDN99toib0k8t4MQPw?e=luXG0e)
+- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/04-arrays/notes/plan.md)
+- [Component Tree](./component-tree.md)
+
 ## Objectives
 
 - Array iterator recap
@@ -9,13 +17,7 @@
 
 ---
 
-## CA: Array Iterator recap
-
-### Topics:
-
-- How do map over an array?
-- How do we filter an array?
-- How do we sort an array?
+## Array Iterator recap
 
 Do a recap of using .map(), .filter() and .sort() array methods with an array of objects. Mention you can use map to create Components or JSX from arrays.
 
@@ -47,7 +49,7 @@ const sortedCoaches = [...coaches].sort((a, b) => b.score - a.score);
 
 ---
 
-## CA: How can we make a mock a response from a API?
+## How can we make a mock a response from a API?
 
 In src in the data folder create an albums.js file. This will be the mock albums data for the components in the discography section. It is mocking a response from the audio db.
 
@@ -63,7 +65,7 @@ console.log(albums);
 
 ---
 
-## CA: Creating the AlbumTiles component.
+## Creating the AlbumTiles component.
 
 Create a AlbumTiles component with .jsx and .scss files.
 
@@ -199,6 +201,10 @@ Update the App.scss with the new styles below.
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
+    & > * {
+      padding: 0;
+    }
+
     .greeting {
       text-align: left;
       display: flex;
@@ -242,7 +248,7 @@ Update the App.scss with the new styles below.
 
 ---
 
-## CA: How do you work with arrays?
+## How do you work with arrays?
 
 Update the App.jsx and AlbumTiles.jsx to accept and give these two props, title and albumsArr.
 In the AlbumTiles map over the array and create `<img>` tags for each of the strAlbumThumb keys from each album object from the array given. Render this to page.
@@ -259,7 +265,9 @@ In the AlbumTiles map over the array and create `<img>` tags for each of the str
 const AlbumTiles = props => {
   const { title, albumsArr } = props;
   console.log(albumsArr);
-  const cardListJSX = albumsArr.map(album => <img className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum}/>);
+  const cardListJSX = albumsArr.map(album => (
+    <img className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum} />
+  ));
   return (
     <>
       <h3>{title}</h3>
@@ -285,7 +293,7 @@ Show the console and the error that is being displayed. Explain why each item wi
 ```jsx
 // AlbumTiles.jsx
 const cardListJSX = albumsArr.map((album, index) => (
-  <img key={title + (index + 1)} className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum}/>
+  <img key={title + (index + 1)} className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum} />
 ));
 ```
 
