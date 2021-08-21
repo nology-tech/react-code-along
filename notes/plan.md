@@ -1,12 +1,20 @@
 # Components
 
+This branch is focused on getting the student use to creating, styling, exporting and importing Components.
+
+### Resources
+
+- [Slides]()
+- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/02-components/notes/plan.md)
+- [Component Tree](./component-tree.md)
+
 ## Objectives
 
 - What is a Component?
 - How do Components fit into our project structure?
 - How do we render Components?
 
-## CA: How to set up a Component - Create a Nav Component
+## How to set up a Component - Create a Nav Component
 
 Create a components folder
 
@@ -129,7 +137,7 @@ import "./Nav.scss";
 const Nav = () => {
   return (
     <nav className="nav">
-      <img src={menu} className="nav__item nav__item--menu" alt="menu icon" />
+      <img src={menu} className="nav__item" alt="menu icon" />
       <h2 className="nav__heading">Ear Worm</h2>
       <img src={settings} className="nav__item" alt="settings icon" />
     </nav>
@@ -163,15 +171,6 @@ Create Nav.scss and style the component using the below styles
 @media (min-width: 992px) {
   .nav {
     grid-column: 1 / -1;
-    &__heading {
-      margin: 20px auto;
-    }
-
-    &__item {
-      &--menu {
-        display: none;
-      }
-    }
   }
 }
 ```
