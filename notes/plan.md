@@ -1,5 +1,13 @@
 # Props
 
+This branch is focused on getting the student use to passing props and using props inside Components. 
+
+### Resources
+
+- [Slides]()
+- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/03-props/notes/plan.md)
+- [Component Tree](./component-tree.md)
+
 ## Objectives
 
 - What are Props and How do we use them?
@@ -8,12 +16,7 @@
 
 ---
 
-## CA: What are Props and How do we use them?
-
-### Topics:
-
-- How can we pass props into a Component?
-- How do we use Props in a Component?
+## What are Props and How do we use them?
 
 Lets refactor our two buttons into one Button component that takes in props. Delete the two buttons and create a new one.
 
@@ -102,11 +105,13 @@ if (props.isSecondary) {
 
 ---
 
-## CA: How can we make a mock data file?
+## How can we make a mock data file?
 
 In src create a data folder. In the folder create a artist.js file. This will be the mock data for the challenge component. It is mocking a response from the audio db.
 
-The data is on this [gist](https://gist.github.com/Charlie-robin/68461faec41456c5c05bd529ae167ba1). Add it to the artist.js file.
+The data is on this [gist](https://gist.github.com/Charlie-robin/68461faec41456c5c05bd529ae167ba1). You can get them to download it or copy and paste it.
+
+Add it to the artist.js file.
 
 In App.jsx import the object and log it and some of its keys to the console.
 
