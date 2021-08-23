@@ -417,6 +417,10 @@ Update the App.scss.
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: min-content;
 
+     & > * {
+      padding: 0;
+    }
+
     .greeting {
       text-align: left;
       display: flex;
@@ -449,6 +453,7 @@ Update the App.scss.
       }
 
       &__heading {
+        padding: 0;
         grid-column: 1 / -1;
       }
     }
