@@ -4,8 +4,6 @@ import "./NavMenu.scss";
 
 import blackCross from "../../assets/images/black-cross.png";
 
-import { Link } from "react-router-dom";
-
 const NavMenu = props => {
   const { toggleNav } = props;
 
@@ -13,17 +11,17 @@ const NavMenu = props => {
     <div className="nav-menu">
       <div className="nav-menu__content">
         <img src={blackCross} alt="Close menu" className="nav-menu__cross" onClick={toggleNav} />
-        <Link className="nav-menu__item" to="/" onClick={toggleNav}>
+        <p className="nav-menu__item" onClick={toggleNav}>
           Home
-        </Link>
+        </p>
 
-        <Link className="nav-menu__item" to="/albums" onClick={toggleNav}>
+        <p className="nav-menu__item" onClick={toggleNav}>
           All Albums
-        </Link>
+        </p>
 
-        <Link className="nav-menu__item" to="/albums/rated" onClick={toggleNav}>
+        <p className="nav-menu__item" onClick={toggleNav}>
           Rated Albums
-        </Link>
+        </p>
       </div>
     </div>
   );
