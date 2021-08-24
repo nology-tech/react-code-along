@@ -1,6 +1,6 @@
 # Functions as Props
 
-This branch is focused on getting the student use to the structure of a React project and confident using JSX.
+This branch is focused on getting the student use to having functions higher up in the component tree and passing them with props to child components to use. 
 
 ### Resources
 
