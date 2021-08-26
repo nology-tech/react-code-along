@@ -4,7 +4,7 @@ This branch is focused on getting the student use to the structure of a React pr
 
 ### Resources
 
-- [Slides]()
+- [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7B22314840-16F5-45D8-892B-21236DD2D689%7D&file=React%20Introduction.pptx&action=edit&mobileredirect=true)
 - [Github plan.md](https://github.com/nology-tech/react-code-along/blob/01-setup-and-jsx/notes/plan.md)
 - [Component Tree](./component-tree.md)
 
