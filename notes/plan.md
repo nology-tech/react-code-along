@@ -93,6 +93,7 @@ Create an assets folder in src.
 In the assets make two new folders sass, images.
 
 In the images folder add in the 3 images.
+
 [Images](https://opusrs.sharepoint.com/:f:/s/Nologyio/En2N-F7hDwVJlkshZ_PAAtUBFx-7af4Fttuf3ZpTM-uhhQ?e=nMiUht)
 
 Create a \_variables.scss in the SASS folder. Add in some basic variables
