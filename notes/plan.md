@@ -7,6 +7,7 @@ This branch is focused on getting the student use to the structure of a React pr
 - [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7B22314840-16F5-45D8-892B-21236DD2D689%7D&file=React%20Introduction.pptx&action=edit&mobileredirect=true)
 - [Github plan.md](https://github.com/nology-tech/react-code-along/blob/01-setup-and-jsx/notes/plan.md)
 - [Component Tree](./component-tree.md)
+- [Images for Codealong](https://opusrs.sharepoint.com/:f:/s/Nologyio/En2N-F7hDwVJlkshZ_PAAtUBFx-7af4Fttuf3ZpTM-uhhQ?e=nMiUht)
 
 ### Objectives
 
@@ -92,6 +93,7 @@ Create an assets folder in src.
 In the assets make two new folders sass, images.
 
 In the images folder add in the 3 images.
+[Images](https://opusrs.sharepoint.com/:f:/s/Nologyio/En2N-F7hDwVJlkshZ_PAAtUBFx-7af4Fttuf3ZpTM-uhhQ?e=nMiUht)
 
 Create a \_variables.scss in the SASS folder. Add in some basic variables
 
