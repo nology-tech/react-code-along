@@ -4,7 +4,7 @@ This branch is focused on getting the student use to creating, styling, exportin
 
 ### Resources
 
-- [Slides]()
+- [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7B318F1076-070A-48E0-BCC1-D2E090406885%7D&file=02%20React%20Components.pptx&action=edit&mobileredirect=true)
 - [Github plan.md](https://github.com/nology-tech/react-code-along/blob/02-components/notes/plan.md)
 - [Component Tree](./component-tree.md)
 
