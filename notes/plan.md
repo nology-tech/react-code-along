@@ -4,7 +4,7 @@ This branch is focused on getting the student use to passing props and using pro
 
 ### Resources
 
-- [Slides]()
+- [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7BDD89A706-7410-4186-ABED-5AF8A41A756D%7D&file=React%20Props.pptx&action=edit&mobileredirect=true&cid=4a908d2a-9685-413d-9462-bc580a3b5dad)
 - [Github plan.md](https://github.com/nology-tech/react-code-along/blob/03-props/notes/plan.md)
 - [Component Tree](./component-tree.md)
 
