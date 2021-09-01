@@ -4,7 +4,7 @@ This branch is focused on getting the students use to using data to create dynam
 
 ### Resources
 
-- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/ES56ZohqZQJKufEBYxR2MQgBjM6arDN99toib0k8t4MQPw?e=luXG0e)
+- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/ES56ZohqZQJKufEBYxR2MQgBjM6arDN99toib0k8t4MQPw?e=IhVwdg)
 - [Github plan.md](https://github.com/nology-tech/react-code-along/blob/04-arrays/notes/plan.md)
 - [Component Tree](./component-tree.md)
 
