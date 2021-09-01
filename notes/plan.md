@@ -4,7 +4,7 @@ This branch is focused on getting the students to implement the useState() hook,
 
 ### Resources
 
-- [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7BB51F111B-CDB7-48DD-B180-FA69D0F4CDFD%7D&file=React%20State.pptx&action=edit&mobileredirect=true&cid=2138b020-1689-44d4-85ea-f389edb49614)
+- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/ERsRH7W3zd1IsYD6adD0zf0BDzEAE3uzD9YQ0nBzO0xiZg?e=K3gn86)
 - [Github plan.md](https://github.com/nology-tech/react-code-along/blob/05-state/notes/plan.md)
 - [Component Tree](./component-tree.md)
 
