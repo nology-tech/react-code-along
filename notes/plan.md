@@ -10,6 +10,7 @@ This branch is focused on getting the student use to having functions higher up 
 
 ## Objectives
 
+- Overall, How can we get components to communicate within a React application?
 - How can we use functions as props to trigger components to be shown or hidden?
 - How can we use functions as props to capture a users input to filter some data?
 
