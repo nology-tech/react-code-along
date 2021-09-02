@@ -4,7 +4,7 @@ This branch is focused on getting the student use to having functions higher up 
 
 ### Resources
 
-- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/Ea-oHyHPrWFIumyEFVQnWd4BuKtIyOp-w5D3XT0t8--0wA?e=tx4zDO)
+- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/Ea-oHyHPrWFIumyEFVQnWd4BuKtIyOp-w5D3XT0t8--0wA?e=FiHznY)
 - [Github plan.md](https://github.com/nology-tech/react-code-along/blob/06-funcs-as-props/notes/plan.md)
 - [Component Tree](./component-tree.md)
 
