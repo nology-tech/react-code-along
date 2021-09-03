@@ -4,8 +4,8 @@ This branch is focused on getting the students to implement routing in the proje
 
 ### Resources
 
-- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/ES3MsNqMtj9OuIvvV9pDDpIBHxCGKmY5WWbHCKaQdC5BTA?e=v64jqB)
-- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/05-state/notes/plan.md)
+- [Slides](https://opusrs.sharepoint.com/:p:/s/Nologyio/ES3MsNqMtj9OuIvvV9pDDpIBHxCGKmY5WWbHCKaQdC5BTA?e=2EDOGH)
+- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/07-routing/notes/plan.md)
 - [Component Tree](./component-tree.md)
 
 ## Objectives
