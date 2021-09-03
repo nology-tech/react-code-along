@@ -11,7 +11,7 @@ On this branch by the end of the challenge the project will have these component
 
 ## Starting Branch
 
-<img src="./challenge/images/starter-tree.png" width="500px">
+<img src="./challenge/images/starter-tree.PNG" width="500px">
 
 ## Completed Branch
 
