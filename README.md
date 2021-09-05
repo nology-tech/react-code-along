@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# React Code-along
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [About](#about)
+- [Notes Folder](#notes-folder)
+- [Conventions](#conventions)
+- [Setup](#setup)
+- [Branches](#branches)
+- [Additional Resources](#additional-Resources)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+<h2 id="about">About</h2>
 
-### `yarn start`
+This is the React code-along covering the first 7 topics for the \_nology course. Each topic has its branch, as you look into each subject you will be building this mini project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each branch focuses on its topic, with a lesson plan, component tree, challenge, and solution to complete.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**The plan, component-tree, challenge, and solution markdown files are in the notes folder on each branch.**
 
-### `yarn test`
+Each plan is more prescriptive than the previous project's this is for a couple of reasons.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- To keep the project consistent throughout.
+- To give the Coach an idea of what you will cover without having done the branch before.
+- To allow the Student a plan/snippets of the lesson if they fall behind or run into bugs.
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2 id="notes-folder">Notes Folder</h2>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The notes folder contains everything to complete the topic.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The plan is the lesson, it contains steps, snippets, components, and styles you will need to create to complete the branch. If the code snippets are large they are in drop-down lists. Feel free to copy and paste them as they are normally style files.
 
-### `yarn eject`
+**If you go to the md file on GitHub it gives a copy icon on the code snippet.**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The component-tree is a visual representation of the project. It has a component tree for the start of the branch and what it will look like when you are done. With a list of the components.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The challenge has a brief for the students to complete. The first couple of branches have broken the brief down into steps.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The solution has broken the challenge brief down and completed each little step.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+<h2 id="conventions">Conventions</h2>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project has been built with these conventions.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- SCSS for styling
+- BEM for naming
+- Components consist of a .jsx and .scss file. There is no index.js in the component folder. When the components are imported you will have to give a path to the .jsx file, not just the folder.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<h2 id="setup"> Setup </h2>
 
-### Analyzing the Bundle Size
+Clone the repo and install the dependencies.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+git clone https://github.com/nology-tech/react-code-along.git
+cd react-code-along
+npm install
+```
 
-### Making a Progressive Web App
+To start the live server run.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm start
+```
 
-### Advanced Configuration
+To change branch.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+git checkout name-of-branch
+```
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<h2 id="branches">Branches</h2>
 
-### `yarn build` fails to minify
+The branches available are below.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [main](https://github.com/nology-tech/react-code-along)
+- [01-setup-jsx](https://github.com/nology-tech/react-code-along/tree/01-setup-and-jsx)
+- [02-components](https://github.com/nology-tech/react-code-along/tree/02-components)
+- [03-props](https://github.com/nology-tech/react-code-along/tree/03-props)
+- [04-arrays](https://github.com/nology-tech/react-code-along/tree/04-arrays)
+- [05-state](https://github.com/nology-tech/react-code-along/tree/05-state)
+- [06-funcs-as-props](https://github.com/nology-tech/react-code-along/tree/06-funcs-as-props)
+- [07-routing](https://github.com/nology-tech/react-code-along/tree/07-routing)
+
+---
+
+<h2 id="additional-Resources">Additional Resources</h2>
+
+The project was wire framed using Figma. The design file is [here](https://www.figma.com/file/XOEwdDoEf8eUTzEbJEh8Bo/Music-app?node-id=0%3A1).
+
+Each branch and the component trees were planned on Mural. If you are interested have a look [here](https://app.mural.co/t/nology9400/m/nology9400/1626967150955/afa9a3055ab210bcdd5433af4cbaf3e873b7a398?sender=u8c6e1ccb69fb91445cd51551).
+
+Both the data file gists are here.
+
+- [artist.js](https://gist.github.com/Charlie-robin/68461faec41456c5c05bd529ae167ba1)
+- [album.js](https://gist.github.com/Charlie-robin/71222ddfbbd70e2de9e25097e2d0d665)
+
+They are both responses from the [AudioDB](https://www.theaudiodb.com/) API.
+
+---
