@@ -1,0 +1,75 @@
+@use "../../assets/sass/_variables.scss" as *;
+
+.settings-menu {
+  background-color: $color-black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__cross {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__title {
+    color: $color-white;
+    font-size: 30px;
+  }
+
+  &__form {
+    display: grid;
+    font-size: 20px;
+    color: $color-white;
+    justify-items: center;
+  }
+
+  &__input {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 5px solid $color-grey;
+    color: $color-black;
+
+    &:focus {
+      outline: none;
+      border: 5px solid $color-primary;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .settings-menu {
+    background-color: rgba($color-black, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+      position: relative;
+      background-color: $color-black;
+      width: 30%;
+      height: 80%;
+      border-radius: 15px;
+    }
+
+    &__cross {
+      right: 20px;
+    }
+  }
+}

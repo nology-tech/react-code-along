@@ -1,0 +1,21 @@
+@use "../../assets/sass/_variables.scss" as *;
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  color: $color-black;
+
+  &__item {
+    height: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav {
+    grid-column: 1 / -1;
+  }
+}
+
+

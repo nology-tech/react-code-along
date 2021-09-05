@@ -1,0 +1,17 @@
+@use "../../assets/sass/_variables.scss" as *;
+
+.button {
+  min-width: 80px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: none;
+}
+
+.primary {
+  background-color: transparent;
+  border: 2px solid $color-primary;
+}
+
+.secondary {
+  background-color: $color-secondary;
+}

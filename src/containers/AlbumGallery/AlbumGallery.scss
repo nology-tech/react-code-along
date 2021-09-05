@@ -1,0 +1,27 @@
+.album-gallery {
+  
+  &__heading {
+    padding: 0 50px;
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .album-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px 50px;
+    padding: 0 50px;
+
+    &__heading {
+      grid-column: 1 / -1;
+      padding: 0;
+    }
+
+    &__carousel {
+      width: 100%;
+      grid-column: 2/4;
+    }
+  }
+}
