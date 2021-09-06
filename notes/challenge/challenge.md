@@ -8,7 +8,7 @@ The aim of this challenge is to get you to practice using props.
 
 You will need to create this component shown in the image below, style and render it in our App.jsx. You will need to pass in two props from src/data/artist.
 
-<img src="./images/artist-tile.PNG" width="300"/>
+<img src="./images/discover-artist-card.PNG" width="300"/>
 
 ---
 
