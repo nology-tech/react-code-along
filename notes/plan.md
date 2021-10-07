@@ -304,11 +304,7 @@ const AlbumInfo = props => {
         </ul>
       </div>
       <div className="album-info__banner">
-        <img
-          src={currentAlbum.strAlbumThumb}
-          alt={currentAlbum.strAlbum}
-          className="album-info__img album-info__img--last"
-        />
+        <img className="album-info__img album-info__img--last"/>
       </div>
     </article>
   );
