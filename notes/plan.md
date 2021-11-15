@@ -18,103 +18,13 @@ This branch is focused on getting the student use to having functions higher up 
 
 ## How can we use functions as props to trigger components to be shown or hidden?
 
-Creating the SettingsMenu Component.
+The SettingsMenu Component has already been created for you inside src/components.
 
-This is going to be the child component that responds to state change. It also needs a way of changing state as well so we will be passing it a function to do so.
+Show the students this component.
 
-Create a SettingsMenu component. This is going to accept a prop called userName.
+This is going to be the child component that responds to state change. It also needs a way of changing state as well so we will be passing it a function to do so. 
 
-Copy the JSX and SCSS files below.
-
-<details>
-<summary>SettingsMenu.jsx</summary>
-
-```jsx
-import React from "react";
-
-import "./SettingsMenu.scss";
-import whiteCross from "../../assets/images/white-cross.png";
-import profilePicture from "../../assets/images/profile-picture.png";
-
-const SettingsMenu = props => {
-  const { userName } = props;
-  return (
-    <div className="settings-menu">
-      <div className="settings-menu__content">
-        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" />
-        <img src={profilePicture} className="settings-menu__profile" />
-        <h2 className="settings-menu__title">{userName}</h2>
-      </div>
-    </div>
-  );
-};
-
-export default SettingsMenu;
-```
-
-</details>
-
-<details>
-<summary>SettingsMenu.scss</summary>
-
-```scss
-@use "../../assets/sass/_variables.scss" as *;
-
-.settings-menu {
-  background-color: $color-black;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 5;
-
-  &__content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__cross {
-    position: absolute;
-    top: 20px;
-    right: 50px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  &__title {
-    color: $color-white;
-    font-size: 30px;
-  }
-}
-
-@media (min-width: 992px) {
-  .settings-menu {
-    background-color: rgba($color-black, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &__content {
-      position: relative;
-      background-color: $color-black;
-      width: 30%;
-      height: 80%;
-      border-radius: 15px;
-    }
-
-    &__cross {
-      right: 20px;
-    }
-  }
-}
-```
-
-</details>
+Click something it appears, click something it disappears. 
 
 In App.jsx pass the userName prop to Nav.jsx. This will be created from the user object.
 
@@ -220,85 +130,13 @@ export default SettingsMenu;
 
 ## How can we use functions as props to capture a users input to filter some data?
 
-Creating the Search Box Component.
+The Search Box Component has already been created for you inside src/components.
+
+Show the students this component.
 
 This component is going to capture user input and pass it back to its parent component.
 
 It accepts three props label, searchTerm and handleInput.
-
-Create the SearchBox component.
-
-Copy the JSX and SCSS files below.
-
-<details>
-<summary>SearchBox.jsx</summary>
-
-```jsx
-import React from "react";
-
-import "./SearchBox.scss";
-
-const SearchBox = props => {
-  const { label, searchTerm, handleInput } = props;
-
-  const capitalizedLabel = label[0].toUpperCase() + label.slice(1);
-
-  return (
-    <form className="search-box">
-      <label htmlFor={label} className="search-box__label">
-        {capitalizedLabel}
-      </label>
-      <input type="text" name={label} value={searchTerm} onInput={handleInput} className="search-box__input" />
-    </form>
-  );
-};
-
-export default SearchBox;
-```
-
-</details>
-
-<details>
-<summary>SearchBox.scss</summary>
-
-```scss
-@use "../../assets/sass/_variables.scss" as *;
-
-.search-box {
-  display: flex;
-  flex-direction: column;
-
-  &__label {
-    font-size: 20px;
-  }
-
-  &__input {
-    margin: 20px 0;
-    padding: 10px;
-    font-size: 18px;
-    border: 5px $color-grey solid;
-    border-radius: 15px;
-    color: $color-black;
-
-    &:focus {
-      border: 5px $color-primary solid;
-      outline: none;
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  .search-box {
-    &__input {
-      width: calc((100% / 3) - 50px);
-    }
-  }
-}
-```
-
-</details>
-
-<br/>
 
 With the child component created move onto creating the parent container.
 
@@ -349,134 +187,6 @@ Add the albumsArr prop and pass in the albums.
   <ExploreAlbums albumsArr={albums} />
 </section>
 ```
-
-Update the App.scss.
-
-<details>
-<summary>App.scss</summary>
-
-```scss
-@use "./assets/sass/_variables.scss" as *;
-
-.app {
-  color: $color-black;
-
-  & > * {
-    padding: 0 50px;
-  }
-
-  .greeting {
-    text-align: center;
-
-    &__heading {
-      color: $color-black;
-    }
-
-    & > * {
-      margin: 20px;
-    }
-  }
-
-  .button-section {
-    display: flex;
-    margin: 20px auto;
-    width: fit-content;
-
-    & > * {
-      margin: 0 10px;
-    }
-  }
-
-  .discography {
-    padding: 0;
-
-    .all-albums {
-      background-color: $color-primary;
-      padding: 10px 50px 20px 50px;
-    }
-
-    & > * {
-      padding: 0px 50px;
-    }
-  }
-
-  .gallery {
-    padding: 0;
-
-    &__heading {
-      padding: 0 50px;
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  .app {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    gap: 25px 100px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: min-content;
-
-     & > * {
-      padding: 0;
-    }
-
-    .greeting {
-      text-align: left;
-      display: flex;
-      grid-column: 1/ -1;
-
-      &__img {
-        height: 100px;
-      }
-    }
-
-    .button-section {
-      display: none;
-    }
-
-    .discover {
-      grid-row: 3/4;
-    }
-
-    .discography {
-      grid-row: 4/5;
-      grid-column: 1/ -1;
-      border-radius: 15px;
-      display: grid;
-      gap: 25px 100px;
-      grid-template-columns: repeat(2, 1fr);
-
-      .all-albums {
-        border-radius: 15px;
-        height: fit-content;
-      }
-
-      &__heading {
-        padding: 0;
-        grid-column: 1 / -1;
-      }
-    }
-
-    .gallery {
-      grid-row: 3 / 4;
-      display: flex;
-      flex-direction: column;
-
-      &__heading {
-        padding: 0;
-      }
-    }
-
-    .explore {
-      grid-column: 1 / -1;
-    }
-  }
-}
-```
-
-</details>
 
 Set up state in the ExploreAlbums container to store the user input.
 
