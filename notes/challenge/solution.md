@@ -152,7 +152,7 @@ export default NavMenu;
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .nav-menu {
     background-color: rgba($color-black, 0.8);
     display: flex;
@@ -221,14 +221,12 @@ const SettingsMenu = props => {
 };
 ```
 
-
-
 3. Create a function takes takes the event and logs it to the console.
 
 ```jsx
 // App.jsx
 
-const handleSubmit  = event => {
+const handleSubmit = event => {
   console.log(event);
 };
 ```
@@ -245,9 +243,7 @@ const handleSubmit  = event => {
 //Nav.jsx
 
 {
-  showSettings && (
-    <SettingsMenu userName={userName} toggleSettings={toggleSettings} handleSubmit={handleSubmit} />
-  );
+  showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings} handleSubmit={handleSubmit} />;
 }
 ```
 
@@ -256,7 +252,7 @@ const handleSubmit  = event => {
 ```jsx
 // App.jsx
 
-const handleSubmit  = event => {
+const handleSubmit = event => {
   event.preventDefault();
   console.log(event);
 };
@@ -267,7 +263,7 @@ const handleSubmit  = event => {
 ```jsx
 // App.jsx
 
-const handleSubmit  = event => {
+const handleSubmit = event => {
   event.preventDefault();
   console.log(event);
   console.log(event.target);
@@ -276,22 +272,22 @@ const handleSubmit  = event => {
 };
 ```
 
-7. I saved the input values to variables. With them saved I could check if they were truthy. If they were I created a new object with the correct keys and values, then used setUser() to update the state with that object. Finally I called the reset method on the form to clear the fields.  
+7. I saved the input values to variables. With them saved I could check if they were truthy. If they were I created a new object with the correct keys and values, then used setUser() to update the state with that object. Finally I called the reset method on the form to clear the fields.
 
 ```jsx
 // App.jsx
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    const firstName = event.target[0].value;
-    const lastName = event.target[1].value;
+const handleSubmit = event => {
+  event.preventDefault();
+  const firstName = event.target[0].value;
+  const lastName = event.target[1].value;
 
-    if (firstName && lastName) {
-      const updatedUser = { firstName, lastName }
-      setUser(updatedUser);
-      event.target.reset();
-    }
-  };
+  if (firstName && lastName) {
+    const updatedUser = { firstName, lastName };
+    setUser(updatedUser);
+    event.target.reset();
+  }
+};
 ```
 
 ## Completed Components
@@ -333,7 +329,6 @@ export default SettingsMenu;
 </details>
 
 <br/>
-
 
 <details>
 <summary>SettingsMenu.scss</summary>
@@ -394,7 +389,7 @@ export default SettingsMenu;
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .settings-menu {
     background-color: rgba($color-black, 0.8);
     display: flex;
