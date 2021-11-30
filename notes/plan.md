@@ -34,6 +34,7 @@ A SPA is a web application or website that dynamically rewrites the current web 
 _The docs are currently for v5 and they are on v6 of react router. The docs may have changed so you will have to check_
 
 The things that have changed are:
+
 - The `<Switch/>` component is now called `<Routes/>`
 - You can't use `props.children`. Instead you have a `element` prop on the `<Route/>` component, that is the component you want to go to.
 
@@ -90,7 +91,6 @@ return (
           element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
         ></Route>
       </Routes>
-
     </div>
   </Router>
 );
@@ -172,7 +172,7 @@ export default AlbumGallery;
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .album-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -366,7 +366,7 @@ export default AlbumInfo;
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .album-info {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
