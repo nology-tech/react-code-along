@@ -168,7 +168,7 @@ Create Nav.scss and style the component using the below styles
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .nav {
     grid-column: 1 / -1;
   }

@@ -172,7 +172,7 @@ export default App;
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .app {
     max-width: 1200px;
     margin: 0 auto;
