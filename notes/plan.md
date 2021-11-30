@@ -78,7 +78,7 @@ export default Carousel;
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .carousel {
     position: relative;
     flex-grow: 1;
@@ -191,7 +191,7 @@ You will need to update the App.scss with the new styles below.
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .app {
     max-width: 1200px;
     margin: 0 auto;
