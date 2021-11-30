@@ -31,7 +31,18 @@ The user state, artist and album data is needed in multiple places in the projec
 
 A SPA is a web application or website that dynamically rewrites the current web page instead loading entire new pages.
 
-Show them [React Router](https://reactrouter.com/web/guides/quick-start) this is the package we will use to implement routing in our project. There are others.
+_The docs are currently for v5 and they are on v6 of react router. The docs may have changed so you will have to check_
+
+The things that have changed are:
+- The `<Switch/>` component is now called `<Routes/>`
+- You can't use `props.children`. Instead you have a `element` prop on the `<Route/>` component, that is the component you want to go to.
+
+Show them either:
+
+- [React Router Docs](https://reactrouter.com/web/guides/quick-start)
+- If the docs are still v5 [React Router Docs - Upgrading v5 to v6](https://reactrouter.com/docs/en/v6/upgrading/v5)
+
+React router is the package we will use to implement routing in our project. There are others.
 
 Highlight that the React router doc's are easy to follow.
 
@@ -54,12 +65,14 @@ _We are using `BrowserRouter as Router` to be consistent with the react router d
 ```jsx
 // App.jsx
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 ```
 
 Wrap the entire application inside the Router component. If you want to use routing it has to be inside this component.
 
-Add the Switch component below the Nav. Inside the Switch use the Route component. Inside the Route add the Home component.
+Add the Routes component below the Nav. Inside the Routes use the Route component.
+
+Inside the Route add a element prop add the Home component.
 
 Add the path prop to Route and set the value to "/". This is going to be the default path. If it does not find a route it will take us to this page.
 
@@ -71,11 +84,13 @@ return (
     <div className="app">
       <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
 
-      <Switch>
-        <Route path="/">
-          <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
+        ></Route>
+      </Routes>
+
     </div>
   </Router>
 );
@@ -185,22 +200,21 @@ export default AlbumGallery;
 
 It is time to hook up our new page.
 
-In App.jsx import in the AlbumGallery container. Add a new Route to the Switch component. Set the path prop on the Route to "/albums".
+In App.jsx import in the AlbumGallery container. Add a new Route to the Routes component. Set the path prop on the Route to "/albums".
 
-Inside the Route Add in the AlbumGallery component and give it the albumsArr and title props it needs.
+Inside the Route add the element prop and add the AlbumGallery component and give it the albumsArr and title props it needs.
 
 ```jsx
 // App.jsx
 
-<Switch>
-  <Route path="/albums">
-    <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
-  </Route>
+<Routes>
+  <Route path="/albums" element={<AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />} />
 
-  <Route path="/">
-    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
-  </Route>
-</Switch>
+  <Route
+    path="/"
+    element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
+  />
+</Routes>
 ```
 
 In the NavMenu add a new link to take you to that page.
@@ -211,24 +225,6 @@ In the NavMenu add a new link to take you to that page.
 <Link className="nav-menu__item" to="/albums" onClick={toggleNav}>
   All Albums
 </Link>
-```
-
-That should all be hooked up.
-
-Demonstrate what happens if the Route with the `path="/"` is the first in the Switch as this will probably catch them out.
-
-```jsx
-// App.jsx
-
-<Switch>
-  <Route path="/">
-    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
-  </Route>
-
-  <Route path="/albums">
-    <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
-  </Route>
-</Switch>
 ```
 
 ---
@@ -304,7 +300,7 @@ const AlbumInfo = props => {
         </ul>
       </div>
       <div className="album-info__banner">
-        <img className="album-info__img album-info__img--last"/>
+        <img className="album-info__img album-info__img--last" />
       </div>
     </article>
   );
@@ -425,14 +421,12 @@ const { albumId } = useParams();
 console.log(albumId);
 ```
 
-In App.jsx inside the Switch set up a new route to the AlbumInfo container. Set the path to go to `/album/:albumId`. :albumId represents the query param.
+In App.jsx inside the Routes set up a new route to the AlbumInfo container. Set the path to go to `/album/:albumId`. :albumId represents the query param.
 
 ```jsx
 // AlbumInfo.jsx
 
-<Route path="/album/:albumId">
-  <AlbumInfo albumsArr={filteredAlbums} />
-</Route>
+<Route path="/album/:albumId" element={<AlbumInfo albumsArr={filteredAlbums} />} />
 ```
 
 Demonstrate the query param logged to the console when you click on a album. It is now down to use the id to find the album and use the data to populate the page.
@@ -443,5 +437,27 @@ Go to the second challenge on the challenge.md.
 
 - [Challenge](./challenge/challenge.md)
 - [Solution](./challenge/solution.md)
+
+---
+
+## Optional Bug squash
+
+If you go to the `/albums` page and click through the `Carousel` and then go to the `/albums/rated` page. The `/albums/rated` will be on whatever index on the `Carousel` you were on on the `/albums` page.
+
+The state from the component is persisting.
+
+We can squash this bug by adding a different key prop to each of the `<AlbumGallery/>` components. React can now tell they are different and will rerender and reset the state when you change page.
+
+```jsx
+  <Route
+    path="/albums"
+    element={<AlbumGallery key="albums" albumsArr={filteredAlbums} title={"All Albums"} />}
+  />
+  <Route path="/album/:albumId" element={<AlbumInfo albumsArr={filteredAlbums} />} />
+  <Route
+    path="/albums/rated"
+    element={<AlbumGallery key="rated" albumsArr={highestRating} title={"Rated Albums"} />}
+  />
+```
 
 ---

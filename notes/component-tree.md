@@ -12,7 +12,7 @@ On this branch by the end of the challenge the project will have these component
 - NavMenu
 - SettingsMenu
 - SearchBox
-- Router, Switch, Link and Route from react-router-dom
+- Router, Routes, Link and Route from react-router-dom
 
 With these containers:
 
@@ -27,7 +27,7 @@ The paths will be:
 
 - Home = "/"
 - AlbumInfo = "/album/:id"
-- AlbumGallery = "/albums"
+- AlbumGallery = "/albums" + "/albums/rated"
 
 ## Starting Branch
 
