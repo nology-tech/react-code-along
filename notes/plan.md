@@ -107,7 +107,7 @@ export default AlbumTiles;
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .album-tiles {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -192,7 +192,7 @@ Update the App.scss with the new styles below.
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .app {
     max-width: 1200px;
     margin: 0 auto;
