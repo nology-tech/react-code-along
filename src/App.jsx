@@ -9,7 +9,7 @@ import albums from "./data/albums";
 import artist from "./data/artist";
 import { useState } from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const [user, setUser] = useState({
@@ -37,23 +37,21 @@ const App = () => {
       <div className="app">
         <Nav userName={`${user.firstName} ${user.lastName}`} handleSubmit={handleSubmit} />
 
-        <Switch>
-          <Route path="/albums/rated">
-            <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
-          </Route>
-
-          <Route path="/albums">
-            <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
-          </Route>
-
-          <Route path="/album/:albumId">
-            <AlbumInfo albumsArr={filteredAlbums} />
-          </Route>
-
-          <Route path="/">
-            <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
+          />
+          <Route
+            path="/albums"
+            element={<AlbumGallery key="albums" albumsArr={filteredAlbums} title={"All Albums"} />}
+          />
+          <Route path="/album/:albumId" element={<AlbumInfo albumsArr={filteredAlbums} />} />
+          <Route
+            path="/albums/rated"
+            element={<AlbumGallery key="rated" albumsArr={highestRating} title={"Rated Albums"} />}
+          />
+        </Routes>
       </div>
     </Router>
   );
