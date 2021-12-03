@@ -23,7 +23,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .search-box {
     &__input {
       width: calc((100% / 3) - 50px);

@@ -1,5 +1,4 @@
 .album-gallery {
-  
   &__heading {
     padding: 0 50px;
     font-size: 30px;
@@ -7,7 +6,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .album-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
