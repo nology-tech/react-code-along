@@ -48,7 +48,7 @@
   }
 }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .album-info {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
