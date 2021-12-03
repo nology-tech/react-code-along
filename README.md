@@ -9,6 +9,8 @@
 
 ---
 
+## test branch protection rule
+
 <h2 id="about">About</h2>
 
 This is the React code-along covering the first 7 topics for the \_nology course. Each topic has its branch, as you look into each subject you will be building this mini project.
