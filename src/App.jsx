@@ -2,7 +2,7 @@ import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
-
+import ExploreAlbums from "./components/ExploreAlbums/ExploreAlbums";
 import Nav from "./components/Nav/Nav";
 import Button from "./components/Button/Button";
 import ArtistTile from "./components/ArtistTile/ArtistTile";
@@ -11,6 +11,7 @@ import Carousel from "./components/Carousel/Carousel";
 
 import albums from "./data/albums";
 import artist from "./data/artist";
+import SettingsMenu from "./components/SettingsMenu/SettingsMenu";
 
 const App = () => {
   const user = {
@@ -49,8 +50,7 @@ const App = () => {
   return (
     <>
       <div className="app">
-        <Nav />
-
+        <Nav userName={user.firstName +" "+ user.lastName}/>
         <header className="greeting">
           <img src={greetingImg} className="greeting__img" alt={greetingTime} />
           <h1 className="greeting__heading">
@@ -83,6 +83,10 @@ const App = () => {
         <section className="gallery">
           <h2 className="gallery__heading">Gallery</h2>
           <Carousel imagesArr={galleryImages} />
+        </section>
+        <section className="explore">
+          <h2 className="explore__heading">Explore</h2>
+          <ExploreAlbums albumsArr={albums}/>
         </section>
       </div>
     </>
