@@ -2,7 +2,7 @@ import React from "react";
 import "./NavMenu.scss";
 import blackCross from "../../assets/images/black-cross.png";
 
-const NavMenu = props => {  1
+const NavMenu = props => {  
   const { toggleMenu } = props;
   return (
     <div className="nav-menu">
