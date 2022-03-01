@@ -178,15 +178,13 @@ const App = () => {
   }
 
   return (
-    <>
-      <div className="app">
-        <header className="greeting">
-          <h1 className="greeting__heading">Hello World</h1>
-          <p>{message}</p>
-          <p>{500 * 50}</p>
-        </header>
-      </div>
-    </>
+    <div className="app">
+      <header className="greeting">
+        <h1 className="greeting__heading">Hello World</h1>
+        <p>{message}</p>
+        <p>{500 * 50}</p>
+      </header>
+    </div>
   );
 };
 
