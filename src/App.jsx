@@ -27,21 +27,19 @@ const App = () => {
   }
 
   return (
-    <>
-      <div className="app">
-        <Nav />
-        <header className="greeting">
-          <img src={greetingImg} className="greeting__img" alt={greetingTime} />
-          <h1 className="greeting__heading">
-            Good {greetingTime} <br /> {user.firstName} {user.lastName}
-          </h1>
-        </header>
-        <section className="button-section">
-          <ButtonLetsGo />
-          <ButtonExplore />
-        </section>
-      </div>
-    </>
+    <div className="app">
+      <Nav />
+      <header className="greeting">
+        <img src={greetingImg} className="greeting__img" alt={greetingTime} />
+        <h1 className="greeting__heading">
+          Good {greetingTime} <br /> {user.firstName} {user.lastName}
+        </h1>
+      </header>
+      <section className="button-section">
+        <ButtonLetsGo />
+        <ButtonExplore />
+      </section>
+    </div>
   );
 };
 
