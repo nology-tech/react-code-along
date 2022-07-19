@@ -27,11 +27,9 @@ Copy the JSX and SCSS files below.
 
 ```jsx
 // Carousel.jsx
-import React from "react";
-
 import "./Carousel.scss";
 
-const Carousel = props => {
+const Carousel = (props) => {
   const { imagesArr } = props;
 
   return (
@@ -304,7 +302,7 @@ Display the state, have two buttons and one function to increment it and another
 
 ```jsx
 // Carousel.jsx
-const Carousel = props => {
+const Carousel = (props) => {
   const { imagesArr } = props;
   const [counter, setCounter] = useState(0);
 
@@ -345,9 +343,19 @@ The carousel\_\_image will use the urls from imagesArr for the src. The counter 
 // Carousel.jsx
 return (
   <div className="carousel">
-    <img src={leftArrow} alt="" onClick={handleDecrement} className="carousel__arrow carousel__arrow--left" />
+    <img
+      src={leftArrow}
+      alt=""
+      onClick={handleDecrement}
+      className="carousel__arrow carousel__arrow--left"
+    />
     <img src={imagesArr[counter]} alt="" className="carousel__image" />
-    <img src={rightArrow} alt="" onClick={handleIncrement} className="carousel__arrow carousel__arrow--right" />
+    <img
+      src={rightArrow}
+      alt=""
+      onClick={handleIncrement}
+      className="carousel__arrow carousel__arrow--right"
+    />
   </div>
 );
 ```
@@ -381,14 +389,14 @@ The jsx for the finished component is below.
   <summary>Carousel.jsx</summary>
 
 ```jsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 import "./Carousel.scss";
 
 import leftArrow from "../../assets/images/left-arrow.png";
 import rightArrow from "../../assets/images/right-arrow.png";
 
-const Carousel = props => {
+const Carousel = (props) => {
   const { imagesArr } = props;
   const [counter, setCounter] = useState(0);
 
