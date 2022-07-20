@@ -1,6 +1,6 @@
 # Props
 
-This branch is focused on getting the student use to passing props and using props inside Components. 
+This branch is focused on getting the student use to passing props and using props inside Components.
 
 ### Resources
 
@@ -22,10 +22,9 @@ Lets refactor our two buttons into one Button component that takes in props. Del
 
 ```jsx
 // Button.jsx
-import React from "react";
 import "./Button.scss";
 
-const Button = props => {
+const Button = (props) => {
   let buttonStyle = "button";
 
   return <button className={buttonStyle}>Button works</button>;
@@ -57,7 +56,7 @@ export default Button;
 
 ```jsx
 // Button.jsx
-const Button = props => {
+const Button = (props) => {
   console.log(props);
   console.log(props.buttonText);
   const buttonText = props.buttonText;

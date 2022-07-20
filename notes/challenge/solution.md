@@ -8,12 +8,10 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 1. In the components folder create a ArtistTile folder. Inside it create jsx and scss files.
 
-2. Import react and create the function for each of your components - remember to export your component.
+2. Create the function for each of your components - remember to export your component.
 
 ```jsx
 // ArtistTile.jsx
-import React from 'react'
-
 const ArtistTile = () => {
     return (
 
@@ -27,9 +25,6 @@ export default ArtistTile
 
 ```jsx
 // ArtistTile.jsx
-
-import React from "react";
-
 import "./ArtistTile.scss";
 ```
 
@@ -110,7 +105,7 @@ The component now needs to use the props being passed in. You will need to pass 
 ```jsx
 // ArtistTile.jsx
 
-const ArtistTile = props => {
+const ArtistTile = (props) => {
   return (
     <div>
       <img src={props.imgSrc} />
@@ -130,11 +125,10 @@ You can import in the Button component and use it. You will need to give it the 
 
 ```jsx
 // ArtistTile.jsx
-import React from "react";
 import "./ArtistTile.scss";
 import Button from "../Button";
 
-const ArtistTile = props => {
+const ArtistTile = (props) => {
   return (
     <div>
       <img src={props.imgSrc} />
@@ -155,11 +149,10 @@ export default ArtistTile;
 
 ```jsx
 // ArtistTile.jsx
-import React from "react";
 import "./ArtistTile.scss";
 import Button from "../Button/Button";
 
-const DiscoverArtist = props => {
+const DiscoverArtist = (props) => {
   return (
     <div className="artist-tile">
       <img src={props.imgSrc} className="artist-tile__img" alt={props.title} />
