@@ -32,14 +32,14 @@ const coaches = [
 ];
 
 // .map()
-const coachesJSX = coaches.map(coach => (
+const coachesJSX = coaches.map((coach) => (
   <p>
     `I am ${coach.name} and I scored {coach.score}`
   </p>
 ));
 
 // .filter()
-const filteredCoaches = coaches.filter(coach => coach.score > 30);
+const filteredCoaches = coaches.filter((coach) => coach.score > 30);
 
 // .sort()
 // coaches.sort((a, b) => b.score - a.score);
@@ -71,8 +71,6 @@ Create a AlbumTiles component with .jsx and .scss files.
 
 ```jsx
 // AlbumTiles.jsx
-import React from "react";
-
 import "./AlbumTiles.scss";
 
 const AlbumTiles = () => {
@@ -262,11 +260,15 @@ In the AlbumTiles map over the array and create `<img>` tags for each of the str
 
 ```jsx
 // AlbumTiles.jsx
-const AlbumTiles = props => {
+const AlbumTiles = (props) => {
   const { title, albumsArr } = props;
   console.log(albumsArr);
-  const cardListJSX = albumsArr.map(album => (
-    <img className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum} />
+  const cardListJSX = albumsArr.map((album) => (
+    <img
+      className="album-tiles__img"
+      src={album.strAlbumThumb}
+      alt={album.strAlbum}
+    />
   ));
   return (
     <>
@@ -281,7 +283,9 @@ Some of the album objects from the albumsArr file do not have valid strAlbumThum
 
 ```jsx
 // App.jsx
-const filteredAlbums = albums.filter(album => album.strAlbumThumb).slice(0, 9);
+const filteredAlbums = albums
+  .filter((album) => album.strAlbumThumb)
+  .slice(0, 9);
 ```
 
 ---
@@ -293,7 +297,12 @@ Show the console and the error that is being displayed. Explain why each item wi
 ```jsx
 // AlbumTiles.jsx
 const cardListJSX = albumsArr.map((album, index) => (
-  <img key={title + (index + 1)} className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum} />
+  <img
+    key={title + (index + 1)}
+    className="album-tiles__img"
+    src={album.strAlbumThumb}
+    alt={album.strAlbum}
+  />
 ));
 ```
 

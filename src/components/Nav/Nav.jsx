@@ -1,4 +1,3 @@
-import React from "react";
 import menu from "../../assets/images/menu-icon.png";
 import settings from "../../assets/images/settings-icon.png";
 import "./Nav.scss";

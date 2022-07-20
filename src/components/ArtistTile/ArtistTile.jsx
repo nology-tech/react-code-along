@@ -1,8 +1,7 @@
-import React from "react";
 import "./ArtistTile.scss";
 import Button from "../Button/Button";
 
-const ArtistTile = props => {
+const ArtistTile = (props) => {
   return (
     <div className="artist-tile">
       <img src={props.imgSrc} className="artist-tile__img" alt={props.title} />
