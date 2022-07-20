@@ -1,6 +1,6 @@
 # Functions as Props
 
-This branch is focused on getting the student use to having functions higher up in the component tree and passing them with props to child components to use. 
+This branch is focused on getting the student use to having functions higher up in the component tree and passing them with props to child components to use.
 
 ### Resources
 
@@ -22,9 +22,9 @@ The SettingsMenu Component has already been created for you inside src/component
 
 Show the students this component.
 
-This is going to be the child component that responds to state change. It also needs a way of changing state as well so we will be passing it a function to do so. 
+This is going to be the child component that responds to state change. It also needs a way of changing state as well so we will be passing it a function to do so.
 
-Click something it appears, click something it disappears. 
+Click something it appears, click something it disappears.
 
 In App.jsx pass the userName prop to Nav.jsx. This will be created from the user object.
 
@@ -41,7 +41,7 @@ The SettingsMenu is going to be a child component of Nav.jsx. Import it into the
 
 import SettingsMenu from "../SettingsMenu/SettingsMenu";
 
-const Nav = props => {
+const Nav = (props) => {
   const { userName } = props;
 
   return (
@@ -100,18 +100,21 @@ The finished component is below.
 <summary>SettingsMenu.jsx</summary>
 
 ```jsx
-import React from "react";
-
 import "./SettingsMenu.scss";
 import whiteCross from "../../assets/images/white-cross.png";
 import profilePicture from "../../assets/images/profile-picture.png";
 
-const SettingsMenu = props => {
+const SettingsMenu = (props) => {
   const { userName, toggleSettings } = props;
   return (
     <div className="settings-menu">
       <div className="settings-menu__content">
-        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" onClick={toggleSettings} />
+        <img
+          src={whiteCross}
+          alt="Close menu"
+          className="settings-menu__cross"
+          onClick={toggleSettings}
+        />
         <img src={profilePicture} className="settings-menu__profile" />
         <h2 className="settings-menu__title">{userName}</h2>
       </div>
@@ -152,12 +155,10 @@ It will capture user input using the SearchBox, filter the albumsArr with the in
 <summary>ExploreAlbums.jsx</summary>
 
 ```jsx
-import React from "react";
-
 import SearchBox from "../../components/SearchBox/SearchBox";
 import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
 
-const ExploreAlbums = props => {
+const ExploreAlbums = (props) => {
   const { albumsArr } = props;
 
   return (
@@ -199,7 +200,7 @@ This function will need to clean the input to get the best results from the filt
 
 const [searchTerm, setSearchTerm] = useState("");
 
-const handleInput = event => {
+const handleInput = (event) => {
   const cleanInput = event.target.value.toLowerCase();
   setSearchTerm(cleanInput);
 };
@@ -222,7 +223,7 @@ You can check the strAlbumThumb key as well to make sure it has a img url.
 ```jsx
 // ExploreAlbums.jsx
 
-const filteredAlbums = albumsArr.filter(album => {
+const filteredAlbums = albumsArr.filter((album) => {
   const albumTitleLower = album.strAlbum.toLowerCase();
 
   return albumTitleLower.includes(searchTerm) && album.strAlbumThumb;
@@ -235,21 +236,21 @@ Pass the filteredAlbums to the AlbumTiles component.
 <summary>Completed ExploreAlbums</summary>
 
 ```jsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 import SearchBox from "../../components/SearchBox/SearchBox";
 import AlbumTiles from "../../components/AlbumTiles/AlbumTiles";
 
-const ExploreAlbums = props => {
+const ExploreAlbums = (props) => {
   const { albumsArr } = props;
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     const cleanInput = event.target.value.toLowerCase();
     setSearchTerm(cleanInput);
   };
 
-  const filteredAlbums = albumsArr.filter(album => {
+  const filteredAlbums = albumsArr.filter((album) => {
     const albumTitleLower = album.strAlbum.toLowerCase();
 
     return albumTitleLower.includes(searchTerm) && album.strAlbumThumb;
@@ -257,7 +258,11 @@ const ExploreAlbums = props => {
 
   return (
     <>
-      <SearchBox label={"albums"} searchTerm={searchTerm} handleInput={handleInput} />
+      <SearchBox
+        label={"albums"}
+        searchTerm={searchTerm}
+        handleInput={handleInput}
+      />
       <AlbumTiles title={"Results"} albumsArr={filteredAlbums} />
     </>
   );

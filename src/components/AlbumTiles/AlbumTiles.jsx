@@ -1,12 +1,15 @@
-import React from "react";
-
 import "./AlbumTiles.scss";
 
-const AlbumTiles = props => {
+const AlbumTiles = (props) => {
   const { title, albumsArr } = props;
 
   const cardListJSX = albumsArr.map((album, index) => (
-    <img className="album-tiles__img" key={title + (index + 1)} src={album.strAlbumThumb} alt={album.strAlbum} />
+    <img
+      className="album-tiles__img"
+      key={title + (index + 1)}
+      src={album.strAlbumThumb}
+      alt={album.strAlbum}
+    />
   ));
   return (
     <>

@@ -10,14 +10,11 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 ```jsx
 // NavMenu.jsx
-
-import React from "react";
-
 import "./NavMenu.scss";
 
 import blackCross from "../../assets/images/black-cross.png";
 
-const NavMenu = props => {
+const NavMenu = (props) => {
   return (
     <div className="nav-menu">
       <div className="nav-menu__content">
@@ -38,7 +35,7 @@ export default NavMenu;
 ```jsx
 // Nav.jsx
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Inside the Nav function.
 const [showNav, setShowNav] = useState(false);
@@ -74,7 +71,12 @@ const toggleNav = () => {
 const { toggleNav } = props;
 
 // Inside the NavMenu return statement.
-<img src={blackCross} alt="Close menu" className="nav-menu__cross" onClick={toggleNav} />;
+<img
+  src={blackCross}
+  alt="Close menu"
+  className="nav-menu__cross"
+  onClick={toggleNav}
+/>;
 ```
 
 ## Completed Component
@@ -83,19 +85,22 @@ const { toggleNav } = props;
 <summary>NavMenu.jsx</summary>
 
 ```jsx
-import React from "react";
-
 import "./NavMenu.scss";
 
 import blackCross from "../../assets/images/black-cross.png";
 
-const NavMenu = props => {
+const NavMenu = (props) => {
   const { toggleNav } = props;
 
   return (
     <div className="nav-menu">
       <div className="nav-menu__content">
-        <img src={blackCross} alt="Close menu" className="nav-menu__cross" onClick={toggleNav} />
+        <img
+          src={blackCross}
+          alt="Close menu"
+          className="nav-menu__cross"
+          onClick={toggleNav}
+        />
         <p className="nav-menu__item">Home</p>
         <p className="nav-menu__item">All Albums</p>
         <p className="nav-menu__item">Rated Albums</p>
@@ -200,17 +205,30 @@ const [user, setUser] = useState({
 
 import Button from "../Button/Button";
 
-const SettingsMenu = props => {
+const SettingsMenu = (props) => {
   const { userName, toggleSettings, handleSubmit } = props;
   return (
     <div className="settings-menu">
       <div className="settings-menu__content">
-        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" onClick={toggleSettings} />
-        <img src={profilePicture} alt="profile" className="settings-menu__profile" />
+        <img
+          src={whiteCross}
+          alt="Close menu"
+          className="settings-menu__cross"
+          onClick={toggleSettings}
+        />
+        <img
+          src={profilePicture}
+          alt="profile"
+          className="settings-menu__profile"
+        />
         <h2 className="settings-menu__title">{userName}</h2>
         <form className="settings-menu__form" onSubmit={handleSubmit}>
           <label htmlFor="firstName">First name</label>
-          <input type="text" name="firstName" className="settings-menu__input" />
+          <input
+            type="text"
+            name="firstName"
+            className="settings-menu__input"
+          />
           <label htmlFor="lastName">Last name</label>
           <input type="text" name="lastName" className="settings-menu__input" />
           <Button isSecondary={true} buttonText={"Save"} />
@@ -226,7 +244,7 @@ const SettingsMenu = props => {
 ```jsx
 // App.jsx
 
-const handleSubmit = event => {
+const handleSubmit = (event) => {
   console.log(event);
 };
 ```
@@ -236,14 +254,23 @@ const handleSubmit = event => {
 ```jsx
 //App.jsx
 
-<Nav userName={`${user.firstName} ${user.lastName}`} handleSubmit={handleSubmit} />
+<Nav
+  userName={`${user.firstName} ${user.lastName}`}
+  handleSubmit={handleSubmit}
+/>
 ```
 
 ```jsx
 //Nav.jsx
 
 {
-  showSettings && <SettingsMenu userName={userName} toggleSettings={toggleSettings} handleSubmit={handleSubmit} />;
+  showSettings && (
+    <SettingsMenu
+      userName={userName}
+      toggleSettings={toggleSettings}
+      handleSubmit={handleSubmit}
+    />
+  );
 }
 ```
 
@@ -252,7 +279,7 @@ const handleSubmit = event => {
 ```jsx
 // App.jsx
 
-const handleSubmit = event => {
+const handleSubmit = (event) => {
   event.preventDefault();
   console.log(event);
 };
@@ -263,7 +290,7 @@ const handleSubmit = event => {
 ```jsx
 // App.jsx
 
-const handleSubmit = event => {
+const handleSubmit = (event) => {
   event.preventDefault();
   console.log(event);
   console.log(event.target);
@@ -277,7 +304,7 @@ const handleSubmit = event => {
 ```jsx
 // App.jsx
 
-const handleSubmit = event => {
+const handleSubmit = (event) => {
   event.preventDefault();
   const firstName = event.target[0].value;
   const lastName = event.target[1].value;
@@ -296,24 +323,35 @@ const handleSubmit = event => {
 <summary>SettingsMenu.jsx</summary>
 
 ```jsx
-import React from "react";
-
 import "./SettingsMenu.scss";
 import whiteCross from "../../assets/images/white-cross.png";
 import profilePicture from "../../assets/images/profile-picture.png";
 import Button from "../Button/Button";
 
-const SettingsMenu = props => {
+const SettingsMenu = (props) => {
   const { userName, toggleSettings, handleSubmit } = props;
   return (
     <div className="settings-menu">
       <div className="settings-menu__content">
-        <img src={whiteCross} alt="Close menu" className="settings-menu__cross" onClick={toggleSettings} />
-        <img src={profilePicture} alt="profile" className="settings-menu__profile" />
+        <img
+          src={whiteCross}
+          alt="Close menu"
+          className="settings-menu__cross"
+          onClick={toggleSettings}
+        />
+        <img
+          src={profilePicture}
+          alt="profile"
+          className="settings-menu__profile"
+        />
         <h2 className="settings-menu__title">{userName}</h2>
         <form className="settings-menu__form" onSubmit={handleSubmit}>
           <label htmlFor="firstName">First name</label>
-          <input type="text" name="firstName" className="settings-menu__input" />
+          <input
+            type="text"
+            name="firstName"
+            className="settings-menu__input"
+          />
           <label htmlFor="lastName">Last name</label>
           <input type="text" name="lastName" className="settings-menu__input" />
           <Button isSecondary={true} buttonText={"Save"} />

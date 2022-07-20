@@ -1,8 +1,6 @@
-import React from "react";
-
 import "./SearchBox.scss";
 
-const SearchBox = props => {
+const SearchBox = (props) => {
   const { label, searchTerm, handleInput } = props;
 
   const capitalizedLabel = label[0].toUpperCase() + label.slice(1);
@@ -12,7 +10,13 @@ const SearchBox = props => {
       <label htmlFor={label} className="search-box__label">
         {capitalizedLabel}
       </label>
-      <input type="text" name={label} value={searchTerm} onInput={handleInput} className="search-box__input" />
+      <input
+        type="text"
+        name={label}
+        value={searchTerm}
+        onInput={handleInput}
+        className="search-box__input"
+      />
     </form>
   );
 };
