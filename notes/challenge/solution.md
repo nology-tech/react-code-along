@@ -12,11 +12,9 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 2. Within each of your button folders create a jsx file and a sass file for styling.
 
-3. Import react and create the function for each of your components - remember to export your component.
+3. Create the function for each of your components - remember to export your component.
 
 ```jsx
-import React from 'react'
-
 const ButtonExplore = () => {
     return (
 
@@ -29,8 +27,6 @@ export default ButtonExplore
 4. Write the code for each of your buttons and add sass styling.
 
 ```jsx
-import React from "react";
-
 import "./ButtonExplore.scss";
 
 const ButtonExplore = () => {
@@ -54,7 +50,6 @@ export default ButtonExplore;
 ```
 
 ```jsx
-import React from "react";
 import "./ButtonLetsGo.scss";
 
 const ButtonLetsGo = () => {

@@ -42,12 +42,10 @@ src/components/Nav/Nav.jsx
 cd Nav && touch Nav.jsx
 ```
 
-Import React into Nav.jsx and create the functional component
+In Nav.jsx create the functional component
 
 ```jsx
 // Nav.jsx
-import React from react
-
 const Nav = () => {
 
   return (
@@ -60,8 +58,6 @@ Demo writing JSX in Nav.jsx
 
 ```jsx
 // Nav.jsx
-import React from "react";
-
 const Nav = () => {
   return <p>This is a Nav Component</p>;
 };
@@ -129,7 +125,6 @@ The images for the nav can be found in src/assets/images
 
 ```jsx
 // Nav.jsx
-import React from "react";
 import menu from "../../assets/images/menu-icon.png";
 import settings from "../../assets/images/settings-icon.png";
 import "./Nav.scss";
