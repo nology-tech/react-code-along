@@ -1,23 +1,34 @@
-import React from "react";
-
+import { useParams } from "react-router";
 import "./AlbumInfo.scss";
 
-import { useParams } from "react-router";
-
-const AlbumInfo = props => {
+const AlbumInfo = (props) => {
   const { albumsArr } = props;
   const { albumId } = useParams();
 
-  const currentAlbum = albumsArr.find(album => album.idAlbum === albumId);
-  const { strAlbumThumb, strAlbum, strMood, intYearReleased, strGenre, intScore, strDescriptionEN } = currentAlbum;
+  const currentAlbum = albumsArr.find((album) => album.idAlbum === albumId);
+  const {
+    strAlbumThumb,
+    strAlbum,
+    strMood,
+    intYearReleased,
+    strGenre,
+    intScore,
+    strDescriptionEN,
+  } = currentAlbum;
 
   const lastSentenceIndex = strDescriptionEN?.indexOf(".", 300) + 1;
-  const shortenedText = strDescriptionEN?.substring(0, lastSentenceIndex) ?? "No description given.";
+  const shortenedText =
+    strDescriptionEN?.substring(0, lastSentenceIndex) ??
+    "No description given.";
 
   return (
     <article className="album-info">
       <div className="album-info__banner">
-        <img src={strAlbumThumb} alt={strAlbum} className="album-info__img album-info__img--first" />
+        <img
+          src={strAlbumThumb}
+          alt={strAlbum}
+          className="album-info__img album-info__img--first"
+        />
       </div>
       <div className="album-info__content">
         <h2 className="album-info__heading">{strAlbum}</h2>
@@ -31,7 +42,11 @@ const AlbumInfo = props => {
         </ul>
       </div>
       <div className="album-info__banner">
-        <img src={strAlbumThumb} alt={strAlbum} className="album-info__img album-info__img--last" />
+        <img
+          src={strAlbumThumb}
+          alt={strAlbum}
+          className="album-info__img album-info__img--last"
+        />
       </div>
     </article>
   );

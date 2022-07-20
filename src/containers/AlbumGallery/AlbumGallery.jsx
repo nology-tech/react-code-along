@@ -1,13 +1,12 @@
-import React from "react";
-
+import Carousel from "../../components/Carousel/Carousel";
 import "./AlbumGallery.scss";
 
-import Carousel from "../../components/Carousel/Carousel";
-
-const AlbumGallery = props => {
+const AlbumGallery = (props) => {
   const { albumsArr, title } = props;
 
-  const imagesArr = albumsArr.filter(album => album.strAlbumThumb).map(album => album.strAlbumThumb);
+  const imagesArr = albumsArr
+    .filter((album) => album.strAlbumThumb)
+    .map((album) => album.strAlbumThumb);
 
   return (
     <section className="album-gallery">
