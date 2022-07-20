@@ -10,7 +10,11 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 
 ```jsx
 // App.jsx
-<ArtistTile imgSrc={artist.strArtistThumb} title={artist.strArtist} text={artist.strBiographyEN} />
+<ArtistTile
+  imgSrc={artist.strArtistThumb}
+  title={artist.strArtist}
+  text={artist.strBiographyEN}
+/>
 ```
 
 2. Add `{ useState }` to the import at the top of component. Initialize the state inside the component.
@@ -18,7 +22,7 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 ```jsx
 // ArtistTile.jsx
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Inside the ArtistTile function.
 const [showText, setShowText] = useState(false);
@@ -69,9 +73,14 @@ const buttonJSX = (
 
 const textJSX = (
   <div className="artist-tile__content artist-tile__content--text">
-    <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
+    <img
+      src={whiteCross}
+      className="artist-tile__cross"
+      onClick={handleClick}
+      alt="Close text"
+    />
     <h3 className="artist-tile__heading">{title}</h3>
-    {text.split(".").map(sentence => (
+    {text.split(".").map((sentence) => (
       <p>{sentence + "."}</p>
     ))}
   </div>
@@ -90,9 +99,14 @@ return (
 ```jsx
 const textJSX = (
   <div className="content content--text">
-    <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
+    <img
+      src={whiteCross}
+      className="artist-tile__cross"
+      onClick={handleClick}
+      alt="Close text"
+    />
     <h3>{title}</h3>
-    {text.split(".").map(sentence => (
+    {text.split(".").map((sentence) => (
       <p>{sentence + "."}</p>
     ))}
   </div>
@@ -105,13 +119,13 @@ const textJSX = (
 
 ```jsx
 // ArtistTile.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import "./ArtistTile.scss";
 
 import Button from "../Button/Button";
 import whiteCross from "../../assets/images/white-cross.png";
 
-const ArtistTile = props => {
+const ArtistTile = (props) => {
   const { imgSrc, title, text } = props;
   const [showText, setShowText] = useState(false);
 
@@ -130,9 +144,14 @@ const ArtistTile = props => {
 
   const textJSX = (
     <div className="artist-tile__content artist-tile__content--text">
-      <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
+      <img
+        src={whiteCross}
+        className="artist-tile__cross"
+        onClick={handleClick}
+        alt="Close text"
+      />
       <h3 className="artist-tile__heading">{title}</h3>
-      {text.split(".").map(sentence => (
+      {text.split(".").map((sentence) => (
         <p>{sentence + "."}</p>
       ))}
     </div>
