@@ -34,7 +34,12 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
   </Route>
 
   <Route path="/">
-    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+    <Home
+      user={user}
+      unsortedAlbums={filteredAlbums}
+      sortedAlbums={highestRating}
+      artist={artist}
+    />
   </Route>
 </Switch>
 ```
@@ -53,7 +58,12 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
   </Route>
 
   <Route path="/">
-    <Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />
+    <Home
+      user={user}
+      unsortedAlbums={filteredAlbums}
+      sortedAlbums={highestRating}
+      artist={artist}
+    />
   </Route>
 </Switch>
 ```
@@ -67,7 +77,7 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 ```jsx
 // AlbumInfo.jsx
 
-const currentAlbum = albumsArr.find(album => album.idAlbum === albumId);
+const currentAlbum = albumsArr.find((album) => album.idAlbum === albumId);
 ```
 
 2. Now you have found the correct album object you need to use its values to populate the JSX. You could use destructuring to get the values you need.
@@ -75,12 +85,24 @@ const currentAlbum = albumsArr.find(album => album.idAlbum === albumId);
 ```jsx
 // AlbumInfo.jsx
 
-const { strAlbumThumb, strAlbum, strMood, intYearReleased, strGenre, intScore, strDescriptionEN } = currentAlbum;
+const {
+  strAlbumThumb,
+  strAlbum,
+  strMood,
+  intYearReleased,
+  strGenre,
+  intScore,
+  strDescriptionEN,
+} = currentAlbum;
 
 return (
   <article className="album-info">
     <div className="album-info__banner">
-      <img src={strAlbumThumb} alt={strAlbum} className="album-info__img album-info__img--first" />
+      <img
+        src={strAlbumThumb}
+        alt={strAlbum}
+        className="album-info__img album-info__img--first"
+      />
     </div>
     <div className="album-info__content">
       <h2 className="album-info__heading">{strAlbum}</h2>
@@ -94,7 +116,11 @@ return (
       </ul>
     </div>
     <div className="album-info__banner">
-      <img src={strAlbumThumb} alt={strAlbum} className="album-info__img album-info__img--last" />
+      <img
+        src={strAlbumThumb}
+        alt={strAlbum}
+        className="album-info__img album-info__img--last"
+      />
     </div>
   </article>
 );
@@ -122,7 +148,8 @@ You could use || to do this but this can run into problems with numbers.
 // App.jsx
 
 const lastSentenceIndex = strDescriptionEN?.indexOf(".", 300) + 1;
-const shortenedText = strDescriptionEN?.substring(0, lastSentenceIndex) ?? "No description given.";
+const shortenedText =
+  strDescriptionEN?.substring(0, lastSentenceIndex) ?? "No description given.";
 ```
 
 ---
@@ -133,26 +160,38 @@ const shortenedText = strDescriptionEN?.substring(0, lastSentenceIndex) ?? "No d
 ```jsx
 // AlbumInfo.jsx
 
-import React from "react";
-
 import "./AlbumInfo.scss";
 
 import { useParams } from "react-router";
 
-const AlbumInfo = props => {
+const AlbumInfo = (props) => {
   const { albumsArr } = props;
   const { albumId } = useParams();
 
-  const currentAlbum = albumsArr.find(album => album.idAlbum === albumId);
-  const { strAlbumThumb, strAlbum, strMood, intYearReleased, strGenre, intScore, strDescriptionEN } = currentAlbum;
+  const currentAlbum = albumsArr.find((album) => album.idAlbum === albumId);
+  const {
+    strAlbumThumb,
+    strAlbum,
+    strMood,
+    intYearReleased,
+    strGenre,
+    intScore,
+    strDescriptionEN,
+  } = currentAlbum;
 
   const lastSentenceIndex = strDescriptionEN?.indexOf(".", 300) + 1;
-  const shortenedText = strDescriptionEN?.substring(0, lastSentenceIndex) ?? "No description given.";
+  const shortenedText =
+    strDescriptionEN?.substring(0, lastSentenceIndex) ??
+    "No description given.";
 
   return (
     <article className="album-info">
       <div className="album-info__banner">
-        <img src={strAlbumThumb} alt={strAlbum} className="album-info__img album-info__img--first" />
+        <img
+          src={strAlbumThumb}
+          alt={strAlbum}
+          className="album-info__img album-info__img--first"
+        />
       </div>
       <div className="album-info__content">
         <h2 className="album-info__heading">{strAlbum}</h2>
@@ -166,7 +205,11 @@ const AlbumInfo = props => {
         </ul>
       </div>
       <div className="album-info__banner">
-        <img src={strAlbumThumb} alt={strAlbum} className="album-info__img album-info__img--last" />
+        <img
+          src={strAlbumThumb}
+          alt={strAlbum}
+          className="album-info__img album-info__img--last"
+        />
       </div>
     </article>
   );

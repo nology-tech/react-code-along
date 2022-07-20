@@ -1,7 +1,6 @@
-import React from "react";
 import "./Button.scss";
 
-const Button = props => {
+const Button = (props) => {
   const { buttonText, isSecondary } = props;
 
   let buttonStyle = "button";
@@ -12,7 +11,7 @@ const Button = props => {
     buttonStyle += " primary";
   }
 
-  // This could be simplified using a inline turnery statement.
+  // This could be simplified using a inline ternary statement.
   // let buttonStyle = isSecondary ? "button secondary" : "button primary";
 
   return <button className={buttonStyle}>{buttonText}</button>;

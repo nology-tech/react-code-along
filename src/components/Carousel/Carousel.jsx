@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-
-import "./Carousel.scss";
-
+import { useState } from "react";
 import leftArrow from "../../assets/images/left-arrow.png";
 import rightArrow from "../../assets/images/right-arrow.png";
+import "./Carousel.scss";
 
-const Carousel = props => {
+const Carousel = (props) => {
   const { imagesArr } = props;
   const [counter, setCounter] = useState(0);
 

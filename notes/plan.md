@@ -83,12 +83,22 @@ Add the path prop to Route and set the value to "/". This is going to be the def
 return (
   <Router>
     <div className="app">
-      <Nav userName={`${user.firstName} ${user.lastName}`} handleUserChange={handleUserChange} />
+      <Nav
+        userName={`${user.firstName} ${user.lastName}`}
+        handleUserChange={handleUserChange}
+      />
 
       <Routes>
         <Route
           path="/"
-          element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
+          element={
+            <Home
+              user={user}
+              unsortedAlbums={filteredAlbums}
+              sortedAlbums={highestRating}
+              artist={artist}
+            />
+          }
         ></Route>
       </Routes>
     </div>
@@ -131,16 +141,16 @@ The completed files are below;
 ```jsx
 // AlbumGallery.jsx
 
-import React from "react";
-
 import "./AlbumGallery.scss";
 
 import Carousel from "../../components/Carousel/Carousel";
 
-const AlbumGallery = props => {
+const AlbumGallery = (props) => {
   const { albumsArr, title } = props;
 
-  const imagesArr = albumsArr.filter(album => album.strAlbumThumb).map(album => album.strAlbumThumb);
+  const imagesArr = albumsArr
+    .filter((album) => album.strAlbumThumb)
+    .map((album) => album.strAlbumThumb);
 
   return (
     <section className="album-gallery">
@@ -208,11 +218,21 @@ Inside the Route add the element prop and add the AlbumGallery component and giv
 // App.jsx
 
 <Routes>
-  <Route path="/albums" element={<AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />} />
+  <Route
+    path="/albums"
+    element={<AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />}
+  />
 
   <Route
     path="/"
-    element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
+    element={
+      <Home
+        user={user}
+        unsortedAlbums={filteredAlbums}
+        sortedAlbums={highestRating}
+        artist={artist}
+      />
+    }
   />
 </Routes>
 ```
@@ -260,7 +280,11 @@ You will need to move the key prop to the Link component.
 
 const cardListJSX = albumsArr.map((album, index) => (
   <Link to={`/album/${album.idAlbum}`} key={title + (index + 1)}>
-    <img className="album-tiles__img" src={album.strAlbumThumb} alt={album.strAlbum} />
+    <img
+      className="album-tiles__img"
+      src={album.strAlbumThumb}
+      alt={album.strAlbum}
+    />
   </Link>
 ));
 ```
@@ -276,11 +300,9 @@ Create an AlbumInfo folder, jsx nd scss files. The starter code is below.
 
 ```jsx
 // AlbumInfo.jsx
-import React from "react";
-
 import "./AlbumInfo.scss";
 
-const AlbumInfo = props => {
+const AlbumInfo = (props) => {
   const { albumsArr } = props;
 
   return (
@@ -426,7 +448,10 @@ In App.jsx inside the Routes set up a new route to the AlbumInfo container. Set 
 ```jsx
 // AlbumInfo.jsx
 
-<Route path="/album/:albumId" element={<AlbumInfo albumsArr={filteredAlbums} />} />
+<Route
+  path="/album/:albumId"
+  element={<AlbumInfo albumsArr={filteredAlbums} />}
+/>
 ```
 
 Demonstrate the query param logged to the console when you click on a album. It is now down to use the id to find the album and use the data to populate the page.

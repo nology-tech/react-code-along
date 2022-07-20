@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import whiteCross from "../../assets/images/white-cross.png";
+import Button from "../Button/Button";
 import "./ArtistTile.scss";
 
-import Button from "../Button/Button";
-import whiteCross from "../../assets/images/white-cross.png";
-
-const ArtistTile = props => {
+const ArtistTile = (props) => {
   const { imgSrc, title, text } = props;
   const [showText, setShowText] = useState(false);
 
@@ -23,9 +22,14 @@ const ArtistTile = props => {
 
   const textJSX = (
     <div className="artist-tile__content artist-tile__content--text">
-      <img src={whiteCross} className="artist-tile__cross" onClick={handleClick} alt="Close text" />
+      <img
+        src={whiteCross}
+        className="artist-tile__cross"
+        onClick={handleClick}
+        alt="Close text"
+      />
       <h3 className="artist-tile__heading">{title}</h3>
-      {text.split(".").map((sentence,index) => (
+      {text.split(".").map((sentence, index) => (
         <p key={title + index}>{sentence + "."}</p>
       ))}
     </div>
