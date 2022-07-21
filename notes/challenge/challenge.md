@@ -18,7 +18,7 @@ In the image below you can see that when you go to http://localhost:3000/albums/
 
 1. Update The NavMenu component to link to the correct page.
 
-2. Add a new Route to the Switch inside the App.
+2. Add a new Route to the Routes inside the App.
 
 3. It is up to you to put the rest of the pieces together. Which container can we re use? What props need to given to this page?
 

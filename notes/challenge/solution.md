@@ -16,15 +16,15 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
 </Link>
 ```
 
-2. Add a new Route to the Switch component inside App.jsx. Set the path prop to "/albums/rated".
+2. Add a new Route to the Routes component inside App.jsx. Set the path prop to "/albums/rated".
 
-3. Inside the Route you have just created add the AlbumGallery container and give it the correct props. The title will be "Rated Albums", the albumsArr will be the highestRating array. Below are two examples of the Switch component. The bottom one uses the exact prop on the Route component.
+3. Inside the Route you have just created add the AlbumGallery container and give it the correct props. The title will be "Rated Albums", the albumsArr will be the highestRating array. Below are two examples of the Routes component. The bottom one uses the exact prop on the Route component.
 
 ```jsx
 // App.jsx
 
 // These need to be in the correct order.
-<Switch>
+<Routes>
   <Route path="/albums/rated">
     <AlbumGallery albumsArr={highestRating} title={"Rated Albums"} />
   </Route>
@@ -41,14 +41,14 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
       artist={artist}
     />
   </Route>
-</Switch>
+</Routes>
 ```
 
 ```jsx
 // App.jsx
 
 // Using the exact prop means it will only go to /albums if it is exactly that. Meaning the order of Route components can be changed.
-<Switch>
+<Routes>
   <Route exact path="/albums">
     <AlbumGallery albumsArr={filteredAlbums} title={"All Albums"} />
   </Route>
@@ -65,7 +65,7 @@ It's always better to google, ask a fellow student or ask a coach. This is one w
       artist={artist}
     />
   </Route>
-</Switch>
+</Routes>
 ```
 
 ---
